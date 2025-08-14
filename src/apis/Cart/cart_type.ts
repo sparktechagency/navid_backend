@@ -5,6 +5,7 @@ export interface ICartItem {
   quantity: number;
   variant: string;
   price: number;
+  size: string
   _id: Types.ObjectId;
 }
 

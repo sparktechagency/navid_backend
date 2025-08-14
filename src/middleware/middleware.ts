@@ -30,7 +30,13 @@ const middleware = (app: Express) => {
       //     console.log(config?.ALLOWED_ORIGIN,origin)
       //     config?.ALLOWED_ORIGIN?.includes(origin || "") ? callback(null, true) : callback(new Error('origin not allowed'))
       // },
-      origin: [...config?.ALLOWED_ORIGIN, "http://10.0.60.24:5173", "https://admin.divandioneapp.com", "http://10.10.11.22:4173"],
+      origin: [...config?.ALLOWED_ORIGIN,
+        "http://10.0.60.24:5173",
+        "https://admin.divandioneapp.com",
+        "http://10.10.20.54:4173",
+        "http://localhost:4173",
+        "http://10.10.20.40:4173",
+      ],
       optionsSuccessStatus: 200,
       credentials: true,
     }),

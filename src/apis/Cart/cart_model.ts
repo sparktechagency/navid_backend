@@ -21,6 +21,11 @@ const cart_item_schema = new Schema<ICartItem>({
     type: Number,
     required: [true, "Price is required"],
   },
+  size: {
+    type: String,
+    required: false,
+    default: null
+  }
 });
 
 const cart_schema = new Schema<ICart>({

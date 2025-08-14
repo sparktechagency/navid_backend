@@ -6,6 +6,87 @@ import { product_model } from '../Product/product_model';
 import { order_model } from "./order_model";
 import { IOrder, IOrderItem } from "./order_type";
 
+// const create_order = async (data: any, user_id: string) => {
+//   const session = await mongoose.startSession();
+//   try {
+//     const result = await session.withTransaction(async () => {
+//       const {
+//         items,
+//         total_amount,
+//         delivery_address,
+//         pick_up_address,
+//         payment_method,
+//       } = data;
+
+//       const product_ids = items.map((item: IOrderItem) => item.product);
+//       const order_data = {
+//         user: user_id,
+//         items,
+//         total_amount,
+//         delivery_address,
+//         pick_up_address,
+//         payment_method,
+//       } as { [key: string]: any };
+
+//       const [order, updated_cart] = await Promise.all([
+//         order_model.insertMany([order_data], { session }),
+//         cart_model.findOneAndUpdate(
+//           { user: user_id },
+//           { $pull: { items: { product_id: { $in: product_ids } } } },
+//           { session, new: true },
+//         ),
+//         notification_model.insertMany(
+//           [
+//             {
+//               user: user_id,
+//               title: "order confirmed",
+//               message: `your order has been confirmed please make payment`,
+//             },
+//           ],
+//           { session },
+//         ),
+//         product_model.updateMany(
+//           { _id: { $in: product_ids } },
+//           { $inc: { quantity: -1 } },
+//           { session }
+//         ),
+//         await decrementVariantQuantities(items),
+//       ]);
+
+//       if (updated_cart) {
+//         const total_quantity = updated_cart.items.reduce(
+//           (acc, item) => acc + item.quantity,
+//           0,
+//         );
+//         const total_price = updated_cart.items.reduce(
+//           (acc, item) => acc + item.quantity * item.price,
+//           0,
+//         );
+
+//         await cart_model.findOneAndUpdate(
+//           { user: user_id },
+//           {
+//             $set: {
+//               total_quantity,
+//               total_price,
+//             },
+//           },
+//           { session, new: true },
+//         );
+//       }
+//       return {
+//         success: true,
+//         message: "order created successfully",
+//         data: order,
+//       };
+//     });
+//     return result;
+//   } catch (error) {
+//     throw error;
+//   } finally {
+//     session.endSession();
+//   }
+// };
 const create_order = async (data: any, user_id: string) => {
   const session = await mongoose.startSession();
   try {
@@ -26,41 +107,50 @@ const create_order = async (data: any, user_id: string) => {
         delivery_address,
         pick_up_address,
         payment_method,
-      } as { [key: string]: any };
+      };
 
-      const [order, updated_cart] = await Promise.all([
-        order_model.insertMany([order_data], { session }),
-        cart_model.findOneAndUpdate(
-          { user: user_id },
-          { $pull: { items: { product_id: { $in: product_ids } } } },
-          { session, new: true },
-        ),
-        notification_model.insertMany(
-          [
-            {
-              user: user_id,
-              title: "order confirmed",
-              message: `your order has been confirmed please make payment`,
-            },
-          ],
-          { session },
-        ),
-        product_model.updateMany(
-          { _id: { $in: product_ids } },
-          { $inc: { quantity: -1 } },
-          { session }
-        ),
-        await decrementVariantQuantities(items),
+      // Start concurrent operations
+      const orderPromise = order_model.insertMany([order_data], { session });
+      const cartUpdatePromise = cart_model.findOneAndUpdate(
+        { user: user_id },
+        { $pull: { items: { product_id: { $in: product_ids } } } },
+        { session, new: true }
+      );
+      const notificationPromise = notification_model.insertMany(
+        [
+          {
+            user: user_id,
+            title: "Order Confirmed",
+            message: `Your order has been confirmed. Please make payment.`,
+          },
+        ],
+        { session }
+      );
+      const productUpdatePromise = product_model.updateMany(
+        { _id: { $in: product_ids } },
+        { $inc: { quantity: -1 } },
+        { session }
+      );
+      const variantUpdatePromise = decrementVariantQuantities(items); // assumed to return a Promise
+
+      // Run all concurrently
+      const [orderArr, updated_cart] = await Promise.all([
+        orderPromise,
+        cartUpdatePromise,
+        notificationPromise,
+        productUpdatePromise,
+        variantUpdatePromise,
       ]);
 
+      // Recalculate cart totals if updated_cart exists
       if (updated_cart) {
         const total_quantity = updated_cart.items.reduce(
           (acc, item) => acc + item.quantity,
-          0,
+          0
         );
         const total_price = updated_cart.items.reduce(
           (acc, item) => acc + item.quantity * item.price,
-          0,
+          0
         );
 
         await cart_model.findOneAndUpdate(
@@ -71,13 +161,14 @@ const create_order = async (data: any, user_id: string) => {
               total_price,
             },
           },
-          { session, new: true },
+          { session, new: true }
         );
       }
+
       return {
         success: true,
-        message: "order created successfully",
-        data: order,
+        message: "Order created successfully",
+        data: orderArr[0],
       };
     });
     return result;
@@ -87,6 +178,7 @@ const create_order = async (data: any, user_id: string) => {
     session.endSession();
   }
 };
+
 export function decrementVariantQuantities(items: IOrderItem[]) {
   const operations = items.map((item) => ({
     updateOne: {

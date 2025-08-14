@@ -82,3 +82,18 @@
     at globalErrorHandler (/home/shaharulsiyam/Desktop/project/backend/navid_backend/src/utils/globalErrorHandler.ts:105:9)
     at /home/shaharulsiyam/Desktop/project/backend/navid_backend/src/middleware/asyncWrapper.ts:7:31
     at processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-07-23 12:54:54 [ERROR]: MongoServerError: not primary and secondaryOk=false
+    at Connection.sendCommand (D:\backend\navid_backend\node_modules\mongodb\src\cmap\connection.ts:545:17)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at Connection.command (D:\backend\navid_backend\node_modules\mongodb\src\cmap\connection.ts:617:22)
+    at Server.command (D:\backend\navid_backend\node_modules\mongodb\src\sdam\server.ts:337:21)
+    at FindOperation.execute (D:\backend\navid_backend\node_modules\mongodb\src\operations\find.ts:130:12)
+    at tryOperation (D:\backend\navid_backend\node_modules\mongodb\src\operations\execute_operation.ts:278:14)
+    at executeOperation (D:\backend\navid_backend\node_modules\mongodb\src\operations\execute_operation.ts:112:12)
+    at FindCursor._initialize (D:\backend\navid_backend\node_modules\mongodb\src\cursor\find_cursor.ts:90:22)
+    at FindCursor.cursorInit (D:\backend\navid_backend\node_modules\mongodb\src\cursor\abstract_cursor.ts:896:21)
+    at FindCursor.fetchBatch (D:\backend\navid_backend\node_modules\mongodb\src\cursor\abstract_cursor.ts:934:7)
+2025-07-29 12:44:17 [ERROR]: MongooseError: Operation `auths.findOne()` buffering timed out after 10000ms
+    at Timeout.<anonymous> (D:\backend\navid_backend\node_modules\mongoose\lib\drivers\node-mongodb-native\collection.js:185:23)
+    at listOnTimeout (node:internal/timers:608:17)
+    at processTimers (node:internal/timers:543:7)

@@ -116,6 +116,20 @@ const get_details = async (id: string, tax: string | null) => {
       },
     },
     {
+      $lookup: {
+        from: "services",
+        foreignField: "_id",
+        localField: "sub_category",
+        as: "sub_category",
+      },
+    },
+    {
+      $unwind: {
+        path: "$sub_category",
+        preserveNullAndEmptyArrays: true,
+      },
+    },
+    {
       $addFields: {
         variantImages: {
           $arrayToObject: {
@@ -169,6 +183,9 @@ const get_details = async (id: string, tax: string | null) => {
         "category.name": 1,
         "category.img": 1,
         "category._id": 1,
+        "sub_category.name": 1,
+        "sub_category.img": 1,
+        "sub_category._id": 1,
       },
     },
   ]);
