@@ -1,7 +1,7 @@
+import { NextFunction, Request, Response } from "express";
+import fs from "fs";
 import multer, { StorageEngine } from "multer";
 import path from "path";
-import { Request, Response, NextFunction } from "express";
-import fs from "fs";
 const mimetype = [
   "image/jpeg",
   "video/mp4",
@@ -81,9 +81,10 @@ const uploadFile = () => {
     }
   };
 
-  const maxVideoLength = 20;
+  const maxVideoLength = 5000;
 
   const upload = multer({
+    limits: { fileSize: 5000 * 1024 * 1024 }, // 5000 MB
     storage: storage,
     fileFilter: fileFilter,
   }).fields([
