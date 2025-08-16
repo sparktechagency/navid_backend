@@ -90,7 +90,7 @@ const upload_product_image = () => {
     }
   };
 
-  const maxVideoLength = 20;
+  const maxVideoLength = 5000;
 
   const upload = multer({
     limits: { fileSize: 5000 * 1024 * 1024 },
