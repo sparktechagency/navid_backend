@@ -19,7 +19,7 @@ const limiter = rateLimit({
 const middleware = (app: Express) => {
   // body parser
   // app.use(urlencoded({ extended: true }))
-  app.use(express.json());
+  app.use(express.json({ limit: "5000mb" }));
   // cookie parser
   app.use(cookieParser());
   app.use(limiter);
