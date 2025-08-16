@@ -77,7 +77,6 @@ const update = async function (req: Request, res: Response) {
     retained_variants,
     variants_formate,
   );
-
   if (deleted_variants && deleted_variants.length > 0) {
     UnlinkFiles(deleted_variants);
   }

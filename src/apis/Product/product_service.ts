@@ -324,6 +324,8 @@ const merge_variants = (variants1: any[], variants2: any[]) => {
       mergedMap.set(variant.color, {
         color: variant.color,
         img: [...variant.img],
+        quantity: variant.quantity,
+        size: variant.size,
       });
     }
   });
