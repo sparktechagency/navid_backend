@@ -1,7 +1,7 @@
+import { NextFunction, Request, Response } from "express";
+import fs from "fs";
 import multer, { StorageEngine } from "multer";
 import path from "path";
-import { Request, Response, NextFunction } from "express";
-import fs from "fs";
 import config from "../DefaultConfig/config";
 const mimetype = [
   "image/jpeg",
@@ -93,6 +93,7 @@ const upload_product_image = () => {
   const maxVideoLength = 20;
 
   const upload = multer({
+    limits: { fileSize: 5000 * 1024 * 1024 },
     storage: storage,
     fileFilter: fileFilter,
   }).any();
