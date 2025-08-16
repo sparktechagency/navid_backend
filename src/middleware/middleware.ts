@@ -37,6 +37,7 @@ const middleware = (app: Express) => {
         "http://localhost:4173",
         "http://10.10.20.40:4173",
       ],
+      methods: ["GET", "POST", "PUT", "DELETE"],
       optionsSuccessStatus: 200,
       credentials: true,
     }),
