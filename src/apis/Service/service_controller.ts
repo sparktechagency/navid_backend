@@ -29,7 +29,7 @@ async function get_all(req: Request, res: Response) {
   };
 
   const populatePath: string | string[] = "category";
-  const selectFields: string | string[] = "name";
+  const selectFields: string | string[] = "name img";
   const modelSelect: string = "name img _id";
 
   const result = await service_service.get_all(
