@@ -1,5 +1,5 @@
-import { service_model } from "./service_model";
 import Queries, { QueryKeys, SearchKeys } from "../../utils/Queries";
+import { service_model } from "./service_model";
 
 async function create(data: { [key: string]: string }) {
   const result = await service_model.insertMany(data);
@@ -28,7 +28,7 @@ async function update(id: string, data: { [key: string]: string }) {
 }
 
 async function delete_service(id: string) {
-  const result = service_model.findByIdAndDelete(id);
+  const result = await service_model.findByIdAndDelete(id);
 
   return {
     success: true,
@@ -43,13 +43,13 @@ async function get_all(
   populatePath?:
     | string
     | [
+      | string
+      | {
+        [key: string]:
         | string
-        | {
-            [key: string]:
-              | string
-              | { [key: string]: string | { [key: string]: string } };
-          },
-      ],
+        | { [key: string]: string | { [key: string]: string } };
+      },
+    ],
   selectFields?: string | string[],
   modelSelect?: string,
 ) {

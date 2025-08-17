@@ -11,7 +11,7 @@ banner_router
   .post(
     "/banner/create",
     uploadFile(),
-    // verifyToken(config.ADMIN),
+    verifyToken(config.ADMIN),
     asyncWrapper(banner_controller.create),
   )
 

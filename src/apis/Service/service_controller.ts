@@ -1,8 +1,7 @@
-import { SearchKeys } from "./../../utils/Queries";
 import { Request, Response } from "express";
-import { sendResponse } from "../../utils/sendResponse";
 import { HttpStatus } from "../../DefaultConfig/config";
-import { IAuth } from "../Auth/auth_types";
+import { sendResponse } from "../../utils/sendResponse";
+import { SearchKeys } from "./../../utils/Queries";
 import { service_service } from "./service_service";
 
 async function create(req: Request, res: Response) {
@@ -29,8 +28,8 @@ async function get_all(req: Request, res: Response) {
     ...otherValues,
   };
 
-  const populatePath: string | string[] = "";
-  const selectFields: string | string[] = "";
+  const populatePath: string | string[] = "category";
+  const selectFields: string | string[] = "name";
   const modelSelect: string = "name img _id";
 
   const result = await service_service.get_all(
