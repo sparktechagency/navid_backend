@@ -51,7 +51,6 @@ async function update(req: Request, res: Response) {
     null;
 
   if (img) req.body.img = img;
-
   const result = await service_service.update(req?.params?.id, req?.body);
   sendResponse(res, HttpStatus.SUCCESS, result);
 }

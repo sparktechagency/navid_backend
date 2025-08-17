@@ -4,6 +4,7 @@ import multer, { StorageEngine } from "multer";
 import path from "path";
 const mimetype = [
   "image/jpeg",
+  "image/jpg",
   "video/mp4",
   "image/webp",
   "image/png",
