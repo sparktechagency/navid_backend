@@ -25036,3 +25036,16 @@ src/apis/Payment/payment_controller.ts(57,5): error TS1005: ',' expected.
     at Object.nodeDevHook [as .ts] (D:\backend\navid_backend\node_modules\ts-node-dev\lib\hook.js:63:13)
     at Module.load (node:internal/modules/cjs/loader:1427:32)
     at Module._load (node:internal/modules/cjs/loader:1250:12)
+2025-08-19 10:00:31 [ERROR]: Error: ⨯ Unable to compile TypeScript:
+src/apis/Cart/cart_service.ts(108,3): error TS1109: Expression expected.
+
+    at Object.<anonymous> (D:\backend\navid_backend\src\apis\Cart\cart_service.ts:1:7)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1692:14)
+    at Module._compile (D:\backend\navid_backend\node_modules\source-map-support\source-map-support.js:568:25)
+    at Module.m._compile (C:\Users\Betopia\AppData\Local\Temp\ts-node-dev-hook-30619413835924303.js:69:33)
+    at node:internal/modules/cjs/loader:1824:10
+    at require.extensions..jsx.require.extensions..js (C:\Users\Betopia\AppData\Local\Temp\ts-node-dev-hook-30619413835924303.js:114:20)
+    at require.extensions.<computed> (C:\Users\Betopia\AppData\Local\Temp\ts-node-dev-hook-30619413835924303.js:71:20)
+    at Object.nodeDevHook [as .ts] (D:\backend\navid_backend\node_modules\ts-node-dev\lib\hook.js:63:13)
+    at Module.load (node:internal/modules/cjs/loader:1427:32)
+    at Module._load (node:internal/modules/cjs/loader:1250:12)

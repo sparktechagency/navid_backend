@@ -103,7 +103,12 @@ const get_all = async (
     success: boolean;
     data: [{ items: ICartItem[] }];
   };
-
+  const filter_null = carts?.data?.[0]?.items?.filter((item: ICartItem) =>
+    item?.product_id !== null,
+  );
+  carts.data = [{
+    items: filter_null,
+  }];
   if (order) {
     const order_ids = order.split(",");
 
@@ -118,6 +123,7 @@ const get_all = async (
 
     return formateData;
   } else {
+
     return {
       success: true,
       data: carts?.data?.[0] || null,
