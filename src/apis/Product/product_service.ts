@@ -287,6 +287,7 @@ const formate_variant = (req: Request) => {
           color: item?.fieldname?.split("_")?.[1],
           img: item?.path,
           quantity: req?.body?.[`quantity_${item?.fieldname?.split("_")?.[1]}`] ? parseInt(req?.body?.[`quantity_${item?.fieldname?.split("_")?.[1]}`]) : 0,
+          price: req?.body?.[`price_${item?.fieldname?.split("_")?.[1]}`] ? parseFloat(req?.body?.[`price_${item?.fieldname?.split("_")?.[1]}`]) : 0,
           size: req?.body?.[`size_${item?.fieldname?.split("_")?.[1]}`] ? JSON.parse(req?.body?.[`size_${item?.fieldname?.split("_")?.[1]}`]) : [ISize.SMALL],
         };
       })
@@ -302,6 +303,7 @@ const formate_variant = (req: Request) => {
         color: curr.color,
         img: [curr.img],
         quantity: curr.quantity,
+        price: curr.price,
         size: curr.size,
       });
     }

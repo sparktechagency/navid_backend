@@ -20,6 +20,10 @@ const variants_schema = new Schema<IVariant>(
       type: Number,
       default: 0,
     },
+    price: {
+      type: Number,
+      required: [true, "Price is required"],
+    }
   },
   { _id: false },
 );
