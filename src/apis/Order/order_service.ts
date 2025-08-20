@@ -113,7 +113,34 @@ const create_order = async (data: any, user_id: string) => {
       const orderPromise = order_model.insertMany([order_data], { session });
       const cartUpdatePromise = cart_model.findOneAndUpdate(
         { user: user_id },
-        { $pull: { items: { product_id: { $in: product_ids } } } },
+        [
+          // Stage 1: Remove the matching products
+          {
+            $set: {
+              items: {
+                $filter: {
+                  input: "$items",
+                  as: "item",
+                  cond: { $not: [{ $in: ["$$item.product_id", product_ids] }] }
+                }
+              }
+            }
+          },
+          {
+            $set: {
+              total_quantity: { $sum: "$items.quantity" },
+              total_price: {
+                $sum: {
+                  $map: {
+                    input: "$items",
+                    as: "item",
+                    in: { $multiply: ["$$item.price", "$$item.quantity"] }
+                  }
+                }
+              }
+            }
+          }
+        ],
         { session, new: true }
       );
       const notificationPromise = notification_model.insertMany(
