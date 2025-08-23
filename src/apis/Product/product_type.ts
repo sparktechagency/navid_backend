@@ -3,7 +3,7 @@ export enum ISize {
   SMALL = "SMALL",
   MEDIUM = "MEDIUM",
   LARGE = "LARGE",
-  "30MM" = "30MM",
+  "33MM" = "33MM",
   "40MM" = "40MM",
   "50gram" = "50gram",
   "200gram" = "200gram",
