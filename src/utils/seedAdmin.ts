@@ -1,5 +1,4 @@
 import auth_model from '../apis/Auth/auth_model';
-import hashText from "./hashText"; // adjust path
 
 export async function seedAdmin() {
   try {
@@ -14,7 +13,7 @@ export async function seedAdmin() {
     const adminData = {
       name: "Super Admin",
       email: "admin@example.com",
-      password: await hashText("Admin@1234"),
+      password: "Admin@1234",
       role: "ADMIN",
       provider: "CREDENTIAL",
       is_verified: true,
