@@ -5,7 +5,7 @@ import { seedAdmin } from '../utils/seedAdmin';
 export const connectToDB = async () => {
   try {
     await mongoose.connect(config?.DATABASE_URL || "", {
-      dbName: "testdatabase" //config?.DB_NAME,
+      dbName: "testdatabase_02" //config?.DB_NAME, // testdatabase_02 change from hosain
     });
     console.log("connected to database");
     await seedAdmin();
