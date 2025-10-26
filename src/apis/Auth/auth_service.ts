@@ -54,10 +54,13 @@ async function sing_in(data: { [key: string]: string }) {
     { expiresIn: 60 * 60 * 24 * 500 },
   );
 
+  const userData = await auth_model.findOne({ email: data?.email }).select("-password -accessToken")
+
   return {
     success: true,
     message: `login successfully`,
     email: user?.email,
+    user: userData,
     token,
   };
 }

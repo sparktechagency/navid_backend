@@ -14,7 +14,7 @@ async function create(req: Request, res: Response) {
 
 async function sing_in(req: Request, res: Response) {
   const result = await auth_service.sing_in(req.body);
-
+  console.log("=================",result)
   sendResponse(res, HttpStatus.SUCCESS, result, [
     config.TOKEN_NAME,
     result?.token,

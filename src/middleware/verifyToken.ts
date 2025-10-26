@@ -36,11 +36,12 @@ const verifyToken = (
       } else {
         token = tokenWithBearer;
       }
-
+      
       jwt.verify(
         token,
         config.ACCESS_TOKEN_SECRET || "",
         async (err, decoded) => {
+          console.log("-------",err)
           if (err) {
             res
               .status(401)
