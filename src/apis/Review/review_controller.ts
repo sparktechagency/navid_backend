@@ -34,7 +34,6 @@ async function delete_review(req: Request, res: Response) {
 
 async function get_all(req: Request, res: Response) {
   const { search, ...otherValues } = req?.query;
-  console.log(req?.query)
   const searchKeys: SearchKeys = {};
 
   if (search) searchKeys.name = search as string;
