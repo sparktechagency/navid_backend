@@ -5,7 +5,7 @@ import rateLimit from "express-rate-limit";
 import config from "../DefaultConfig/config";
 const limiter = rateLimit({
   windowMs: 1 * 60 * 1000,
-  max: 100, //limit: 100,
+  max: 10000,  //limit: 100,
   handler: (req, res) => {
     // console.warn(`Rate limit exceeded for IP: ${req.ip}`);
     res.status(429).send({ success: false, message: "Too many requests" });
@@ -37,7 +37,8 @@ const middleware = (app: Express) => {
         "http://localhost:4173",
         "http://10.10.20.40:4173",
         "http://10.10.20.54:3000",
-        "http://10.10.20.54:3001"
+        "http://10.10.20.54:3001",
+        "http://divandione.com",
       ],
       methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
       optionsSuccessStatus: 200,

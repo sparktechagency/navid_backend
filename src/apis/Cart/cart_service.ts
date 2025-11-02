@@ -106,6 +106,12 @@ const get_all = async (
   const filter_null = carts?.data?.[0]?.items?.filter((item: ICartItem) =>
     item?.product_id !== null,
   );
+  if (carts.data?.length<=0) {
+    return {
+      success: true,
+      data: [],
+    };
+  }
   carts.data[0].items = filter_null;
   if (order) {
     const order_ids = order.split(",");
