@@ -48,6 +48,7 @@ async function get_all(
         is_service: 1,
         _id: 1,
         
+
       }
     }
   ]);
