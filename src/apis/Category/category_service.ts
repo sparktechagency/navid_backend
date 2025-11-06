@@ -21,7 +21,36 @@ async function get_all(
   selectFields?: string | string[],
   modelSelect?: string,
 ) {
-  return await Aggregator(category_model, queryKeys, searchKeys, []);
+  return await Aggregator(category_model, queryKeys, searchKeys, [
+    {
+      $lookup: {
+        from: "services",
+        localField: "_id",
+        foreignField: "category",
+        as: "services",
+      },
+    },
+    {
+      $addFields: {
+        is_service: {
+          $cond: {
+            if: { $gt: [{ $size: "$services" }, 0] },
+            then: true,
+            else: false,
+          },
+        },
+      },
+    },
+    {
+      $project: {
+        name: 1,
+        img: 1,
+        is_service: 1,
+        _id: 1,
+        
+      }
+    }
+  ]);
 }
 
 async function update(id: string, data: { [key: string]: string }) {
