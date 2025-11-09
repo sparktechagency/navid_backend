@@ -7,19 +7,8 @@ import { sendResponse } from "../../utils/sendResponse";
 import { product_service } from "./product_service";
 
 const create = async function (req: Request, res: Response) {
-  const data = req.body;
-
-  const variants_formate = product_service.formate_variant(req);
-
-  if (variants_formate && variants_formate?.length > 0)
-    data.variants = variants_formate;
-
-  data.user = req?.user?._id;
-  data.quantity = data?.variants?.reduce(
-    (acc: number, curr: any) => acc + curr.quantity,
-    0
-  );
-  const result = await product_service.create(data);
+  req.body.user = req?.user?._id;
+  const result = await product_service.create(req.body);
 
   sendResponse(res, HttpStatus.SUCCESS, result);
 };
@@ -29,7 +18,7 @@ const get_all = async function (req: Request, res: Response) {
 
   let searchKeys = {} as { name: string };
 
-  let queryKeys = { ...other_fields } as QueryKeys;
+  let queryKeys = { ...other_fields, } as QueryKeys;
 
   if (search) searchKeys.name = search as string;
 
@@ -71,11 +60,10 @@ const update = async function (req: Request, res: Response) {
   const retained_variants = JSON.parse(prev);
   const deleted_variants = JSON.parse(del);
 
-  const variants_formate = product_service.formate_variant(req);
 
   const merge_variants = product_service.merge_variants(
     retained_variants,
-    variants_formate,
+    deleted_variants,
   );
   if (deleted_variants && deleted_variants.length > 0) {
     UnlinkFiles(deleted_variants);

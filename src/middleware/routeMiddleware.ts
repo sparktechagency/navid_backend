@@ -16,6 +16,7 @@ import { service_router } from "../apis/Service/service_route";
 import { setting_router } from "../apis/Setting/setting_router";
 import { shipping_address_router } from "../apis/ShippingAddress/shipping_address_route";
 import { verification_router } from "../apis/Verification/verification_route";
+import { variants_router } from "../apis/variants/variants_route";
 
 export const routeMiddleware = (app: Express) => {
   app.use("/uploads", express.static(path.join(__dirname, "../../uploads")));
@@ -36,4 +37,5 @@ export const routeMiddleware = (app: Express) => {
   app.use(business_router);
   app.use(pick_address_router);
   app.use(banner_router)
+  app.use(variants_router)
 };

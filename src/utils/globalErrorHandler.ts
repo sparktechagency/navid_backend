@@ -40,9 +40,10 @@ const handleDuplicateKeyError = (err: any, model: any) => {
 
   // Check for primary duplicate key error (err.keyValue)
   if (err?.keyValue) {
-    Object.keys(err.keyValue)?.forEach((key) => {
-      message += `${message ? `${message} & ` : ""}There is already a ${model} with ${key} "${err.keyValue[key]}". Please use another ${key}!`;
+    Object.keys(err.keyValue)?.forEach((key, i) => {
+      message += `${i != 0 ? " & " : ""}${key}`;
     });
+    message += " shoule be uniqe"
   }
 
   // Check for writeErrors in bulk operations

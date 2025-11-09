@@ -5,7 +5,8 @@
   "scripts": {
     "start": "node dist/index.js",
     "build": "tsc && ncp ./src/views ./dist/views",
-    "dev": "ts-node-dev --watch --transpile-only src/index.ts"
+    "dev": "ts-node-dev --watch --transpile-only src/index.ts",
+    "gm": "ts-node src/gm.ts"
   },
   "keywords": [],
   "author": "",

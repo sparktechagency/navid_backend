@@ -3,19 +3,13 @@ import { Types } from "mongoose";
 import Aggregator from "../../utils/Aggregator";
 import { QueryKeys, SearchKeys } from "../../utils/Queries";
 import { product_model } from "./product_model";
-import IProduct, { ISize } from "./product_type";
-// interface IParameters extends IProduct {
-//     deleted_images: string
-//     retained_images: string
-//     coupon_code: string
-// }
-const create = async (body: IProduct) => {
-  const result = await product_model.create(body);
+import IProduct from "./product_type";
 
+const create = async (body: IProduct) => {
+  await product_model.create(body);
   return {
     success: true,
     message: "product created successfully",
-    data: result,
   };
 };
 
@@ -30,49 +24,31 @@ const get_all = async (queryKeys: QueryKeys, searchKeys: SearchKeys) => {
       },
     },
     {
+      $lookup: {
+        from: "services",
+        foreignField: "_id",
+        localField: "sub_category",
+        as: "sub_categories",
+      },
+    },
+    {
+      $lookup: {
+        from: "variants",
+        foreignField: "product",
+        localField: "_id",
+        as: "variants",
+      },
+    },
+    {
       $unwind: {
         path: "$category",
         preserveNullAndEmptyArrays: true,
       },
     },
     {
-      $addFields: {
-        variantImages: {
-          $arrayToObject: {
-            $map: {
-              input: "$variants",
-              as: "variant",
-              in: {
-                k: "$$variant.color",
-                v: {
-                  img: "$$variant.img",
-                  size: "$$variant.size",
-                  quantity: "$$variant.quantity",
-                },
-              },
-            },
-          },
-        },
-        banner: {
-          $map: {
-            input: {
-              $filter: {
-                input: "$variants",
-                as: "variant",
-                cond: { $ne: ["$$variant.color", "video"] },
-              },
-            },
-            as: "variant",
-            in: { $arrayElemAt: ["$$variant.img", 0] },
-          },
-        },
-        variantColors: {
-          $map: {
-            input: "$variants",
-            as: "variant",
-            in: "$$variant.color",
-          },
-        },
+      $unwind: {
+        path: "$sub_categories",
+        preserveNullAndEmptyArrays: true,
       },
     },
     {
@@ -80,18 +56,33 @@ const get_all = async (queryKeys: QueryKeys, searchKeys: SearchKeys) => {
         whole_sale: 1,
         name: 1,
         description: 1,
-        price: 1,
         banner: 1,
         quantity: 1,
         sub_category: 1,
-        previous_price: 1,
-        variantImages: 1,
-        variantColors: 1,
         "category.name": 1,
         "category.img": 1,
+        "sub_categories.name": 1,
+        "sub_categories.img": 1,
+        img: { $arrayElemAt: [{ $ifNull: ["$variants.img", []] }, 0] },
+        price: { $arrayElemAt: [{ $ifNull: ["$variants.price", []] }, 0] },
+        discount: { $arrayElemAt: [{ $ifNull: ["$variants.discount", []] }, 0] },
+        colors: {
+          $map: {
+            input: "$variants",
+            as: "variant",
+            in: "$$variant.color"
+          }
+        },
+        size: {
+          $map: {
+            input: "$variants",
+            as: "variant",
+            in: "$$variant.size"
+          }
+        }
       },
     },
-  ]);
+  ],);
 };
 
 const get_details = async (id: string, tax: string | null) => {
@@ -124,61 +115,23 @@ const get_details = async (id: string, tax: string | null) => {
       },
     },
     {
+      $lookup: {
+        from: "variants",
+        foreignField: "product",
+        localField: "_id",
+        as: "variants",
+      },
+    },
+    {
       $unwind: {
         path: "$sub_category",
         preserveNullAndEmptyArrays: true,
       },
     },
     {
-      $addFields: {
-        variantImages: {
-          $arrayToObject: {
-            $map: {
-              input: "$variants",
-              as: "variant",
-              in: {
-                k: "$$variant.color",
-                v: {
-                  img: "$$variant.img",
-                  size: "$$variant.size",
-                  quantity: "$$variant.quantity",
-                },
-              },
-            },
-          },
-        },
-        banner: {
-          $map: {
-            input: {
-              $filter: {
-                input: "$variants",
-                as: "variant",
-                cond: { $ne: ["$$variant.color", "video"] },
-              },
-            },
-            as: "variant",
-            in: { $arrayElemAt: ["$$variant.img", 0] },
-          },
-        },
-        variantColors: {
-          $map: {
-            input: "$variants",
-            as: "variant",
-            in: "$$variant.color",
-          },
-        },
-      },
-    },
-    {
       $project: {
         name: 1,
         description: 1,
-        banner: 1,
-        price: 1,
-        quantity: 1,
-        variantImages: 1,
-        previous_price: 1,
-        variantColors: 1,
         whole_sale: 1,
         "category.name": 1,
         "category.img": 1,
@@ -186,10 +139,86 @@ const get_details = async (id: string, tax: string | null) => {
         "sub_category.name": 1,
         "sub_category.img": 1,
         "sub_category._id": 1,
+        // img: { $arrayElemAt: [{ $ifNull: ["$variants.img", []] }, 0] },
+        // price: { $arrayElemAt: [{ $ifNull: ["$variants.price", []] }, 0] },
+        // discount: { $arrayElemAt: [{ $ifNull: ["$variants.discount", []] }, 0] },
+        // price_after_discount: {
+        //   $cond: {
+        //     if: { $gt: [{ $arrayElemAt: [{ $ifNull: ["$variants.discount", []] }, 0] }, 0] },
+        //     then: {
+        //       $subtract: [
+        //         { $arrayElemAt: [{ $ifNull: ["$variants.price", []] }, 0] },
+        //         {
+        //           $divide: [
+        //             {
+        //               $multiply: [
+        //                 { $arrayElemAt: [{ $ifNull: ["$variants.price", []] }, 0] },
+        //                 { $arrayElemAt: [{ $ifNull: ["$variants.discount", []] }, 0] }
+        //               ]
+        //             },
+        //             100
+        //           ]
+        //         }
+        //       ]
+        //     },
+        //     else: { $arrayElemAt: [{ $ifNull: ["$variants.price", []] }, 0] }
+        //   }
+        // },
+        variants: {
+          $map: {
+            input: "$variants",
+            as: "variant",
+            in: {
+              _id: "$$variant._id",
+              img: "$$variant.img",
+              color: "$$variant.color",
+              size: "$$variant.size",
+              quantity: "$$variant.quantity",
+              price: "$$variant.price",
+              discount: "$$variant.discount",
+              product: "$$variant.product",
+              price_after_discount: {
+                $cond: {
+                  if: { $gt: ["$$variant.discount", 0] },
+                  then: {
+                    $round: [
+                      {
+                        $subtract: [
+                          "$$variant.price",
+                          {
+                            $divide: [
+                              { $multiply: ["$$variant.price", "$$variant.discount"] },
+                              100
+                            ]
+                          }
+                        ]
+                      },
+                      2
+                    ]
+                  },
+                  else: "$$variant.price"
+                }
+              }
+            }
+          }
+        },
       },
     },
   ]);
-
+  //  colors: {
+  //           $map: {
+  //             input: "$variants",
+  //             as: "variant",
+  //             in: "$$variant.color"
+  //           }
+  //         },
+  //         size: {
+  //           $map: {
+  //             input: "$variants",
+  //             as: "variant",
+  //             in: "$$variant.size"
+  //           }
+  //         }
   const related_product = await get_all(
     {
       category: product?.[0]?.category?._id,
@@ -278,41 +307,7 @@ const feature_product = async (id: string) => {
   };
 };
 
-const formate_variant = (req: Request) => {
-  const variants =
-    Array.isArray(req.files) && req.files.length > 0
-      ? req.files.map((item: any) => {
-        // if(!item.fieldname?.include('productImage')) return {}
-        return {
-          color: item?.fieldname?.split("_")?.[1],
-          img: item?.path,
-          quantity: req?.body?.[`quantity_${item?.fieldname?.split("_")?.[1]}`] ? parseInt(req?.body?.[`quantity_${item?.fieldname?.split("_")?.[1]}`]) : 0,
-          price: req?.body?.[`price_${item?.fieldname?.split("_")?.[1]}`] ? parseFloat(req?.body?.[`price_${item?.fieldname?.split("_")?.[1]}`]) : 0,
-          size: req?.body?.[`size_${item?.fieldname?.split("_")?.[1]}`] ? JSON.parse(req?.body?.[`size_${item?.fieldname?.split("_")?.[1]}`]) : [ISize.SMALL],
-        };
-      })
-      : [];
 
-  const variants_formate = variants.reduce((acc: any[], curr) => {
-    const existingVariant = acc.find((item) => item.color === curr.color);
-
-    if (existingVariant) {
-      existingVariant.img.push(curr.img);
-    } else {
-      acc.push({
-        color: curr.color,
-        img: [curr.img],
-        quantity: curr.quantity,
-        price: curr.price,
-        size: curr.size,
-      });
-    }
-
-    return acc;
-  }, []);
-
-  return variants_formate;
-};
 
 const merge_variants = (variants1: any[], variants2: any[]) => {
   const mergedMap = new Map();
@@ -344,5 +339,4 @@ export const product_service = Object.freeze({
   approve_product,
   feature_product,
   merge_variants,
-  formate_variant,
 });
