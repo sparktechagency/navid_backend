@@ -11,7 +11,6 @@ product_router
   .post(
     "/product/create",
     verifyToken(config.ADMIN),
-    upload_product_image(),
     asyncWrapper(product_controller.create),
   )
 
@@ -30,7 +29,6 @@ product_router
   .patch(
     "/product/update/:id",
     verifyToken(config.ADMIN),
-    upload_product_image(),
     asyncWrapper(product_controller.update),
   )
 

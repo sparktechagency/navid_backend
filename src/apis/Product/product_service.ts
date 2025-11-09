@@ -373,21 +373,19 @@ const update_product = async (id: string, body: IProduct) => {
   return {
     success: true,
     message: "product updated successfully",
-    data: result,
   };
 };
 
 const delete_product = async (id: string) => {
-  const product = await product_model.findOne({ _id: id });
-
-  if (!product) throw new Error("Product not found");
-
-  const result = await product_model.findOneAndDelete({ _id: id });
+ await product_model.findByIdAndUpdate(id,{
+    $set:{
+     is_deleted:true
+    }
+ })
 
   return {
     success: true,
     message: "product deleted successfully",
-    data: result,
   };
 };
 
