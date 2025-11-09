@@ -63,8 +63,6 @@ const get_all = async (queryKeys: QueryKeys, searchKeys: SearchKeys) => {
         "category.img": 1,
         "sub_categories.name": 1,
         "sub_categories.img": 1,
-
-
         img: {
           $arrayElemAt: [
             {
@@ -88,7 +86,6 @@ const get_all = async (queryKeys: QueryKeys, searchKeys: SearchKeys) => {
             0
           ]
         },
-
         price: {
           $arrayElemAt: [
             {
@@ -112,7 +109,6 @@ const get_all = async (queryKeys: QueryKeys, searchKeys: SearchKeys) => {
             0
           ]
         },
-
         discount: {
           $arrayElemAt: [
             {
@@ -154,7 +150,6 @@ const get_all = async (queryKeys: QueryKeys, searchKeys: SearchKeys) => {
             in: "$$variant.color"
           }
         },
-
         size: {
           $map: {
             input: {

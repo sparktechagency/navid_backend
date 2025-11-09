@@ -1,4 +1,4 @@
-import { PipelineStage } from "mongoose";
+import mongoose, { PipelineStage } from "mongoose";
 
 const escapeRegex = (str: string): string => {
   return str.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
@@ -34,6 +34,7 @@ const Aggregator = async <T>(
   queryKeys: QueryKeys,
   searchKeys: SearchKeys,
   aggregationPipeline: PipelineStage[],
+  matchStagePosition: "start" | "end" = "start",
 ): Promise<ResponseData<T>> => {
   try {
     const { limit, page, sort, order, ...filters } = queryKeys;
@@ -52,27 +53,39 @@ const Aggregator = async <T>(
     }
 
     // Handle filters
+    // Object.keys(filters).forEach((key) => {
+    //   if (filters[key] && filters[key] !== "undefined") {
+    //     matchStage[key] = filters[key];
+    //   }
+    // });
     Object.keys(filters).forEach((key) => {
-      //filters[key] &&
-      if (filters[key] !== "undefined") {
-        matchStage[key] = filters[key];
+      let value = filters[key];
+      if (value == null || value == false) {
+        matchStage[key] = value;
+      } else if (value && value !== "undefined") {
+        if (mongoose.Types.ObjectId.isValid(value)) {
+          matchStage[key] = new mongoose.Types.ObjectId(String(value));
+        } else if (!isNaN(value) && value != true && value.trim() !== "") {
+          matchStage[key] = Number(value);
+        } else {
+          matchStage[key] = value;
+        }
       }
     });
-
     let sortStage: any = {};
     if (sort) {
       sortStage[sort] = order === "desc" ? -1 : 1;
     }
-
     // Construct aggregation pipeline
     const pipeline: any[] = [
-      { $match: matchStage },
+      ...(matchStagePosition === "end" ? [] : [{ $match: matchStage }]),
       ...aggregationPipeline,
-      ...(Object.entries(sortStage).length > 0 ? [{ $sort: sortStage }] : []),
-
+      ...(Object.entries(sortStage)?.length > 0 ? [{ $sort: sortStage }] : []),
+      ...(matchStagePosition === "start" ? [] : [{ $match: matchStage }]),
       { $skip: (currentPage - 1) * itemsPerPage },
       { $limit: itemsPerPage },
     ];
+
     // if (modelSelect) {
     //     pipeline.push({ $project: modelSelect.split(' ').reduce((acc, field) => ({ ...acc, [field]: 1 }), {}) });
     // }

@@ -21,48 +21,29 @@ const get_all = async (queryKeys: QueryKeys, searchKeys: SearchKeys) => {
 }
 
 const update = async (id: string, data: { [key: string]: string }) => {
-  const result = await variants_model.findByIdAndUpdate(id, {
+  await variants_model.findByIdAndUpdate(id, {
     $set: {
       ...data
     }
-  }, { new: true })
+  })
 
   return {
     success: true,
     message: 'variants updated successfully',
-    data: result
   }
 }
 
-const delete_variants = async (id: string, data: { [key: string]: string }, auth: IAuth) => {
-
-  const is_exists = await variants_model.findOne({ _id: id, name: data?.name })
-
-  if (!is_exists) throw new Error("variants not found")
-
-  const is_pass_mass = await bcrypt.compare(data?.password, auth?.password)
-
-  if (!is_pass_mass) throw new Error("password doesn't match")
-
-  const session = await mongoose.startSession();
-  try {
-    const result = await session.withTransaction(async () => {
-      const [result] = await Promise.all([
-        variants_model.findByIdAndDelete(id, { session }),
-        service_model.deleteMany({ variants: id }, { session }),
-      ])
-      return result
-    })
-    return {
-      success: true,
-      message: 'variants deleted successfully',
-      data: result
+const delete_variants = async (id: string) => {
+  await variants_model.findByIdAndUpdate(id, {
+    $set: {
+      is_deleted: true
     }
-  } catch (error) {
-    throw error;
-  } finally {
-    await session.endSession();
+  })
+  return {
+    success: true,
+    message: 'variants deleted successfully',
   }
+
 }
 
 export const variants_service = Object.freeze({

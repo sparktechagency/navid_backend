@@ -11,7 +11,7 @@ export const variants_router = express.Router()
 variants_router
     .post('/variants/create', verifyToken(config.ADMIN), uploadFile(), asyncWrapper(variants_controller.create))
 
-    .get('/variants/get-all', asyncWrapper(variants_controller.get_all))
+    .get('/variants/get-all', verifyToken(config.ADMIN), asyncWrapper(variants_controller.get_all))
 
     .patch('/variants/update/:id', verifyToken(config.ADMIN), uploadFile(), asyncWrapper(variants_controller.update))
 

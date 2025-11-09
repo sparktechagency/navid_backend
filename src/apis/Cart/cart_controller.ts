@@ -5,11 +5,8 @@ import { cart_service } from "./cart_service";
 import { SearchKeys } from "../../utils/Queries";
 
 const create_or_update = async (req: Request, res: Response) => {
-  const result = await cart_service.create_or_update(
-    req?.user?._id as string,
-    req?.body?.items,
-  );
-
+  req.body.user = req?.user?._id;
+  const result = await cart_service.create_or_update(req?.body);
   sendResponse(res, HttpStatus.SUCCESS, result);
 };
 

@@ -6,7 +6,7 @@ import { sendResponse } from "../../utils/sendResponse";
 import { HttpStatus } from "../../DefaultConfig/config";
 import { IAuth } from '../Auth/auth_types';
 
-const create = async(req: Request, res: Response)=> {
+const create = async (req: Request, res: Response) => {
     const img = !Array.isArray(req.files) && req.files?.img && req.files.img.length > 0 && req.files.img[0]?.path || null;
 
     if (img) req.body.img = img
@@ -19,7 +19,7 @@ const create = async(req: Request, res: Response)=> {
     )
 }
 
-const get_all=async(req: Request, res: Response)=> {
+const get_all = async (req: Request, res: Response) => {
 
     const { search, ...otherValues } = req?.query;
     const searchKeys: SearchKeys = {}
@@ -27,7 +27,8 @@ const get_all=async(req: Request, res: Response)=> {
     if (search) searchKeys.name = search as string
 
     const queryKeys = {
-        ...otherValues
+        ...otherValues,
+        is_deleted: { $ne: true }
     }
 
     const result = await variants_service.get_all(queryKeys, searchKeys)
@@ -39,7 +40,7 @@ const get_all=async(req: Request, res: Response)=> {
 }
 
 
-const update =async(req: Request, res: Response)=> {
+const update = async (req: Request, res: Response) => {
     const img = !Array.isArray(req.files) && req.files?.img && req.files.img.length > 0 && req.files.img[0]?.path || null;
 
     if (img) req.body.img = img
@@ -52,9 +53,9 @@ const update =async(req: Request, res: Response)=> {
     )
 }
 
-const delete_variants = async(req: Request, res: Response)=> {
+const delete_variants = async (req: Request, res: Response) => {
 
-    const result = await variants_service.delete_variants(req?.params?.id, req?.body, req?.user as IAuth)
+    const result = await variants_service.delete_variants(req?.params?.id)
     sendResponse(
         res,
         HttpStatus.SUCCESS,
@@ -68,4 +69,3 @@ export const variants_controller = {
     update,
     delete_variants
 }
- 
