@@ -11,6 +11,7 @@ interface IProduct extends Document {
   quantity: number;
   created_at?: Date;
   updated_at?: Date;
+  is_deleted?: boolean;
 }
 
 export default IProduct;

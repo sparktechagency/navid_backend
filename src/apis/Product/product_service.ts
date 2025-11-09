@@ -63,25 +63,142 @@ const get_all = async (queryKeys: QueryKeys, searchKeys: SearchKeys) => {
         "category.img": 1,
         "sub_categories.name": 1,
         "sub_categories.img": 1,
-        img: { $arrayElemAt: [{ $ifNull: ["$variants.img", []] }, 0] },
-        price: { $arrayElemAt: [{ $ifNull: ["$variants.price", []] }, 0] },
-        discount: { $arrayElemAt: [{ $ifNull: ["$variants.discount", []] }, 0] },
+
+
+        img: {
+          $arrayElemAt: [
+            {
+              $map: {
+                input: {
+                  $filter: {
+                    input: "$variants",
+                    as: "variant",
+                    cond: {
+                      $or: [
+                        { $eq: ["$$variant.is_deleted", false] },
+                        { $not: ["$$variant.is_deleted"] }
+                      ]
+                    }
+                  }
+                },
+                as: "variant",
+                in: { $first: "$$variant.img" }
+              }
+            },
+            0
+          ]
+        },
+
+        price: {
+          $arrayElemAt: [
+            {
+              $map: {
+                input: {
+                  $filter: {
+                    input: "$variants",
+                    as: "variant",
+                    cond: {
+                      $or: [
+                        { $eq: ["$$variant.is_deleted", false] },
+                        { $not: ["$$variant.is_deleted"] }
+                      ]
+                    }
+                  }
+                },
+                as: "variant",
+                in: "$$variant.price"
+              }
+            },
+            0
+          ]
+        },
+
+        discount: {
+          $arrayElemAt: [
+            {
+              $map: {
+                input: {
+                  $filter: {
+                    input: "$variants",
+                    as: "variant",
+                    cond: {
+                      $or: [
+                        { $eq: ["$$variant.is_deleted", false] },
+                        { $not: ["$$variant.is_deleted"] }
+                      ]
+                    }
+                  }
+                },
+                as: "variant",
+                in: "$$variant.discount"
+              }
+            },
+            0
+          ]
+        },
         colors: {
           $map: {
-            input: "$variants",
+            input: {
+              $filter: {
+                input: "$variants",
+                as: "variant",
+                cond: {
+                  $or: [
+                    { $eq: ["$$variant.is_deleted", false] },
+                    { $not: ["$$variant.is_deleted"] }
+                  ]
+                }
+              }
+            },
             as: "variant",
             in: "$$variant.color"
           }
         },
+
         size: {
           $map: {
-            input: "$variants",
+            input: {
+              $filter: {
+                input: "$variants",
+                as: "variant",
+                cond: {
+                  $or: [
+                    { $eq: ["$$variant.is_deleted", false] },
+                    { $not: ["$$variant.is_deleted"] }
+                  ]
+                }
+              }
+            },
             as: "variant",
             in: "$$variant.size"
           }
         }
-      },
+      }
     },
+    {
+      $addFields: {
+        price_after_discount: {
+          $let: {
+            vars: {
+              price: "$price",
+              discount: "$discount"
+            },
+            in: {
+              $cond: {
+                if: { $gt: ["$$discount", 0] },
+                then: {
+                  $subtract: [
+                    "$$price",
+                    { $divide: [{ $multiply: ["$$price", "$$discount"] }, 100] }
+                  ]
+                },
+                else: "$$price"
+              }
+            }
+          }
+        },
+      },
+    }
   ],);
 };
 
@@ -166,7 +283,18 @@ const get_details = async (id: string, tax: string | null) => {
         // },
         variants: {
           $map: {
-            input: "$variants",
+            input: {
+              $filter: {
+                input: "$variants",
+                as: "variant",
+                cond: {
+                  $or: [
+                    { $eq: ["$$variant.is_deleted", false] },
+                    { $not: ["$$variant.is_deleted"] }
+                  ]
+                }
+              }
+            },
             as: "variant",
             in: {
               _id: "$$variant._id",

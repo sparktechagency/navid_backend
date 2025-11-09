@@ -28,6 +28,10 @@ const product_schema = new Schema<IProduct>(
       type: Boolean,
       default: false,
     },
+    is_deleted: {
+      type: Boolean,
+      default: false,
+    },
   },
   { timestamps: true },
 );

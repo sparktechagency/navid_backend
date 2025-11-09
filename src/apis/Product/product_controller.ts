@@ -18,7 +18,7 @@ const get_all = async function (req: Request, res: Response) {
 
   let searchKeys = {} as { name: string };
 
-  let queryKeys = { ...other_fields, } as QueryKeys;
+  let queryKeys = { ...other_fields, is_deleted: { $ne: true } } as QueryKeys;
 
   if (search) searchKeys.name = search as string;
 
