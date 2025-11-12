@@ -25215,3 +25215,1231 @@ src/apis/Product/product_service.ts(178,6): error TS1005: ',' expected.
     at Object.nodeDevHook [as .ts] (D:\navid_backend\node_modules\ts-node-dev\lib\hook.js:63:13)
     at Module.load (node:internal/modules/cjs/loader:1480:32)
     at Module._load (node:internal/modules/cjs/loader:1299:12)
+2025-11-09 16:44:51 [ERROR]: Error: listen EADDRINUSE: address already in use 0.0.0.0:5000
+    at Server.setupListenHandle [as _listen2] (node:net:1940:16)
+    at listenInCluster (node:net:1997:12)
+    at node:net:2206:7
+    at processTicksAndRejections (node:internal/process/task_queues:90:21)
+2025-11-09 16:46:25 [ERROR]: Error: listen EADDRINUSE: address already in use 0.0.0.0:5000
+    at Server.setupListenHandle [as _listen2] (node:net:1940:16)
+    at listenInCluster (node:net:1997:12)
+    at node:net:2206:7
+    at processTicksAndRejections (node:internal/process/task_queues:90:21)
+2025-11-09 16:47:15 [ERROR]: Error: listen EADDRINUSE: address already in use 0.0.0.0:5000
+    at Server.setupListenHandle [as _listen2] (node:net:1940:16)
+    at listenInCluster (node:net:1997:12)
+    at node:net:2206:7
+    at processTicksAndRejections (node:internal/process/task_queues:90:21)
+2025-11-09 17:43:38 [ERROR]: Error: ⨯ Unable to compile TypeScript:
+src/apis/variants/variants_service.ts(28,5): error TS1136: Property assignment expected.
+src/apis/variants/variants_service.ts(31,3): error TS1005: ',' expected.
+src/apis/variants/variants_service.ts(31,4): error TS1005: ',' expected.
+src/apis/variants/variants_service.ts(37,1): error TS1128: Declaration or statement expected.
+
+    at Object.<anonymous> (C:\Users\Tanjim\projects\backend\v2\navid_backend\src\apis\variants\variants_service.ts:1:7)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1730:14)
+    at Module._compile (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\source-map-support\source-map-support.js:568:25)
+    at Module.m._compile (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-270905879743605.js:69:33)
+    at node:internal/modules/cjs/loader:1895:10
+    at require.extensions..jsx.require.extensions..js (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-270905879743605.js:114:20)
+    at require.extensions.<computed> (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-270905879743605.js:71:20)
+    at Object.nodeDevHook [as .ts] (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\ts-node-dev\lib\hook.js:63:13)
+    at Module.load (node:internal/modules/cjs/loader:1465:32)
+    at Function._load (node:internal/modules/cjs/loader:1282:12)
+2025-11-09 17:43:44 [ERROR]: Error: ⨯ Unable to compile TypeScript:
+src/apis/variants/variants_service.ts(28,5): error TS1136: Property assignment expected.
+src/apis/variants/variants_service.ts(31,3): error TS1005: ',' expected.
+src/apis/variants/variants_service.ts(31,4): error TS1005: ',' expected.
+src/apis/variants/variants_service.ts(37,1): error TS1128: Declaration or statement expected.
+
+    at Object.<anonymous> (C:\Users\Tanjim\projects\backend\v2\navid_backend\src\apis\variants\variants_service.ts:1:7)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1730:14)
+    at Module._compile (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\source-map-support\source-map-support.js:568:25)
+    at Module.m._compile (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-270905879743605.js:69:33)
+    at node:internal/modules/cjs/loader:1895:10
+    at require.extensions..jsx.require.extensions..js (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-270905879743605.js:114:20)
+    at require.extensions.<computed> (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-270905879743605.js:71:20)
+    at Object.nodeDevHook [as .ts] (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\ts-node-dev\lib\hook.js:63:13)
+    at Module.load (node:internal/modules/cjs/loader:1465:32)
+    at Function._load (node:internal/modules/cjs/loader:1282:12)
+2025-11-09 17:46:39 [ERROR]: Error: ⨯ Unable to compile TypeScript:
+src/apis/variants/variants_service.ts(37,2): error TS1128: Declaration or statement expected.
+src/apis/variants/variants_service.ts(37,4): error TS1005: ',' expected.
+src/apis/variants/variants_service.ts(37,10): error TS1005: ',' expected.
+src/apis/variants/variants_service.ts(37,24): error TS1005: ',' expected.
+src/apis/variants/variants_service.ts(37,42): error TS1005: ',' expected.
+src/apis/variants/variants_service.ts(48,1): error TS1128: Declaration or statement expected.
+
+    at Object.<anonymous> (C:\Users\Tanjim\projects\backend\v2\navid_backend\src\apis\variants\variants_service.ts:1:7)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1730:14)
+    at Module._compile (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\source-map-support\source-map-support.js:568:25)
+    at Module.m._compile (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-270905879743605.js:69:33)
+    at node:internal/modules/cjs/loader:1895:10
+    at require.extensions..jsx.require.extensions..js (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-270905879743605.js:114:20)
+    at require.extensions.<computed> (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-270905879743605.js:71:20)
+    at Object.nodeDevHook [as .ts] (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\ts-node-dev\lib\hook.js:63:13)
+    at Module.load (node:internal/modules/cjs/loader:1465:32)
+    at Function._load (node:internal/modules/cjs/loader:1282:12)
+2025-11-09 17:46:42 [ERROR]: Error: ⨯ Unable to compile TypeScript:
+src/apis/variants/variants_service.ts(37,2): error TS1128: Declaration or statement expected.
+src/apis/variants/variants_service.ts(49,1): error TS1128: Declaration or statement expected.
+
+    at Object.<anonymous> (C:\Users\Tanjim\projects\backend\v2\navid_backend\src\apis\variants\variants_service.ts:1:7)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1730:14)
+    at Module._compile (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\source-map-support\source-map-support.js:568:25)
+    at Module.m._compile (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-270905879743605.js:69:33)
+    at node:internal/modules/cjs/loader:1895:10
+    at require.extensions..jsx.require.extensions..js (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-270905879743605.js:114:20)
+    at require.extensions.<computed> (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-270905879743605.js:71:20)
+    at Object.nodeDevHook [as .ts] (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\ts-node-dev\lib\hook.js:63:13)
+    at Module.load (node:internal/modules/cjs/loader:1465:32)
+    at Function._load (node:internal/modules/cjs/loader:1282:12)
+2025-11-09 17:50:00 [ERROR]: ReferenceError: is_dele is not defined
+    at Object.<anonymous> (C:\Users\Tanjim\projects\backend\v2\navid_backend\src\apis\variants\variants_model.ts:40:5)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1730:14)
+    at Module._compile (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\source-map-support\source-map-support.js:568:25)
+    at Module.m._compile (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-270905879743605.js:69:33)
+    at node:internal/modules/cjs/loader:1895:10
+    at require.extensions..jsx.require.extensions..js (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-270905879743605.js:114:20)
+    at require.extensions.<computed> (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-270905879743605.js:71:20)
+    at Object.nodeDevHook [as .ts] (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\ts-node-dev\lib\hook.js:63:13)
+    at Module.load (node:internal/modules/cjs/loader:1465:32)
+    at Function._load (node:internal/modules/cjs/loader:1282:12)
+2025-11-09 17:50:01 [ERROR]: ReferenceError: is_deleted is not defined
+    at Object.<anonymous> (C:\Users\Tanjim\projects\backend\v2\navid_backend\src\apis\variants\variants_model.ts:40:5)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1730:14)
+    at Module._compile (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\source-map-support\source-map-support.js:568:25)
+    at Module.m._compile (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-270905879743605.js:69:33)
+    at node:internal/modules/cjs/loader:1895:10
+    at require.extensions..jsx.require.extensions..js (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-270905879743605.js:114:20)
+    at require.extensions.<computed> (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-270905879743605.js:71:20)
+    at Object.nodeDevHook [as .ts] (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\ts-node-dev\lib\hook.js:63:13)
+    at Module.load (node:internal/modules/cjs/loader:1465:32)
+    at Function._load (node:internal/modules/cjs/loader:1282:12)
+2025-11-09 17:50:08 [ERROR]: ReferenceError: is_deleted is not defined
+    at Object.<anonymous> (C:\Users\Tanjim\projects\backend\v2\navid_backend\src\apis\variants\variants_model.ts:40:5)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1730:14)
+    at Module._compile (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\source-map-support\source-map-support.js:568:25)
+    at Module.m._compile (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-270905879743605.js:69:33)
+    at node:internal/modules/cjs/loader:1895:10
+    at require.extensions..jsx.require.extensions..js (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-270905879743605.js:114:20)
+    at require.extensions.<computed> (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-270905879743605.js:71:20)
+    at Object.nodeDevHook [as .ts] (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\ts-node-dev\lib\hook.js:63:13)
+    at Module.load (node:internal/modules/cjs/loader:1465:32)
+    at Function._load (node:internal/modules/cjs/loader:1282:12)
+2025-11-09 17:50:11 [ERROR]: Error: ⨯ Unable to compile TypeScript:
+src/apis/variants/variants_types.ts(28,1): error TS1110: Type expected.
+
+    at Object.<anonymous> (C:\Users\Tanjim\projects\backend\v2\navid_backend\src\apis\variants\variants_types.ts:1:7)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1730:14)
+    at Module._compile (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\source-map-support\source-map-support.js:568:25)
+    at Module.m._compile (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-270905879743605.js:69:33)
+    at node:internal/modules/cjs/loader:1895:10
+    at require.extensions..jsx.require.extensions..js (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-270905879743605.js:114:20)
+    at require.extensions.<computed> (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-270905879743605.js:71:20)
+    at Object.nodeDevHook [as .ts] (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\ts-node-dev\lib\hook.js:63:13)
+    at Module.load (node:internal/modules/cjs/loader:1465:32)
+    at Function._load (node:internal/modules/cjs/loader:1282:12)
+2025-11-09 17:50:14 [ERROR]: ReferenceError: is_deleted is not defined
+    at Object.<anonymous> (C:\Users\Tanjim\projects\backend\v2\navid_backend\src\apis\variants\variants_model.ts:40:5)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1730:14)
+    at Module._compile (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\source-map-support\source-map-support.js:568:25)
+    at Module.m._compile (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-270905879743605.js:69:33)
+    at node:internal/modules/cjs/loader:1895:10
+    at require.extensions..jsx.require.extensions..js (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-270905879743605.js:114:20)
+    at require.extensions.<computed> (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-270905879743605.js:71:20)
+    at Object.nodeDevHook [as .ts] (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\ts-node-dev\lib\hook.js:63:13)
+    at Module.load (node:internal/modules/cjs/loader:1465:32)
+    at Function._load (node:internal/modules/cjs/loader:1282:12)
+2025-11-09 17:50:15 [ERROR]: ReferenceError: is_deleted is not defined
+    at Object.<anonymous> (C:\Users\Tanjim\projects\backend\v2\navid_backend\src\apis\variants\variants_model.ts:40:5)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1730:14)
+    at Module._compile (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\source-map-support\source-map-support.js:568:25)
+    at Module.m._compile (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-270905879743605.js:69:33)
+    at node:internal/modules/cjs/loader:1895:10
+    at require.extensions..jsx.require.extensions..js (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-270905879743605.js:114:20)
+    at require.extensions.<computed> (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-270905879743605.js:71:20)
+    at Object.nodeDevHook [as .ts] (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\ts-node-dev\lib\hook.js:63:13)
+    at Module.load (node:internal/modules/cjs/loader:1465:32)
+    at Function._load (node:internal/modules/cjs/loader:1282:12)
+2025-11-09 17:50:20 [ERROR]: Error: ⨯ Unable to compile TypeScript:
+src/apis/variants/variants_model.ts(41,1): error TS1109: Expression expected.
+
+    at Object.<anonymous> (C:\Users\Tanjim\projects\backend\v2\navid_backend\src\apis\variants\variants_model.ts:1:7)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1730:14)
+    at Module._compile (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\source-map-support\source-map-support.js:568:25)
+    at Module.m._compile (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-270905879743605.js:69:33)
+    at node:internal/modules/cjs/loader:1895:10
+    at require.extensions..jsx.require.extensions..js (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-270905879743605.js:114:20)
+    at require.extensions.<computed> (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-270905879743605.js:71:20)
+    at Object.nodeDevHook [as .ts] (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\ts-node-dev\lib\hook.js:63:13)
+    at Module.load (node:internal/modules/cjs/loader:1465:32)
+    at Function._load (node:internal/modules/cjs/loader:1282:12)
+2025-11-09 17:50:27 [ERROR]: ReferenceError: boolean is not defined
+    at Object.<anonymous> (C:\Users\Tanjim\projects\backend\v2\navid_backend\src\apis\variants\variants_model.ts:41:15)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1730:14)
+    at Module._compile (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\source-map-support\source-map-support.js:568:25)
+    at Module.m._compile (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-270905879743605.js:69:33)
+    at node:internal/modules/cjs/loader:1895:10
+    at require.extensions..jsx.require.extensions..js (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-270905879743605.js:114:20)
+    at require.extensions.<computed> (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-270905879743605.js:71:20)
+    at Object.nodeDevHook [as .ts] (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\ts-node-dev\lib\hook.js:63:13)
+    at Module.load (node:internal/modules/cjs/loader:1465:32)
+    at Function._load (node:internal/modules/cjs/loader:1282:12)
+2025-11-09 17:50:28 [ERROR]: Error: ⨯ Unable to compile TypeScript:
+src/apis/variants/variants_model.ts(42,5): error TS1109: Expression expected.
+
+    at Object.<anonymous> (C:\Users\Tanjim\projects\backend\v2\navid_backend\src\apis\variants\variants_model.ts:1:7)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1730:14)
+    at Module._compile (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\source-map-support\source-map-support.js:568:25)
+    at Module.m._compile (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-270905879743605.js:69:33)
+    at node:internal/modules/cjs/loader:1895:10
+    at require.extensions..jsx.require.extensions..js (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-270905879743605.js:114:20)
+    at require.extensions.<computed> (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-270905879743605.js:71:20)
+    at Object.nodeDevHook [as .ts] (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\ts-node-dev\lib\hook.js:63:13)
+    at Module.load (node:internal/modules/cjs/loader:1465:32)
+    at Function._load (node:internal/modules/cjs/loader:1282:12)
+2025-11-09 18:06:39 [ERROR]: Error: ⨯ Unable to compile TypeScript:
+src/apis/variants/variants_controller.ts(30,47): error TS1005: ':' expected.
+
+    at Object.<anonymous> (C:\Users\Tanjim\projects\backend\v2\navid_backend\src\apis\variants\variants_controller.ts:1:7)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1730:14)
+    at Module._compile (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\source-map-support\source-map-support.js:568:25)
+    at Module.m._compile (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-270905879743605.js:69:33)
+    at node:internal/modules/cjs/loader:1895:10
+    at require.extensions..jsx.require.extensions..js (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-270905879743605.js:114:20)
+    at require.extensions.<computed> (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-270905879743605.js:71:20)
+    at Object.nodeDevHook [as .ts] (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\ts-node-dev\lib\hook.js:63:13)
+    at Module.load (node:internal/modules/cjs/loader:1465:32)
+    at Function._load (node:internal/modules/cjs/loader:1282:12)
+2025-11-09 18:06:45 [ERROR]: Error: ⨯ Unable to compile TypeScript:
+src/apis/variants/variants_controller.ts(35,5): error TS1005: '(' expected.
+
+    at Object.<anonymous> (C:\Users\Tanjim\projects\backend\v2\navid_backend\src\apis\variants\variants_controller.ts:1:7)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1730:14)
+    at Module._compile (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\source-map-support\source-map-support.js:568:25)
+    at Module.m._compile (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-270905879743605.js:69:33)
+    at node:internal/modules/cjs/loader:1895:10
+    at require.extensions..jsx.require.extensions..js (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-270905879743605.js:114:20)
+    at require.extensions.<computed> (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-270905879743605.js:71:20)
+    at Object.nodeDevHook [as .ts] (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\ts-node-dev\lib\hook.js:63:13)
+    at Module.load (node:internal/modules/cjs/loader:1465:32)
+    at Function._load (node:internal/modules/cjs/loader:1282:12)
+2025-11-09 18:06:52 [ERROR]: Error: ⨯ Unable to compile TypeScript:
+src/apis/variants/variants_controller.ts(33,35): error TS1109: Expression expected.
+
+    at Object.<anonymous> (C:\Users\Tanjim\projects\backend\v2\navid_backend\src\apis\variants\variants_controller.ts:1:7)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1730:14)
+    at Module._compile (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\source-map-support\source-map-support.js:568:25)
+    at Module.m._compile (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-270905879743605.js:69:33)
+    at node:internal/modules/cjs/loader:1895:10
+    at require.extensions..jsx.require.extensions..js (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-270905879743605.js:114:20)
+    at require.extensions.<computed> (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-270905879743605.js:71:20)
+    at Object.nodeDevHook [as .ts] (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\ts-node-dev\lib\hook.js:63:13)
+    at Module.load (node:internal/modules/cjs/loader:1465:32)
+    at Function._load (node:internal/modules/cjs/loader:1282:12)
+2025-11-09 18:07:07 [ERROR]: Error: ⨯ Unable to compile TypeScript:
+src/apis/variants/variants_controller.ts(35,5): error TS1109: Expression expected.
+
+    at Object.<anonymous> (C:\Users\Tanjim\projects\backend\v2\navid_backend\src\apis\variants\variants_controller.ts:1:7)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1730:14)
+    at Module._compile (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\source-map-support\source-map-support.js:568:25)
+    at Module.m._compile (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-270905879743605.js:69:33)
+    at node:internal/modules/cjs/loader:1895:10
+    at require.extensions..jsx.require.extensions..js (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-270905879743605.js:114:20)
+    at require.extensions.<computed> (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-270905879743605.js:71:20)
+    at Object.nodeDevHook [as .ts] (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\ts-node-dev\lib\hook.js:63:13)
+    at Module.load (node:internal/modules/cjs/loader:1465:32)
+    at Function._load (node:internal/modules/cjs/loader:1282:12)
+2025-11-09 18:07:11 [ERROR]: Error: ⨯ Unable to compile TypeScript:
+src/apis/variants/variants_controller.ts(35,5): error TS1003: Identifier expected.
+
+    at Object.<anonymous> (C:\Users\Tanjim\projects\backend\v2\navid_backend\src\apis\variants\variants_controller.ts:1:7)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1730:14)
+    at Module._compile (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\source-map-support\source-map-support.js:568:25)
+    at Module.m._compile (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-270905879743605.js:69:33)
+    at node:internal/modules/cjs/loader:1895:10
+    at require.extensions..jsx.require.extensions..js (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-270905879743605.js:114:20)
+    at require.extensions.<computed> (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-270905879743605.js:71:20)
+    at Object.nodeDevHook [as .ts] (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\ts-node-dev\lib\hook.js:63:13)
+    at Module.load (node:internal/modules/cjs/loader:1465:32)
+    at Function._load (node:internal/modules/cjs/loader:1282:12)
+2025-11-09 18:07:35 [ERROR]: Error: ⨯ Unable to compile TypeScript:
+src/apis/variants/variants_controller.ts(33,8): error TS1005: ',' expected.
+src/apis/variants/variants_controller.ts(33,44): error TS1005: ';' expected.
+
+    at Object.<anonymous> (C:\Users\Tanjim\projects\backend\v2\navid_backend\src\apis\variants\variants_controller.ts:1:7)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1730:14)
+    at Module._compile (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\source-map-support\source-map-support.js:568:25)
+    at Module.m._compile (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-270905879743605.js:69:33)
+    at node:internal/modules/cjs/loader:1895:10
+    at require.extensions..jsx.require.extensions..js (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-270905879743605.js:114:20)
+    at require.extensions.<computed> (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-270905879743605.js:71:20)
+    at Object.nodeDevHook [as .ts] (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\ts-node-dev\lib\hook.js:63:13)
+    at Module.load (node:internal/modules/cjs/loader:1465:32)
+    at Function._load (node:internal/modules/cjs/loader:1282:12)
+2025-11-11 12:07:07 [ERROR]: Error: listen EADDRINUSE: address already in use 0.0.0.0:5002
+    at Server.setupListenHandle [as _listen2] (node:net:1940:16)
+    at listenInCluster (node:net:1997:12)
+    at node:net:2206:7
+    at processTicksAndRejections (node:internal/process/task_queues:90:21)
+2025-11-11 12:09:56 [ERROR]: Error: listen EADDRINUSE: address already in use 0.0.0.0:5002
+    at Server.setupListenHandle [as _listen2] (node:net:1940:16)
+    at listenInCluster (node:net:1997:12)
+    at node:net:2206:7
+    at processTicksAndRejections (node:internal/process/task_queues:90:21)
+2025-11-11 12:51:18 [ERROR]: Error: ⨯ Unable to compile TypeScript:
+src/apis/variants/variants_service.ts(40,5): error TS1005: ',' expected.
+
+    at Object.<anonymous> (C:\Users\Tanjim\projects\backend\v2\navid_backend\src\apis\variants\variants_service.ts:1:7)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1730:14)
+    at Module._compile (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\source-map-support\source-map-support.js:568:25)
+    at Module.m._compile (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-6014444013627123.js:69:33)
+    at node:internal/modules/cjs/loader:1895:10
+    at require.extensions..jsx.require.extensions..js (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-6014444013627123.js:114:20)
+    at require.extensions.<computed> (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-6014444013627123.js:71:20)
+    at Object.nodeDevHook [as .ts] (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\ts-node-dev\lib\hook.js:63:13)
+    at Module.load (node:internal/modules/cjs/loader:1465:32)
+    at Function._load (node:internal/modules/cjs/loader:1282:12)
+2025-11-11 12:51:20 [ERROR]: Error: ⨯ Unable to compile TypeScript:
+src/apis/variants/variants_service.ts(40,5): error TS1005: ',' expected.
+
+    at Object.<anonymous> (C:\Users\Tanjim\projects\backend\v2\navid_backend\src\apis\variants\variants_service.ts:1:7)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1730:14)
+    at Module._compile (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\source-map-support\source-map-support.js:568:25)
+    at Module.m._compile (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-6014444013627123.js:69:33)
+    at node:internal/modules/cjs/loader:1895:10
+    at require.extensions..jsx.require.extensions..js (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-6014444013627123.js:114:20)
+    at require.extensions.<computed> (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-6014444013627123.js:71:20)
+    at Object.nodeDevHook [as .ts] (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\ts-node-dev\lib\hook.js:63:13)
+    at Module.load (node:internal/modules/cjs/loader:1465:32)
+    at Function._load (node:internal/modules/cjs/loader:1282:12)
+2025-11-11 12:54:42 [ERROR]: Error: ⨯ Unable to compile TypeScript:
+src/apis/variants/variants_service.ts(53,3): error TS1109: Expression expected.
+
+    at Object.<anonymous> (C:\Users\Tanjim\projects\backend\v2\navid_backend\src\apis\variants\variants_service.ts:1:7)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1730:14)
+    at Module._compile (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\source-map-support\source-map-support.js:568:25)
+    at Module.m._compile (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-6014444013627123.js:69:33)
+    at node:internal/modules/cjs/loader:1895:10
+    at require.extensions..jsx.require.extensions..js (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-6014444013627123.js:114:20)
+    at require.extensions.<computed> (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-6014444013627123.js:71:20)
+    at Object.nodeDevHook [as .ts] (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\ts-node-dev\lib\hook.js:63:13)
+    at Module.load (node:internal/modules/cjs/loader:1465:32)
+    at Function._load (node:internal/modules/cjs/loader:1282:12)
+2025-11-11 12:54:44 [ERROR]: Error: ⨯ Unable to compile TypeScript:
+src/apis/variants/variants_service.ts(53,3): error TS1109: Expression expected.
+
+    at Object.<anonymous> (C:\Users\Tanjim\projects\backend\v2\navid_backend\src\apis\variants\variants_service.ts:1:7)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1730:14)
+    at Module._compile (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\source-map-support\source-map-support.js:568:25)
+    at Module.m._compile (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-6014444013627123.js:69:33)
+    at node:internal/modules/cjs/loader:1895:10
+    at require.extensions..jsx.require.extensions..js (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-6014444013627123.js:114:20)
+    at require.extensions.<computed> (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-6014444013627123.js:71:20)
+    at Object.nodeDevHook [as .ts] (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\ts-node-dev\lib\hook.js:63:13)
+    at Module.load (node:internal/modules/cjs/loader:1465:32)
+    at Function._load (node:internal/modules/cjs/loader:1282:12)
+2025-11-11 12:55:09 [ERROR]: Error: ⨯ Unable to compile TypeScript:
+src/apis/variants/variants_service.ts(53,3): error TS1109: Expression expected.
+
+    at Object.<anonymous> (C:\Users\Tanjim\projects\backend\v2\navid_backend\src\apis\variants\variants_service.ts:1:7)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1730:14)
+    at Module._compile (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\source-map-support\source-map-support.js:568:25)
+    at Module.m._compile (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-6014444013627123.js:69:33)
+    at node:internal/modules/cjs/loader:1895:10
+    at require.extensions..jsx.require.extensions..js (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-6014444013627123.js:114:20)
+    at require.extensions.<computed> (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-6014444013627123.js:71:20)
+    at Object.nodeDevHook [as .ts] (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\ts-node-dev\lib\hook.js:63:13)
+    at Module.load (node:internal/modules/cjs/loader:1465:32)
+    at Function._load (node:internal/modules/cjs/loader:1282:12)
+2025-11-11 17:25:00 [ERROR]: C:\Users\Tanjim\projects\backend\v2\navid_backend\src\apis\Product\product_controller.ts:44
+        const _e = req === null || req === void 0 ? void 0 : req.query, { search, is_deleted } = _e, otherValues = __rest(_e, ["search", "is_deleted"]);
+                                                                          ^
+
+SyntaxError: Identifier 'search' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1662:18)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1704:20)
+    at Module._compile (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\source-map-support\source-map-support.js:568:25)
+    at Module.m._compile (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-6014444013627123.js:69:33)
+    at node:internal/modules/cjs/loader:1895:10
+    at require.extensions..jsx.require.extensions..js (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-6014444013627123.js:114:20)
+    at require.extensions.<computed> (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-6014444013627123.js:71:20)
+    at Object.nodeDevHook [as .ts] (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\ts-node-dev\lib\hook.js:63:13)
+    at Module.load (node:internal/modules/cjs/loader:1465:32)
+    at Function._load (node:internal/modules/cjs/loader:1282:12)
+2025-11-11 17:26:12 [ERROR]: Error: ⨯ Unable to compile TypeScript:
+src/apis/Product/product_controller.ts(17,54): error TS1180: Property destructuring pattern expected.
+
+    at Object.<anonymous> (C:\Users\Tanjim\projects\backend\v2\navid_backend\src\apis\Product\product_controller.ts:1:7)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1730:14)
+    at Module._compile (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\source-map-support\source-map-support.js:568:25)
+    at Module.m._compile (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-6014444013627123.js:69:33)
+    at node:internal/modules/cjs/loader:1895:10
+    at require.extensions..jsx.require.extensions..js (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-6014444013627123.js:114:20)
+    at require.extensions.<computed> (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-6014444013627123.js:71:20)
+    at Object.nodeDevHook [as .ts] (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\ts-node-dev\lib\hook.js:63:13)
+    at Module.load (node:internal/modules/cjs/loader:1465:32)
+    at Function._load (node:internal/modules/cjs/loader:1282:12)
+2025-11-12 10:05:45 [ERROR]: Error: ⨯ Unable to compile TypeScript:
+src/apis/Product/product_service.ts(385,9): error TS1005: ',' expected.
+src/apis/Product/product_service.ts(385,22): error TS1005: ',' expected.
+src/apis/Product/product_service.ts(385,40): error TS1005: ',' expected.
+
+    at Object.<anonymous> (C:\Users\Tanjim\projects\backend\v2\navid_backend\src\apis\Product\product_service.ts:1:7)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1730:14)
+    at Module._compile (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\source-map-support\source-map-support.js:568:25)
+    at Module.m._compile (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-9315725439204954.js:69:33)
+    at node:internal/modules/cjs/loader:1895:10
+    at require.extensions..jsx.require.extensions..js (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-9315725439204954.js:114:20)
+    at require.extensions.<computed> (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-9315725439204954.js:71:20)
+    at Object.nodeDevHook [as .ts] (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\ts-node-dev\lib\hook.js:63:13)
+    at Module.load (node:internal/modules/cjs/loader:1465:32)
+    at Function._load (node:internal/modules/cjs/loader:1282:12)
+2025-11-12 10:05:56 [ERROR]: Error: ⨯ Unable to compile TypeScript:
+src/apis/Product/product_service.ts(384,39): error TS1003: Identifier expected.
+
+    at Object.<anonymous> (C:\Users\Tanjim\projects\backend\v2\navid_backend\src\apis\Product\product_service.ts:1:7)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1730:14)
+    at Module._compile (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\source-map-support\source-map-support.js:568:25)
+    at Module.m._compile (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-9315725439204954.js:69:33)
+    at node:internal/modules/cjs/loader:1895:10
+    at require.extensions..jsx.require.extensions..js (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-9315725439204954.js:114:20)
+    at require.extensions.<computed> (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-9315725439204954.js:71:20)
+    at Object.nodeDevHook [as .ts] (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\ts-node-dev\lib\hook.js:63:13)
+    at Module.load (node:internal/modules/cjs/loader:1465:32)
+    at Function._load (node:internal/modules/cjs/loader:1282:12)
+2025-11-12 10:06:17 [ERROR]: Error: ⨯ Unable to compile TypeScript:
+src/apis/Product/product_service.ts(384,52): error TS1109: Expression expected.
+
+    at Object.<anonymous> (C:\Users\Tanjim\projects\backend\v2\navid_backend\src\apis\Product\product_service.ts:1:7)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1730:14)
+    at Module._compile (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\source-map-support\source-map-support.js:568:25)
+    at Module.m._compile (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-9315725439204954.js:69:33)
+    at node:internal/modules/cjs/loader:1895:10
+    at require.extensions..jsx.require.extensions..js (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-9315725439204954.js:114:20)
+    at require.extensions.<computed> (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-9315725439204954.js:71:20)
+    at Object.nodeDevHook [as .ts] (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\ts-node-dev\lib\hook.js:63:13)
+    at Module.load (node:internal/modules/cjs/loader:1465:32)
+    at Function._load (node:internal/modules/cjs/loader:1282:12)
+2025-11-12 10:07:05 [ERROR]: Error: ⨯ Unable to compile TypeScript:
+src/apis/Product/product_service.ts(386,3): error TS1005: '(' expected.
+src/apis/Product/product_service.ts(392,3): error TS1005: ')' expected.
+
+    at Object.<anonymous> (C:\Users\Tanjim\projects\backend\v2\navid_backend\src\apis\Product\product_service.ts:1:7)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1730:14)
+    at Module._compile (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\source-map-support\source-map-support.js:568:25)
+    at Module.m._compile (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-9315725439204954.js:69:33)
+    at node:internal/modules/cjs/loader:1895:10
+    at require.extensions..jsx.require.extensions..js (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-9315725439204954.js:114:20)
+    at require.extensions.<computed> (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-9315725439204954.js:71:20)
+    at Object.nodeDevHook [as .ts] (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\ts-node-dev\lib\hook.js:63:13)
+    at Module.load (node:internal/modules/cjs/loader:1465:32)
+    at Function._load (node:internal/modules/cjs/loader:1282:12)
+2025-11-12 10:07:07 [ERROR]: Error: ⨯ Unable to compile TypeScript:
+src/apis/Product/product_service.ts(385,7): error TS1109: Expression expected.
+
+    at Object.<anonymous> (C:\Users\Tanjim\projects\backend\v2\navid_backend\src\apis\Product\product_service.ts:1:7)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1730:14)
+    at Module._compile (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\source-map-support\source-map-support.js:568:25)
+    at Module.m._compile (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-9315725439204954.js:69:33)
+    at node:internal/modules/cjs/loader:1895:10
+    at require.extensions..jsx.require.extensions..js (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-9315725439204954.js:114:20)
+    at require.extensions.<computed> (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-9315725439204954.js:71:20)
+    at Object.nodeDevHook [as .ts] (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\ts-node-dev\lib\hook.js:63:13)
+    at Module.load (node:internal/modules/cjs/loader:1465:32)
+    at Function._load (node:internal/modules/cjs/loader:1282:12)
+2025-11-12 10:07:18 [ERROR]: Error: ⨯ Unable to compile TypeScript:
+src/apis/Product/product_service.ts(387,3): error TS1109: Expression expected.
+
+    at Object.<anonymous> (C:\Users\Tanjim\projects\backend\v2\navid_backend\src\apis\Product\product_service.ts:1:7)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1730:14)
+    at Module._compile (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\source-map-support\source-map-support.js:568:25)
+    at Module.m._compile (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-9315725439204954.js:69:33)
+    at node:internal/modules/cjs/loader:1895:10
+    at require.extensions..jsx.require.extensions..js (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-9315725439204954.js:114:20)
+    at require.extensions.<computed> (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-9315725439204954.js:71:20)
+    at Object.nodeDevHook [as .ts] (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\ts-node-dev\lib\hook.js:63:13)
+    at Module.load (node:internal/modules/cjs/loader:1465:32)
+    at Function._load (node:internal/modules/cjs/loader:1282:12)
+2025-11-12 10:07:23 [ERROR]: Error: ⨯ Unable to compile TypeScript:
+src/apis/Product/product_service.ts(387,3): error TS1109: Expression expected.
+
+    at Object.<anonymous> (C:\Users\Tanjim\projects\backend\v2\navid_backend\src\apis\Product\product_service.ts:1:7)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1730:14)
+    at Module._compile (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\source-map-support\source-map-support.js:568:25)
+    at Module.m._compile (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-9315725439204954.js:69:33)
+    at node:internal/modules/cjs/loader:1895:10
+    at require.extensions..jsx.require.extensions..js (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-9315725439204954.js:114:20)
+    at require.extensions.<computed> (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-9315725439204954.js:71:20)
+    at Object.nodeDevHook [as .ts] (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\ts-node-dev\lib\hook.js:63:13)
+    at Module.load (node:internal/modules/cjs/loader:1465:32)
+    at Function._load (node:internal/modules/cjs/loader:1282:12)
+2025-11-12 10:07:27 [ERROR]: Error: ⨯ Unable to compile TypeScript:
+src/apis/Product/product_service.ts(387,3): error TS1109: Expression expected.
+
+    at Object.<anonymous> (C:\Users\Tanjim\projects\backend\v2\navid_backend\src\apis\Product\product_service.ts:1:7)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1730:14)
+    at Module._compile (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\source-map-support\source-map-support.js:568:25)
+    at Module.m._compile (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-9315725439204954.js:69:33)
+    at node:internal/modules/cjs/loader:1895:10
+    at require.extensions..jsx.require.extensions..js (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-9315725439204954.js:114:20)
+    at require.extensions.<computed> (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-9315725439204954.js:71:20)
+    at Object.nodeDevHook [as .ts] (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\ts-node-dev\lib\hook.js:63:13)
+    at Module.load (node:internal/modules/cjs/loader:1465:32)
+    at Function._load (node:internal/modules/cjs/loader:1282:12)
+2025-11-12 10:08:11 [ERROR]: Error: ⨯ Unable to compile TypeScript:
+src/apis/Product/product_service.ts(392,5): error TS1003: Identifier expected.
+
+    at Object.<anonymous> (C:\Users\Tanjim\projects\backend\v2\navid_backend\src\apis\Product\product_service.ts:1:7)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1730:14)
+    at Module._compile (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\source-map-support\source-map-support.js:568:25)
+    at Module.m._compile (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-9315725439204954.js:69:33)
+    at node:internal/modules/cjs/loader:1895:10
+    at require.extensions..jsx.require.extensions..js (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-9315725439204954.js:114:20)
+    at require.extensions.<computed> (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-9315725439204954.js:71:20)
+    at Object.nodeDevHook [as .ts] (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\ts-node-dev\lib\hook.js:63:13)
+    at Module.load (node:internal/modules/cjs/loader:1465:32)
+    at Function._load (node:internal/modules/cjs/loader:1282:12)
+2025-11-12 10:08:15 [ERROR]: Error: ⨯ Unable to compile TypeScript:
+src/apis/Product/product_service.ts(392,5): error TS1003: Identifier expected.
+
+    at Object.<anonymous> (C:\Users\Tanjim\projects\backend\v2\navid_backend\src\apis\Product\product_service.ts:1:7)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1730:14)
+    at Module._compile (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\source-map-support\source-map-support.js:568:25)
+    at Module.m._compile (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-9315725439204954.js:69:33)
+    at node:internal/modules/cjs/loader:1895:10
+    at require.extensions..jsx.require.extensions..js (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-9315725439204954.js:114:20)
+    at require.extensions.<computed> (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-9315725439204954.js:71:20)
+    at Object.nodeDevHook [as .ts] (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\ts-node-dev\lib\hook.js:63:13)
+    at Module.load (node:internal/modules/cjs/loader:1465:32)
+    at Function._load (node:internal/modules/cjs/loader:1282:12)
+2025-11-12 10:21:02 [ERROR]: Error: ⨯ Unable to compile TypeScript:
+src/apis/Product/product_service.ts(14,3): error TS1109: Expression expected.
+
+    at Object.<anonymous> (C:\Users\Tanjim\projects\backend\v2\navid_backend\src\apis\Product\product_service.ts:1:7)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1730:14)
+    at Module._compile (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\source-map-support\source-map-support.js:568:25)
+    at Module.m._compile (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-9315725439204954.js:69:33)
+    at node:internal/modules/cjs/loader:1895:10
+    at require.extensions..jsx.require.extensions..js (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-9315725439204954.js:114:20)
+    at require.extensions.<computed> (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-9315725439204954.js:71:20)
+    at Object.nodeDevHook [as .ts] (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\ts-node-dev\lib\hook.js:63:13)
+    at Module.load (node:internal/modules/cjs/loader:1465:32)
+    at Function._load (node:internal/modules/cjs/loader:1282:12)
+2025-11-12 10:21:07 [ERROR]: Error: ⨯ Unable to compile TypeScript:
+src/apis/Product/product_service.ts(9,15): error TS1005: ',' expected.
+src/apis/Product/product_service.ts(9,28): error TS1005: ',' expected.
+src/apis/Product/product_service.ts(9,35): error TS1005: ',' expected.
+src/apis/Product/product_service.ts(14,3): error TS1109: Expression expected.
+
+    at Object.<anonymous> (C:\Users\Tanjim\projects\backend\v2\navid_backend\src\apis\Product\product_service.ts:1:7)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1730:14)
+    at Module._compile (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\source-map-support\source-map-support.js:568:25)
+    at Module.m._compile (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-9315725439204954.js:69:33)
+    at node:internal/modules/cjs/loader:1895:10
+    at require.extensions..jsx.require.extensions..js (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-9315725439204954.js:114:20)
+    at require.extensions.<computed> (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-9315725439204954.js:71:20)
+    at Object.nodeDevHook [as .ts] (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\ts-node-dev\lib\hook.js:63:13)
+    at Module.load (node:internal/modules/cjs/loader:1465:32)
+    at Function._load (node:internal/modules/cjs/loader:1282:12)
+2025-11-12 10:21:11 [ERROR]: Error: ⨯ Unable to compile TypeScript:
+src/apis/Product/product_service.ts(14,3): error TS1109: Expression expected.
+
+    at Object.<anonymous> (C:\Users\Tanjim\projects\backend\v2\navid_backend\src\apis\Product\product_service.ts:1:7)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1730:14)
+    at Module._compile (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\source-map-support\source-map-support.js:568:25)
+    at Module.m._compile (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-9315725439204954.js:69:33)
+    at node:internal/modules/cjs/loader:1895:10
+    at require.extensions..jsx.require.extensions..js (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-9315725439204954.js:114:20)
+    at require.extensions.<computed> (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-9315725439204954.js:71:20)
+    at Object.nodeDevHook [as .ts] (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\ts-node-dev\lib\hook.js:63:13)
+    at Module.load (node:internal/modules/cjs/loader:1465:32)
+    at Function._load (node:internal/modules/cjs/loader:1282:12)
+2025-11-12 10:52:39 [ERROR]: C:\Users\Tanjim\projects\backend\v2\navid_backend\src\apis\Product\product_controller.ts:97
+        const {};
+              ^^
+
+SyntaxError: Missing initializer in destructuring declaration
+    at wrapSafe (node:internal/modules/cjs/loader:1662:18)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1704:20)
+    at Module._compile (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\source-map-support\source-map-support.js:568:25)
+    at Module.m._compile (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-9315725439204954.js:69:33)
+    at node:internal/modules/cjs/loader:1895:10
+    at require.extensions..jsx.require.extensions..js (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-9315725439204954.js:114:20)
+    at require.extensions.<computed> (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-9315725439204954.js:71:20)
+    at Object.nodeDevHook [as .ts] (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\ts-node-dev\lib\hook.js:63:13)
+    at Module.load (node:internal/modules/cjs/loader:1465:32)
+    at Function._load (node:internal/modules/cjs/loader:1282:12)
+2025-11-12 10:53:51 [ERROR]: Error: ⨯ Unable to compile TypeScript:
+src/apis/Product/product_controller.ts(80,14): error TS1005: ';' expected.
+src/apis/Product/product_controller.ts(81,11): error TS1005: ';' expected.
+src/apis/Product/product_controller.ts(82,15): error TS1005: ';' expected.
+
+    at Object.<anonymous> (C:\Users\Tanjim\projects\backend\v2\navid_backend\src\apis\Product\product_controller.ts:1:7)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1730:14)
+    at Module._compile (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\source-map-support\source-map-support.js:568:25)
+    at Module.m._compile (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-9315725439204954.js:69:33)
+    at node:internal/modules/cjs/loader:1895:10
+    at require.extensions..jsx.require.extensions..js (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-9315725439204954.js:114:20)
+    at require.extensions.<computed> (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-9315725439204954.js:71:20)
+    at Object.nodeDevHook [as .ts] (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\ts-node-dev\lib\hook.js:63:13)
+    at Module.load (node:internal/modules/cjs/loader:1465:32)
+    at Function._load (node:internal/modules/cjs/loader:1282:12)
+2025-11-12 10:53:55 [ERROR]: Error: ⨯ Unable to compile TypeScript:
+src/apis/Product/product_controller.ts(80,14): error TS1005: ';' expected.
+src/apis/Product/product_controller.ts(81,11): error TS1005: ';' expected.
+src/apis/Product/product_controller.ts(82,15): error TS1005: ';' expected.
+
+    at Object.<anonymous> (C:\Users\Tanjim\projects\backend\v2\navid_backend\src\apis\Product\product_controller.ts:1:7)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1730:14)
+    at Module._compile (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\source-map-support\source-map-support.js:568:25)
+    at Module.m._compile (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-9315725439204954.js:69:33)
+    at node:internal/modules/cjs/loader:1895:10
+    at require.extensions..jsx.require.extensions..js (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-9315725439204954.js:114:20)
+    at require.extensions.<computed> (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-9315725439204954.js:71:20)
+    at Object.nodeDevHook [as .ts] (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\ts-node-dev\lib\hook.js:63:13)
+    at Module.load (node:internal/modules/cjs/loader:1465:32)
+    at Function._load (node:internal/modules/cjs/loader:1282:12)
+2025-11-12 10:53:59 [ERROR]: Error: ⨯ Unable to compile TypeScript:
+src/apis/Product/product_controller.ts(81,11): error TS1005: ';' expected.
+src/apis/Product/product_controller.ts(82,15): error TS1005: ';' expected.
+
+    at Object.<anonymous> (C:\Users\Tanjim\projects\backend\v2\navid_backend\src\apis\Product\product_controller.ts:1:7)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1730:14)
+    at Module._compile (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\source-map-support\source-map-support.js:568:25)
+    at Module.m._compile (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-9315725439204954.js:69:33)
+    at node:internal/modules/cjs/loader:1895:10
+    at require.extensions..jsx.require.extensions..js (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-9315725439204954.js:114:20)
+    at require.extensions.<computed> (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-9315725439204954.js:71:20)
+    at Object.nodeDevHook [as .ts] (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\ts-node-dev\lib\hook.js:63:13)
+    at Module.load (node:internal/modules/cjs/loader:1465:32)
+    at Function._load (node:internal/modules/cjs/loader:1282:12)
+2025-11-12 10:54:03 [ERROR]: Error: ⨯ Unable to compile TypeScript:
+src/apis/Product/product_controller.ts(82,15): error TS1005: ';' expected.
+
+    at Object.<anonymous> (C:\Users\Tanjim\projects\backend\v2\navid_backend\src\apis\Product\product_controller.ts:1:7)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1730:14)
+    at Module._compile (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\source-map-support\source-map-support.js:568:25)
+    at Module.m._compile (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-9315725439204954.js:69:33)
+    at node:internal/modules/cjs/loader:1895:10
+    at require.extensions..jsx.require.extensions..js (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-9315725439204954.js:114:20)
+    at require.extensions.<computed> (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-9315725439204954.js:71:20)
+    at Object.nodeDevHook [as .ts] (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\ts-node-dev\lib\hook.js:63:13)
+    at Module.load (node:internal/modules/cjs/loader:1465:32)
+    at Function._load (node:internal/modules/cjs/loader:1282:12)
+2025-11-12 10:54:17 [ERROR]: C:\Users\Tanjim\projects\backend\v2\navid_backend\src\apis\Product\product_controller.ts:97
+        const [name, description, category, sub_category];
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+SyntaxError: Missing initializer in destructuring declaration
+    at wrapSafe (node:internal/modules/cjs/loader:1662:18)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1704:20)
+    at Module._compile (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\source-map-support\source-map-support.js:568:25)
+    at Module.m._compile (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-9315725439204954.js:69:33)
+    at node:internal/modules/cjs/loader:1895:10
+    at require.extensions..jsx.require.extensions..js (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-9315725439204954.js:114:20)
+    at require.extensions.<computed> (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-9315725439204954.js:71:20)
+    at Object.nodeDevHook [as .ts] (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\ts-node-dev\lib\hook.js:63:13)
+    at Module.load (node:internal/modules/cjs/loader:1465:32)
+    at Function._load (node:internal/modules/cjs/loader:1282:12)
+2025-11-12 10:54:19 [ERROR]: C:\Users\Tanjim\projects\backend\v2\navid_backend\src\apis\Product\product_controller.ts:97
+        const [name, description, category, sub_category];
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+SyntaxError: Missing initializer in destructuring declaration
+    at wrapSafe (node:internal/modules/cjs/loader:1662:18)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1704:20)
+    at Module._compile (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\source-map-support\source-map-support.js:568:25)
+    at Module.m._compile (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-9315725439204954.js:69:33)
+    at node:internal/modules/cjs/loader:1895:10
+    at require.extensions..jsx.require.extensions..js (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-9315725439204954.js:114:20)
+    at require.extensions.<computed> (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-9315725439204954.js:71:20)
+    at Object.nodeDevHook [as .ts] (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\ts-node-dev\lib\hook.js:63:13)
+    at Module.load (node:internal/modules/cjs/loader:1465:32)
+    at Function._load (node:internal/modules/cjs/loader:1282:12)
+2025-11-12 10:58:47 [ERROR]: Error: ⨯ Unable to compile TypeScript:
+src/apis/Product/product_controller.ts(76,8): error TS1109: Expression expected.
+
+    at Object.<anonymous> (C:\Users\Tanjim\projects\backend\v2\navid_backend\src\apis\Product\product_controller.ts:1:7)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1730:14)
+    at Module._compile (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\source-map-support\source-map-support.js:568:25)
+    at Module.m._compile (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-9315725439204954.js:69:33)
+    at node:internal/modules/cjs/loader:1895:10
+    at require.extensions..jsx.require.extensions..js (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-9315725439204954.js:114:20)
+    at require.extensions.<computed> (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-9315725439204954.js:71:20)
+    at Object.nodeDevHook [as .ts] (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\ts-node-dev\lib\hook.js:63:13)
+    at Module.load (node:internal/modules/cjs/loader:1465:32)
+    at Function._load (node:internal/modules/cjs/loader:1282:12)
+2025-11-12 10:59:33 [ERROR]: Error: ⨯ Unable to compile TypeScript:
+src/apis/Product/product_controller.ts(74,7): error TS1109: Expression expected.
+
+    at Object.<anonymous> (C:\Users\Tanjim\projects\backend\v2\navid_backend\src\apis\Product\product_controller.ts:1:7)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1730:14)
+    at Module._compile (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\source-map-support\source-map-support.js:568:25)
+    at Module.m._compile (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-9315725439204954.js:69:33)
+    at node:internal/modules/cjs/loader:1895:10
+    at require.extensions..jsx.require.extensions..js (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-9315725439204954.js:114:20)
+    at require.extensions.<computed> (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-9315725439204954.js:71:20)
+    at Object.nodeDevHook [as .ts] (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\ts-node-dev\lib\hook.js:63:13)
+    at Module.load (node:internal/modules/cjs/loader:1465:32)
+    at Function._load (node:internal/modules/cjs/loader:1282:12)
+2025-11-12 10:59:51 [ERROR]: Error: ⨯ Unable to compile TypeScript:
+src/apis/Product/product_controller.ts(74,66): error TS1109: Expression expected.
+src/apis/Product/product_controller.ts(74,68): error TS1109: Expression expected.
+
+    at Object.<anonymous> (C:\Users\Tanjim\projects\backend\v2\navid_backend\src\apis\Product\product_controller.ts:1:7)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1730:14)
+    at Module._compile (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\source-map-support\source-map-support.js:568:25)
+    at Module.m._compile (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-9315725439204954.js:69:33)
+    at node:internal/modules/cjs/loader:1895:10
+    at require.extensions..jsx.require.extensions..js (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-9315725439204954.js:114:20)
+    at require.extensions.<computed> (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-9315725439204954.js:71:20)
+    at Object.nodeDevHook [as .ts] (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\ts-node-dev\lib\hook.js:63:13)
+    at Module.load (node:internal/modules/cjs/loader:1465:32)
+    at Function._load (node:internal/modules/cjs/loader:1282:12)
+2025-11-12 10:59:54 [ERROR]: Error: ⨯ Unable to compile TypeScript:
+src/apis/Product/product_controller.ts(74,72): error TS1109: Expression expected.
+
+    at Object.<anonymous> (C:\Users\Tanjim\projects\backend\v2\navid_backend\src\apis\Product\product_controller.ts:1:7)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1730:14)
+    at Module._compile (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\source-map-support\source-map-support.js:568:25)
+    at Module.m._compile (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-9315725439204954.js:69:33)
+    at node:internal/modules/cjs/loader:1895:10
+    at require.extensions..jsx.require.extensions..js (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-9315725439204954.js:114:20)
+    at require.extensions.<computed> (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-9315725439204954.js:71:20)
+    at Object.nodeDevHook [as .ts] (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\ts-node-dev\lib\hook.js:63:13)
+    at Module.load (node:internal/modules/cjs/loader:1465:32)
+    at Function._load (node:internal/modules/cjs/loader:1282:12)
+2025-11-12 10:59:55 [ERROR]: Error: ⨯ Unable to compile TypeScript:
+src/apis/Product/product_controller.ts(74,73): error TS1109: Expression expected.
+
+    at Object.<anonymous> (C:\Users\Tanjim\projects\backend\v2\navid_backend\src\apis\Product\product_controller.ts:1:7)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1730:14)
+    at Module._compile (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\source-map-support\source-map-support.js:568:25)
+    at Module.m._compile (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-9315725439204954.js:69:33)
+    at node:internal/modules/cjs/loader:1895:10
+    at require.extensions..jsx.require.extensions..js (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-9315725439204954.js:114:20)
+    at require.extensions.<computed> (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-9315725439204954.js:71:20)
+    at Object.nodeDevHook [as .ts] (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\ts-node-dev\lib\hook.js:63:13)
+    at Module.load (node:internal/modules/cjs/loader:1465:32)
+    at Function._load (node:internal/modules/cjs/loader:1282:12)
+2025-11-12 11:00:03 [ERROR]: C:\Users\Tanjim\projects\backend\v2\navid_backend\src\apis\Product\product_controller.ts:94
+        if ([name, description, category, sub_category, whole_sale].some((!item) = !item)) {
+                                                                         ^^^^^^^
+
+SyntaxError: Invalid left-hand side in assignment
+    at wrapSafe (node:internal/modules/cjs/loader:1662:18)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1704:20)
+    at Module._compile (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\source-map-support\source-map-support.js:568:25)
+    at Module.m._compile (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-9315725439204954.js:69:33)
+    at node:internal/modules/cjs/loader:1895:10
+    at require.extensions..jsx.require.extensions..js (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-9315725439204954.js:114:20)
+    at require.extensions.<computed> (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-9315725439204954.js:71:20)
+    at Object.nodeDevHook [as .ts] (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\ts-node-dev\lib\hook.js:63:13)
+    at Module.load (node:internal/modules/cjs/loader:1465:32)
+    at Function._load (node:internal/modules/cjs/loader:1282:12)
+2025-11-12 11:00:07 [ERROR]: Error: ⨯ Unable to compile TypeScript:
+src/apis/Product/product_controller.ts(74,76): error TS1005: ',' expected.
+src/apis/Product/product_controller.ts(74,78): error TS1109: Expression expected.
+src/apis/Product/product_controller.ts(74,79): error TS1128: Declaration or statement expected.
+
+    at Object.<anonymous> (C:\Users\Tanjim\projects\backend\v2\navid_backend\src\apis\Product\product_controller.ts:1:7)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1730:14)
+    at Module._compile (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\source-map-support\source-map-support.js:568:25)
+    at Module.m._compile (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-9315725439204954.js:69:33)
+    at node:internal/modules/cjs/loader:1895:10
+    at require.extensions..jsx.require.extensions..js (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-9315725439204954.js:114:20)
+    at require.extensions.<computed> (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-9315725439204954.js:71:20)
+    at Object.nodeDevHook [as .ts] (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\ts-node-dev\lib\hook.js:63:13)
+    at Module.load (node:internal/modules/cjs/loader:1465:32)
+    at Function._load (node:internal/modules/cjs/loader:1282:12)
+2025-11-12 11:00:09 [ERROR]: Error: ⨯ Unable to compile TypeScript:
+src/apis/Product/product_controller.ts(74,76): error TS1005: ',' expected.
+src/apis/Product/product_controller.ts(74,79): error TS1109: Expression expected.
+src/apis/Product/product_controller.ts(74,80): error TS1128: Declaration or statement expected.
+
+    at Object.<anonymous> (C:\Users\Tanjim\projects\backend\v2\navid_backend\src\apis\Product\product_controller.ts:1:7)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1730:14)
+    at Module._compile (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\source-map-support\source-map-support.js:568:25)
+    at Module.m._compile (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-9315725439204954.js:69:33)
+    at node:internal/modules/cjs/loader:1895:10
+    at require.extensions..jsx.require.extensions..js (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-9315725439204954.js:114:20)
+    at require.extensions.<computed> (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-9315725439204954.js:71:20)
+    at Object.nodeDevHook [as .ts] (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\ts-node-dev\lib\hook.js:63:13)
+    at Module.load (node:internal/modules/cjs/loader:1465:32)
+    at Function._load (node:internal/modules/cjs/loader:1282:12)
+2025-11-12 11:01:42 [ERROR]: ReferenceError: update is not defined
+    at Object.<anonymous> (C:\Users\Tanjim\projects\backend\v2\navid_backend\src\apis\Product\product_controller.ts:106:3)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1730:14)
+    at Module._compile (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\source-map-support\source-map-support.js:568:25)
+    at Module.m._compile (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-9315725439204954.js:69:33)
+    at node:internal/modules/cjs/loader:1895:10
+    at require.extensions..jsx.require.extensions..js (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-9315725439204954.js:114:20)
+    at require.extensions.<computed> (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-9315725439204954.js:71:20)
+    at Object.nodeDevHook [as .ts] (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\ts-node-dev\lib\hook.js:63:13)
+    at Module.load (node:internal/modules/cjs/loader:1465:32)
+    at Function._load (node:internal/modules/cjs/loader:1282:12)
+2025-11-12 11:04:30 [ERROR]: Error: ⨯ Unable to compile TypeScript:
+src/apis/Product/product_controller.ts(119,74): error TS1110: Type expected.
+
+    at Object.<anonymous> (C:\Users\Tanjim\projects\backend\v2\navid_backend\src\apis\Product\product_controller.ts:1:7)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1730:14)
+    at Module._compile (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\source-map-support\source-map-support.js:568:25)
+    at Module.m._compile (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-9315725439204954.js:69:33)
+    at node:internal/modules/cjs/loader:1895:10
+    at require.extensions..jsx.require.extensions..js (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-9315725439204954.js:114:20)
+    at require.extensions.<computed> (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-9315725439204954.js:71:20)
+    at Object.nodeDevHook [as .ts] (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\ts-node-dev\lib\hook.js:63:13)
+    at Module.load (node:internal/modules/cjs/loader:1465:32)
+    at Function._load (node:internal/modules/cjs/loader:1282:12)
+2025-11-12 11:04:31 [ERROR]: Error: ⨯ Unable to compile TypeScript:
+src/apis/Product/product_controller.ts(119,75): error TS1110: Type expected.
+
+    at Object.<anonymous> (C:\Users\Tanjim\projects\backend\v2\navid_backend\src\apis\Product\product_controller.ts:1:7)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1730:14)
+    at Module._compile (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\source-map-support\source-map-support.js:568:25)
+    at Module.m._compile (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-9315725439204954.js:69:33)
+    at node:internal/modules/cjs/loader:1895:10
+    at require.extensions..jsx.require.extensions..js (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-9315725439204954.js:114:20)
+    at require.extensions.<computed> (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-9315725439204954.js:71:20)
+    at Object.nodeDevHook [as .ts] (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\ts-node-dev\lib\hook.js:63:13)
+    at Module.load (node:internal/modules/cjs/loader:1465:32)
+    at Function._load (node:internal/modules/cjs/loader:1282:12)
+2025-11-12 11:47:36 [ERROR]: Error: ⨯ Unable to compile TypeScript:
+src/apis/variants/variants_service.ts(25,13): error TS1005: ',' expected.
+src/apis/variants/variants_service.ts(25,19): error TS1005: ',' expected.
+src/apis/variants/variants_service.ts(25,33): error TS1005: ',' expected.
+src/apis/variants/variants_service.ts(25,51): error TS1005: ',' expected.
+
+    at Object.<anonymous> (C:\Users\Tanjim\projects\backend\v2\navid_backend\src\apis\variants\variants_service.ts:1:7)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1730:14)
+    at Module._compile (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\source-map-support\source-map-support.js:568:25)
+    at Module.m._compile (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-9315725439204954.js:69:33)
+    at node:internal/modules/cjs/loader:1895:10
+    at require.extensions..jsx.require.extensions..js (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-9315725439204954.js:114:20)
+    at require.extensions.<computed> (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-9315725439204954.js:71:20)
+    at Object.nodeDevHook [as .ts] (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\ts-node-dev\lib\hook.js:63:13)
+    at Module.load (node:internal/modules/cjs/loader:1465:32)
+    at Function._load (node:internal/modules/cjs/loader:1282:12)
+2025-11-12 14:48:12 [ERROR]: Error: ⨯ Unable to compile TypeScript:
+src/apis/Product/product_service.ts(244,5): error TS1005: ',' expected.
+
+    at Object.<anonymous> (C:\Users\Tanjim\projects\backend\v2\navid_backend\src\apis\Product\product_service.ts:1:7)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1730:14)
+    at Module._compile (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\source-map-support\source-map-support.js:568:25)
+    at Module.m._compile (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-44637215436403443.js:69:33)
+    at node:internal/modules/cjs/loader:1895:10
+    at require.extensions..jsx.require.extensions..js (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-44637215436403443.js:114:20)
+    at require.extensions.<computed> (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-44637215436403443.js:71:20)
+    at Object.nodeDevHook [as .ts] (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\ts-node-dev\lib\hook.js:63:13)
+    at Module.load (node:internal/modules/cjs/loader:1465:32)
+    at Function._load (node:internal/modules/cjs/loader:1282:12)
+2025-11-12 15:01:57 [ERROR]: Error: ⨯ Unable to compile TypeScript:
+src/apis/Product/product_model.ts(32,5): error TS1005: ',' expected.
+
+    at Object.<anonymous> (C:\Users\Tanjim\projects\backend\v2\navid_backend\src\apis\Product\product_model.ts:1:7)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1730:14)
+    at Module._compile (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\source-map-support\source-map-support.js:568:25)
+    at Module.m._compile (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-44637215436403443.js:69:33)
+    at node:internal/modules/cjs/loader:1895:10
+    at require.extensions..jsx.require.extensions..js (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-44637215436403443.js:114:20)
+    at require.extensions.<computed> (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-44637215436403443.js:71:20)
+    at Object.nodeDevHook [as .ts] (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\ts-node-dev\lib\hook.js:63:13)
+    at Module.load (node:internal/modules/cjs/loader:1465:32)
+    at Function._load (node:internal/modules/cjs/loader:1282:12)
+2025-11-12 15:04:14 [ERROR]: Error: ⨯ Unable to compile TypeScript:
+src/apis/Product/product_model.ts(32,5): error TS1005: ',' expected.
+
+    at Object.<anonymous> (C:\Users\Tanjim\projects\backend\v2\navid_backend\src\apis\Product\product_model.ts:1:7)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1730:14)
+    at Module._compile (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\source-map-support\source-map-support.js:568:25)
+    at Module.m._compile (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-4322629067381183.js:69:33)
+    at node:internal/modules/cjs/loader:1895:10
+    at require.extensions..jsx.require.extensions..js (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-4322629067381183.js:114:20)
+    at require.extensions.<computed> (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-4322629067381183.js:71:20)
+    at Object.nodeDevHook [as .ts] (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\ts-node-dev\lib\hook.js:63:13)
+    at Module.load (node:internal/modules/cjs/loader:1465:32)
+    at Function._load (node:internal/modules/cjs/loader:1282:12)
+2025-11-12 15:04:24 [ERROR]: Error: ⨯ Unable to compile TypeScript:
+src/apis/Product/product_model.ts(34,5): error TS1005: ',' expected.
+
+    at Object.<anonymous> (C:\Users\Tanjim\projects\backend\v2\navid_backend\src\apis\Product\product_model.ts:1:7)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1730:14)
+    at Module._compile (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\source-map-support\source-map-support.js:568:25)
+    at Module.m._compile (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-4322629067381183.js:69:33)
+    at node:internal/modules/cjs/loader:1895:10
+    at require.extensions..jsx.require.extensions..js (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-4322629067381183.js:114:20)
+    at require.extensions.<computed> (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-4322629067381183.js:71:20)
+    at Object.nodeDevHook [as .ts] (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\ts-node-dev\lib\hook.js:63:13)
+    at Module.load (node:internal/modules/cjs/loader:1465:32)
+    at Function._load (node:internal/modules/cjs/loader:1282:12)
+2025-11-12 15:04:29 [ERROR]: ReferenceError: re is not defined
+    at Object.<anonymous> (C:\Users\Tanjim\projects\backend\v2\navid_backend\src\apis\Product\product_model.ts:33:7)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1730:14)
+    at Module._compile (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\source-map-support\source-map-support.js:568:25)
+    at Module.m._compile (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-4322629067381183.js:69:33)
+    at node:internal/modules/cjs/loader:1895:10
+    at require.extensions..jsx.require.extensions..js (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-4322629067381183.js:114:20)
+    at require.extensions.<computed> (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-4322629067381183.js:71:20)
+    at Object.nodeDevHook [as .ts] (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\ts-node-dev\lib\hook.js:63:13)
+    at Module.load (node:internal/modules/cjs/loader:1465:32)
+    at Function._load (node:internal/modules/cjs/loader:1282:12)
+2025-11-12 15:06:00 [ERROR]: ReferenceError: uploadFile is not defined
+    at Object.<anonymous> (C:\Users\Tanjim\projects\backend\v2\navid_backend\src\apis\Product\product_route.ts:13:16)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1730:14)
+    at Module._compile (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\source-map-support\source-map-support.js:568:25)
+    at Module.m._compile (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-4322629067381183.js:69:33)
+    at node:internal/modules/cjs/loader:1895:10
+    at require.extensions..jsx.require.extensions..js (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-4322629067381183.js:114:20)
+    at require.extensions.<computed> (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-4322629067381183.js:71:20)
+    at Object.nodeDevHook [as .ts] (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\ts-node-dev\lib\hook.js:63:13)
+    at Module.load (node:internal/modules/cjs/loader:1465:32)
+    at Function._load (node:internal/modules/cjs/loader:1282:12)
+2025-11-12 16:05:33 [ERROR]: C:\Users\Tanjim\projects\backend\v2\navid_backend\src\apis\Product\product_controller.ts:123
+        const ;
+              ^
+
+SyntaxError: Unexpected token ';'
+    at wrapSafe (node:internal/modules/cjs/loader:1662:18)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1704:20)
+    at Module._compile (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\source-map-support\source-map-support.js:568:25)
+    at Module.m._compile (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-4322629067381183.js:69:33)
+    at node:internal/modules/cjs/loader:1895:10
+    at require.extensions..jsx.require.extensions..js (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-4322629067381183.js:114:20)
+    at require.extensions.<computed> (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-4322629067381183.js:71:20)
+    at Object.nodeDevHook [as .ts] (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\ts-node-dev\lib\hook.js:63:13)
+    at Module.load (node:internal/modules/cjs/loader:1465:32)
+    at Function._load (node:internal/modules/cjs/loader:1282:12)
+2025-11-12 16:06:03 [ERROR]: Error: ⨯ Unable to compile TypeScript:
+src/apis/Product/product_controller.ts(108,87): error TS1109: Expression expected.
+src/apis/Product/product_controller.ts(108,99): error TS1005: ':' expected.
+
+    at Object.<anonymous> (C:\Users\Tanjim\projects\backend\v2\navid_backend\src\apis\Product\product_controller.ts:1:7)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1730:14)
+    at Module._compile (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\source-map-support\source-map-support.js:568:25)
+    at Module.m._compile (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-4322629067381183.js:69:33)
+    at node:internal/modules/cjs/loader:1895:10
+    at require.extensions..jsx.require.extensions..js (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-4322629067381183.js:114:20)
+    at require.extensions.<computed> (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-4322629067381183.js:71:20)
+    at Object.nodeDevHook [as .ts] (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\ts-node-dev\lib\hook.js:63:13)
+    at Module.load (node:internal/modules/cjs/loader:1465:32)
+    at Function._load (node:internal/modules/cjs/loader:1282:12)
+2025-11-12 16:06:16 [ERROR]: Error: ⨯ Unable to compile TypeScript:
+src/apis/Product/product_controller.ts(108,87): error TS1109: Expression expected.
+src/apis/Product/product_controller.ts(108,99): error TS1005: ':' expected.
+
+    at Object.<anonymous> (C:\Users\Tanjim\projects\backend\v2\navid_backend\src\apis\Product\product_controller.ts:1:7)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1730:14)
+    at Module._compile (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\source-map-support\source-map-support.js:568:25)
+    at Module.m._compile (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-4322629067381183.js:69:33)
+    at node:internal/modules/cjs/loader:1895:10
+    at require.extensions..jsx.require.extensions..js (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-4322629067381183.js:114:20)
+    at require.extensions.<computed> (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-4322629067381183.js:71:20)
+    at Object.nodeDevHook [as .ts] (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\ts-node-dev\lib\hook.js:63:13)
+    at Module.load (node:internal/modules/cjs/loader:1465:32)
+    at Function._load (node:internal/modules/cjs/loader:1282:12)
+2025-11-12 16:06:27 [ERROR]: Error: ⨯ Unable to compile TypeScript:
+src/apis/Product/product_controller.ts(108,87): error TS1109: Expression expected.
+src/apis/Product/product_controller.ts(108,99): error TS1005: ':' expected.
+
+    at Object.<anonymous> (C:\Users\Tanjim\projects\backend\v2\navid_backend\src\apis\Product\product_controller.ts:1:7)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1730:14)
+    at Module._compile (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\source-map-support\source-map-support.js:568:25)
+    at Module.m._compile (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-4322629067381183.js:69:33)
+    at node:internal/modules/cjs/loader:1895:10
+    at require.extensions..jsx.require.extensions..js (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-4322629067381183.js:114:20)
+    at require.extensions.<computed> (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-4322629067381183.js:71:20)
+    at Object.nodeDevHook [as .ts] (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\ts-node-dev\lib\hook.js:63:13)
+    at Module.load (node:internal/modules/cjs/loader:1465:32)
+    at Function._load (node:internal/modules/cjs/loader:1282:12)
+2025-11-12 16:06:29 [ERROR]: Error: ⨯ Unable to compile TypeScript:
+src/apis/Product/product_controller.ts(108,87): error TS1109: Expression expected.
+src/apis/Product/product_controller.ts(108,99): error TS1005: ':' expected.
+
+    at Object.<anonymous> (C:\Users\Tanjim\projects\backend\v2\navid_backend\src\apis\Product\product_controller.ts:1:7)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1730:14)
+    at Module._compile (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\source-map-support\source-map-support.js:568:25)
+    at Module.m._compile (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-4322629067381183.js:69:33)
+    at node:internal/modules/cjs/loader:1895:10
+    at require.extensions..jsx.require.extensions..js (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-4322629067381183.js:114:20)
+    at require.extensions.<computed> (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-4322629067381183.js:71:20)
+    at Object.nodeDevHook [as .ts] (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\ts-node-dev\lib\hook.js:63:13)
+    at Module.load (node:internal/modules/cjs/loader:1465:32)
+    at Function._load (node:internal/modules/cjs/loader:1282:12)
+2025-11-12 16:06:31 [ERROR]: Error: ⨯ Unable to compile TypeScript:
+src/apis/Product/product_controller.ts(108,81): error TS1109: Expression expected.
+src/apis/Product/product_controller.ts(108,93): error TS1005: ':' expected.
+
+    at Object.<anonymous> (C:\Users\Tanjim\projects\backend\v2\navid_backend\src\apis\Product\product_controller.ts:1:7)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1730:14)
+    at Module._compile (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\source-map-support\source-map-support.js:568:25)
+    at Module.m._compile (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-4322629067381183.js:69:33)
+    at node:internal/modules/cjs/loader:1895:10
+    at require.extensions..jsx.require.extensions..js (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-4322629067381183.js:114:20)
+    at require.extensions.<computed> (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-4322629067381183.js:71:20)
+    at Object.nodeDevHook [as .ts] (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\ts-node-dev\lib\hook.js:63:13)
+    at Module.load (node:internal/modules/cjs/loader:1465:32)
+    at Function._load (node:internal/modules/cjs/loader:1282:12)
+2025-11-12 16:06:49 [ERROR]: C:\Users\Tanjim\projects\backend\v2\navid_backend\src\apis\Product\product_controller.ts:122
+        let whole_sale;
+            ^
+
+SyntaxError: Identifier 'whole_sale' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1662:18)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1704:20)
+    at Module._compile (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\source-map-support\source-map-support.js:568:25)
+    at Module.m._compile (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-4322629067381183.js:69:33)
+    at node:internal/modules/cjs/loader:1895:10
+    at require.extensions..jsx.require.extensions..js (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-4322629067381183.js:114:20)
+    at require.extensions.<computed> (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-4322629067381183.js:71:20)
+    at Object.nodeDevHook [as .ts] (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\ts-node-dev\lib\hook.js:63:13)
+    at Module.load (node:internal/modules/cjs/loader:1465:32)
+    at Function._load (node:internal/modules/cjs/loader:1282:12)
+2025-11-12 16:06:51 [ERROR]: C:\Users\Tanjim\projects\backend\v2\navid_backend\src\apis\Product\product_controller.ts:122
+        let whole_sale;
+            ^
+
+SyntaxError: Identifier 'whole_sale' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1662:18)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1704:20)
+    at Module._compile (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\source-map-support\source-map-support.js:568:25)
+    at Module.m._compile (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-4322629067381183.js:69:33)
+    at node:internal/modules/cjs/loader:1895:10
+    at require.extensions..jsx.require.extensions..js (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-4322629067381183.js:114:20)
+    at require.extensions.<computed> (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-4322629067381183.js:71:20)
+    at Object.nodeDevHook [as .ts] (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\ts-node-dev\lib\hook.js:63:13)
+    at Module.load (node:internal/modules/cjs/loader:1465:32)
+    at Function._load (node:internal/modules/cjs/loader:1282:12)
+2025-11-12 17:07:05 [ERROR]: Error: ⨯ Unable to compile TypeScript:
+src/apis/Cart/cart_service.ts(7,7): error TS1005: ',' expected.
+
+    at Object.<anonymous> (C:\Users\Tanjim\projects\backend\v2\navid_backend\src\apis\Cart\cart_service.ts:1:7)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1730:14)
+    at Module._compile (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\source-map-support\source-map-support.js:568:25)
+    at Module.m._compile (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-4322629067381183.js:69:33)
+    at node:internal/modules/cjs/loader:1895:10
+    at require.extensions..jsx.require.extensions..js (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-4322629067381183.js:114:20)
+    at require.extensions.<computed> (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-4322629067381183.js:71:20)
+    at Object.nodeDevHook [as .ts] (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\ts-node-dev\lib\hook.js:63:13)
+    at Module.load (node:internal/modules/cjs/loader:1465:32)
+    at Function._load (node:internal/modules/cjs/loader:1282:12)
+2025-11-12 17:07:53 [ERROR]: Error: ⨯ Unable to compile TypeScript:
+src/apis/Cart/cart_service.ts(6,7): error TS1109: Expression expected.
+
+    at Object.<anonymous> (C:\Users\Tanjim\projects\backend\v2\navid_backend\src\apis\Cart\cart_service.ts:1:7)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1730:14)
+    at Module._compile (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\source-map-support\source-map-support.js:568:25)
+    at Module.m._compile (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-4322629067381183.js:69:33)
+    at node:internal/modules/cjs/loader:1895:10
+    at require.extensions..jsx.require.extensions..js (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-4322629067381183.js:114:20)
+    at require.extensions.<computed> (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-4322629067381183.js:71:20)
+    at Object.nodeDevHook [as .ts] (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\ts-node-dev\lib\hook.js:63:13)
+    at Module.load (node:internal/modules/cjs/loader:1465:32)
+    at Function._load (node:internal/modules/cjs/loader:1282:12)
+2025-11-12 17:08:27 [ERROR]: Error: ⨯ Unable to compile TypeScript:
+src/apis/Cart/cart_service.ts(8,44): error TS1109: Expression expected.
+
+    at Object.<anonymous> (C:\Users\Tanjim\projects\backend\v2\navid_backend\src\apis\Cart\cart_service.ts:1:7)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1730:14)
+    at Module._compile (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\source-map-support\source-map-support.js:568:25)
+    at Module.m._compile (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-4322629067381183.js:69:33)
+    at node:internal/modules/cjs/loader:1895:10
+    at require.extensions..jsx.require.extensions..js (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-4322629067381183.js:114:20)
+    at require.extensions.<computed> (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-4322629067381183.js:71:20)
+    at Object.nodeDevHook [as .ts] (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\ts-node-dev\lib\hook.js:63:13)
+    at Module.load (node:internal/modules/cjs/loader:1465:32)
+    at Function._load (node:internal/modules/cjs/loader:1282:12)
+2025-11-12 17:17:57 [ERROR]: Error: ⨯ Unable to compile TypeScript:
+src/apis/Cart/cart_controller.ts(16,19): error TS1005: ',' expected.
+src/apis/Cart/cart_controller.ts(16,24): error TS1005: ',' expected.
+src/apis/Cart/cart_controller.ts(16,25): error TS1109: Expression expected.
+
+    at Object.<anonymous> (C:\Users\Tanjim\projects\backend\v2\navid_backend\src\apis\Cart\cart_controller.ts:1:7)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1730:14)
+    at Module._compile (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\source-map-support\source-map-support.js:568:25)
+    at Module.m._compile (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-4322629067381183.js:69:33)
+    at node:internal/modules/cjs/loader:1895:10
+    at require.extensions..jsx.require.extensions..js (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-4322629067381183.js:114:20)
+    at require.extensions.<computed> (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-4322629067381183.js:71:20)
+    at Object.nodeDevHook [as .ts] (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\ts-node-dev\lib\hook.js:63:13)
+    at Module.load (node:internal/modules/cjs/loader:1465:32)
+    at Function._load (node:internal/modules/cjs/loader:1282:12)
+2025-11-12 17:18:35 [ERROR]: Error: ⨯ Unable to compile TypeScript:
+src/apis/Cart/cart_controller.ts(17,15): error TS1135: Argument expression expected.
+
+    at Object.<anonymous> (C:\Users\Tanjim\projects\backend\v2\navid_backend\src\apis\Cart\cart_controller.ts:1:7)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1730:14)
+    at Module._compile (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\source-map-support\source-map-support.js:568:25)
+    at Module.m._compile (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-4322629067381183.js:69:33)
+    at node:internal/modules/cjs/loader:1895:10
+    at require.extensions..jsx.require.extensions..js (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-4322629067381183.js:114:20)
+    at require.extensions.<computed> (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-4322629067381183.js:71:20)
+    at Object.nodeDevHook [as .ts] (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\ts-node-dev\lib\hook.js:63:13)
+    at Module.load (node:internal/modules/cjs/loader:1465:32)
+    at Function._load (node:internal/modules/cjs/loader:1282:12)
+2025-11-12 17:31:15 [ERROR]: Error: ⨯ Unable to compile TypeScript:
+src/apis/Cart/cart_service.ts(6,3): error TS1434: Unexpected keyword or identifier.
+
+    at Object.<anonymous> (C:\Users\Tanjim\projects\backend\v2\navid_backend\src\apis\Cart\cart_service.ts:1:7)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1730:14)
+    at Module._compile (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\source-map-support\source-map-support.js:568:25)
+    at Module.m._compile (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-4322629067381183.js:69:33)
+    at node:internal/modules/cjs/loader:1895:10
+    at require.extensions..jsx.require.extensions..js (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-4322629067381183.js:114:20)
+    at require.extensions.<computed> (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-4322629067381183.js:71:20)
+    at Object.nodeDevHook [as .ts] (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\ts-node-dev\lib\hook.js:63:13)
+    at Module.load (node:internal/modules/cjs/loader:1465:32)
+    at Function._load (node:internal/modules/cjs/loader:1282:12)
+2025-11-12 17:35:46 [ERROR]: Error: ⨯ Unable to compile TypeScript:
+src/apis/Cart/cart_service.ts(31,7): error TS1109: Expression expected.
+
+    at Object.<anonymous> (C:\Users\Tanjim\projects\backend\v2\navid_backend\src\apis\Cart\cart_service.ts:1:7)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1730:14)
+    at Module._compile (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\source-map-support\source-map-support.js:568:25)
+    at Module.m._compile (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-4322629067381183.js:69:33)
+    at node:internal/modules/cjs/loader:1895:10
+    at require.extensions..jsx.require.extensions..js (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-4322629067381183.js:114:20)
+    at require.extensions.<computed> (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-4322629067381183.js:71:20)
+    at Object.nodeDevHook [as .ts] (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\ts-node-dev\lib\hook.js:63:13)
+    at Module.load (node:internal/modules/cjs/loader:1465:32)
+    at Function._load (node:internal/modules/cjs/loader:1282:12)
+2025-11-12 17:35:54 [ERROR]: Error: ⨯ Unable to compile TypeScript:
+src/apis/Cart/cart_service.ts(31,7): error TS1109: Expression expected.
+
+    at Object.<anonymous> (C:\Users\Tanjim\projects\backend\v2\navid_backend\src\apis\Cart\cart_service.ts:1:7)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1730:14)
+    at Module._compile (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\source-map-support\source-map-support.js:568:25)
+    at Module.m._compile (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-4322629067381183.js:69:33)
+    at node:internal/modules/cjs/loader:1895:10
+    at require.extensions..jsx.require.extensions..js (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-4322629067381183.js:114:20)
+    at require.extensions.<computed> (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-4322629067381183.js:71:20)
+    at Object.nodeDevHook [as .ts] (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\ts-node-dev\lib\hook.js:63:13)
+    at Module.load (node:internal/modules/cjs/loader:1465:32)
+    at Function._load (node:internal/modules/cjs/loader:1282:12)
+2025-11-12 17:37:37 [ERROR]: Error: ⨯ Unable to compile TypeScript:
+src/apis/Cart/cart_route.ts(34,1): error TS1128: Declaration or statement expected.
+
+    at Object.<anonymous> (C:\Users\Tanjim\projects\backend\v2\navid_backend\src\apis\Cart\cart_route.ts:1:7)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1730:14)
+    at Module._compile (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\source-map-support\source-map-support.js:568:25)
+    at Module.m._compile (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-4322629067381183.js:69:33)
+    at node:internal/modules/cjs/loader:1895:10
+    at require.extensions..jsx.require.extensions..js (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-4322629067381183.js:114:20)
+    at require.extensions.<computed> (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-4322629067381183.js:71:20)
+    at Object.nodeDevHook [as .ts] (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\ts-node-dev\lib\hook.js:63:13)
+    at Module.load (node:internal/modules/cjs/loader:1465:32)
+    at Function._load (node:internal/modules/cjs/loader:1282:12)
+2025-11-12 17:41:51 [ERROR]: Error: ⨯ Unable to compile TypeScript:
+src/apis/Cart/cart_service.ts(31,63): error TS1135: Argument expression expected.
+
+    at Object.<anonymous> (C:\Users\Tanjim\projects\backend\v2\navid_backend\src\apis\Cart\cart_service.ts:1:7)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1730:14)
+    at Module._compile (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\source-map-support\source-map-support.js:568:25)
+    at Module.m._compile (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-4322629067381183.js:69:33)
+    at node:internal/modules/cjs/loader:1895:10
+    at require.extensions..jsx.require.extensions..js (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-4322629067381183.js:114:20)
+    at require.extensions.<computed> (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-4322629067381183.js:71:20)
+    at Object.nodeDevHook [as .ts] (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\ts-node-dev\lib\hook.js:63:13)
+    at Module.load (node:internal/modules/cjs/loader:1465:32)
+    at Function._load (node:internal/modules/cjs/loader:1282:12)
+2025-11-12 17:47:17 [ERROR]: Error: ⨯ Unable to compile TypeScript:
+src/apis/Cart/cart_controller.ts(50,16): error TS1003: Identifier expected.
+
+    at Object.<anonymous> (C:\Users\Tanjim\projects\backend\v2\navid_backend\src\apis\Cart\cart_controller.ts:1:7)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1730:14)
+    at Module._compile (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\source-map-support\source-map-support.js:568:25)
+    at Module.m._compile (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-4322629067381183.js:69:33)
+    at node:internal/modules/cjs/loader:1895:10
+    at require.extensions..jsx.require.extensions..js (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-4322629067381183.js:114:20)
+    at require.extensions.<computed> (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-4322629067381183.js:71:20)
+    at Object.nodeDevHook [as .ts] (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\ts-node-dev\lib\hook.js:63:13)
+    at Module.load (node:internal/modules/cjs/loader:1465:32)
+    at Function._load (node:internal/modules/cjs/loader:1282:12)
+2025-11-12 17:53:10 [ERROR]: Error: ⨯ Unable to compile TypeScript:
+src/apis/Cart/cart_service.ts(61,18): error TS1003: Identifier expected.
+
+    at Object.<anonymous> (C:\Users\Tanjim\projects\backend\v2\navid_backend\src\apis\Cart\cart_service.ts:1:7)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1730:14)
+    at Module._compile (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\source-map-support\source-map-support.js:568:25)
+    at Module.m._compile (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-4322629067381183.js:69:33)
+    at node:internal/modules/cjs/loader:1895:10
+    at require.extensions..jsx.require.extensions..js (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-4322629067381183.js:114:20)
+    at require.extensions.<computed> (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-4322629067381183.js:71:20)
+    at Object.nodeDevHook [as .ts] (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\ts-node-dev\lib\hook.js:63:13)
+    at Module.load (node:internal/modules/cjs/loader:1465:32)
+    at Function._load (node:internal/modules/cjs/loader:1282:12)
+2025-11-12 17:53:20 [ERROR]: Error: ⨯ Unable to compile TypeScript:
+src/apis/Cart/cart_service.ts(61,23): error TS1005: ',' expected.
+src/apis/Cart/cart_service.ts(61,31): error TS1005: ',' expected.
+
+    at Object.<anonymous> (C:\Users\Tanjim\projects\backend\v2\navid_backend\src\apis\Cart\cart_service.ts:1:7)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1730:14)
+    at Module._compile (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\source-map-support\source-map-support.js:568:25)
+    at Module.m._compile (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-4322629067381183.js:69:33)
+    at node:internal/modules/cjs/loader:1895:10
+    at require.extensions..jsx.require.extensions..js (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-4322629067381183.js:114:20)
+    at require.extensions.<computed> (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-4322629067381183.js:71:20)
+    at Object.nodeDevHook [as .ts] (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\ts-node-dev\lib\hook.js:63:13)
+    at Module.load (node:internal/modules/cjs/loader:1465:32)
+    at Function._load (node:internal/modules/cjs/loader:1282:12)
+2025-11-12 17:53:21 [ERROR]: Error: ⨯ Unable to compile TypeScript:
+src/apis/Cart/cart_service.ts(61,11): error TS1005: ',' expected.
+src/apis/Cart/cart_service.ts(61,25): error TS1005: ',' expected.
+src/apis/Cart/cart_service.ts(61,33): error TS1005: ',' expected.
+
+    at Object.<anonymous> (C:\Users\Tanjim\projects\backend\v2\navid_backend\src\apis\Cart\cart_service.ts:1:7)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1730:14)
+    at Module._compile (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\source-map-support\source-map-support.js:568:25)
+    at Module.m._compile (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-4322629067381183.js:69:33)
+    at node:internal/modules/cjs/loader:1895:10
+    at require.extensions..jsx.require.extensions..js (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-4322629067381183.js:114:20)
+    at require.extensions.<computed> (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-4322629067381183.js:71:20)
+    at Object.nodeDevHook [as .ts] (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\ts-node-dev\lib\hook.js:63:13)
+    at Module.load (node:internal/modules/cjs/loader:1465:32)
+    at Function._load (node:internal/modules/cjs/loader:1282:12)
+2025-11-12 17:53:23 [ERROR]: Error: ⨯ Unable to compile TypeScript:
+src/apis/Cart/cart_service.ts(61,13): error TS1005: ',' expected.
+src/apis/Cart/cart_service.ts(61,27): error TS1005: ',' expected.
+src/apis/Cart/cart_service.ts(61,35): error TS1005: ',' expected.
+
+    at Object.<anonymous> (C:\Users\Tanjim\projects\backend\v2\navid_backend\src\apis\Cart\cart_service.ts:1:7)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1730:14)
+    at Module._compile (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\source-map-support\source-map-support.js:568:25)
+    at Module.m._compile (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-4322629067381183.js:69:33)
+    at node:internal/modules/cjs/loader:1895:10
+    at require.extensions..jsx.require.extensions..js (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-4322629067381183.js:114:20)
+    at require.extensions.<computed> (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-4322629067381183.js:71:20)
+    at Object.nodeDevHook [as .ts] (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\ts-node-dev\lib\hook.js:63:13)
+    at Module.load (node:internal/modules/cjs/loader:1465:32)
+    at Function._load (node:internal/modules/cjs/loader:1282:12)
+2025-11-12 17:55:42 [ERROR]: Error: ⨯ Unable to compile TypeScript:
+src/apis/Cart/cart_service.ts(8,15): error TS1005: ',' expected.
+src/apis/Cart/cart_service.ts(8,25): error TS1005: ',' expected.
+src/apis/Cart/cart_service.ts(8,32): error TS1005: ',' expected.
+
+    at Object.<anonymous> (C:\Users\Tanjim\projects\backend\v2\navid_backend\src\apis\Cart\cart_service.ts:1:7)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1730:14)
+    at Module._compile (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\source-map-support\source-map-support.js:568:25)
+    at Module.m._compile (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-4322629067381183.js:69:33)
+    at node:internal/modules/cjs/loader:1895:10
+    at require.extensions..jsx.require.extensions..js (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-4322629067381183.js:114:20)
+    at require.extensions.<computed> (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-4322629067381183.js:71:20)
+    at Object.nodeDevHook [as .ts] (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\ts-node-dev\lib\hook.js:63:13)
+    at Module.load (node:internal/modules/cjs/loader:1465:32)
+    at Function._load (node:internal/modules/cjs/loader:1282:12)
+2025-11-12 17:57:03 [ERROR]: C:\Users\Tanjim\projects\backend\v2\navid_backend\src\apis\Cart\cart_service.ts:35
+    const ;
+          ^
+
+SyntaxError: Unexpected token ';'
+    at wrapSafe (node:internal/modules/cjs/loader:1662:18)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1704:20)
+    at Module._compile (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\source-map-support\source-map-support.js:568:25)
+    at Module.m._compile (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-4322629067381183.js:69:33)
+    at node:internal/modules/cjs/loader:1895:10
+    at require.extensions..jsx.require.extensions..js (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-4322629067381183.js:114:20)
+    at require.extensions.<computed> (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-4322629067381183.js:71:20)
+    at Object.nodeDevHook [as .ts] (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\ts-node-dev\lib\hook.js:63:13)
+    at Module.load (node:internal/modules/cjs/loader:1465:32)
+    at Function._load (node:internal/modules/cjs/loader:1282:12)

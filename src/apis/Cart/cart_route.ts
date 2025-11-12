@@ -29,9 +29,8 @@ cart_router
     "/cart/delete-item/:id",
     verifyToken(config.USER),
     asyncWrapper(cart_controller.delete_cart_item),
-  );
-
-// .patch('/cart/update/:id',
-//     verifyToken(config.USER),
-//     asyncWrapper(cart_controller.update)
-// )
+  )
+  .patch('/cart/update/:id',
+    verifyToken(config.USER),
+    asyncWrapper(cart_controller.update)
+  )

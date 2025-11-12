@@ -4,6 +4,7 @@ import asyncWrapper from "../../middleware/asyncWrapper";
 import upload_product_image from "../../middleware/prouct_image_upload";
 import verifyToken from "../../middleware/verifyToken";
 import { product_controller } from "./product_controller";
+import uploadFile from "../../middleware/fileUploader";
 
 export const product_router = express.Router();
 
@@ -11,6 +12,7 @@ product_router
   .post(
     "/product/create",
     verifyToken(config.ADMIN),
+    uploadFile(),
     asyncWrapper(product_controller.create),
   )
 
@@ -29,6 +31,7 @@ product_router
   .patch(
     "/product/update/:id",
     verifyToken(config.ADMIN),
+    uploadFile(),
     asyncWrapper(product_controller.update),
   )
 

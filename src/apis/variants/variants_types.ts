@@ -24,6 +24,7 @@ export interface IVariant extends Document {
     price: number;
     discount: number;
     product: Types.ObjectId;
+    is_deleted: boolean,
 }
 
 

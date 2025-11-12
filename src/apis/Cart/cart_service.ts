@@ -1,15 +1,15 @@
 import Queries, { QueryKeys, SearchKeys } from "../../utils/Queries";
+import auth_model from "../Auth/auth_model";
+import { variants_model } from "../variants/variants_model";
 import { cart_model } from "./cart_model";
 import { ICart, } from "./cart_type";
 
-const create_or_update = async (data:any) => {
-
-
-  let cart = await cart_model.findOne(data);
-
+const create_or_update = async (data: any) => {
+  const created_cart = await cart_model.create(data)
   return {
     success: true,
     message: "cart created successfully",
+    data: created_cart,
   };
 }
 
@@ -31,7 +31,10 @@ const get_all = async (
 };
 
 const update = async (id: string, data: ICart) => {
-  const updated_cart = await cart_model.findByIdAndUpdate(id, data, {
+
+  const updated_cart = await cart_model.findByIdAndUpdate(id, {
+    quantity: data.quantity,
+  }, {
     new: true,
   });
 
@@ -56,14 +59,21 @@ const delete_cart = async (id: string) => {
   };
 };
 
-const delete_cart_item = async (id: string, user_id: string) => {
-   cart_model.findOne({ user: user_id });
+const delete_cart_item = async (variant_id: string, user_id: string) => {
+  const exist_user = auth_model.findOne({ _id: user_id });
+  if (!exist_user) throw new Error("User not found");
 
- 
+  const exist_variant = variants_model.findOne({ _id: variant_id });
+  if (!exist_variant) throw new Error("Variant not found");
+
+  const deletedCart = await cart_model.findOneAndDelete({ _id: variant_id, user: user_id });
+
+  if (!deletedCart) throw new Error("Something went wrong while deleting the item");
 
   return {
     success: true,
     message: "Item deleted successfully",
+    data: deletedCart,
   };
 };
 

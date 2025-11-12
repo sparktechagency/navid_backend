@@ -34,20 +34,20 @@ const get_all = async (req: Request, res: Response) => {
 
 const delete_cart = async (req: Request, res: Response) => {
   const result = await cart_service.delete_cart(req?.params?.id as string);
-
   sendResponse(res, HttpStatus.SUCCESS, result);
 };
 
 const update = async (req: Request, res: Response) => {
   const result = await cart_service.update(
     req?.params?.id as string,
-    req?.body?.items,
+    req?.body,
   );
 
   sendResponse(res, HttpStatus.SUCCESS, result);
 };
 
 const delete_cart_item = async (req: Request, res: Response) => {
+
   const result = await cart_service.delete_cart_item(
     req?.params?.id as string,
     req?.user?._id?.toString() as string,

@@ -6,10 +6,11 @@ import { product_model } from "./product_model";
 import IProduct from "./product_type";
 
 const create = async (body: IProduct) => {
-  await product_model.create(body);
+  const result = await product_model.create(body);
   return {
     success: true,
     message: "product created successfully",
+    data: result
   };
 };
 
@@ -193,6 +194,9 @@ const get_all = async (queryKeys: QueryKeys, searchKeys: SearchKeys) => {
           }
         },
       },
+    },
+    {
+      $sort: { _id: 1 }
     }
   ],);
 };
@@ -245,37 +249,13 @@ const get_details = async (id: string, tax: string | null) => {
         name: 1,
         description: 1,
         whole_sale: 1,
+        video: 1,
         "category.name": 1,
         "category.img": 1,
         "category._id": 1,
         "sub_category.name": 1,
         "sub_category.img": 1,
         "sub_category._id": 1,
-        // img: { $arrayElemAt: [{ $ifNull: ["$variants.img", []] }, 0] },
-        // price: { $arrayElemAt: [{ $ifNull: ["$variants.price", []] }, 0] },
-        // discount: { $arrayElemAt: [{ $ifNull: ["$variants.discount", []] }, 0] },
-        // price_after_discount: {
-        //   $cond: {
-        //     if: { $gt: [{ $arrayElemAt: [{ $ifNull: ["$variants.discount", []] }, 0] }, 0] },
-        //     then: {
-        //       $subtract: [
-        //         { $arrayElemAt: [{ $ifNull: ["$variants.price", []] }, 0] },
-        //         {
-        //           $divide: [
-        //             {
-        //               $multiply: [
-        //                 { $arrayElemAt: [{ $ifNull: ["$variants.price", []] }, 0] },
-        //                 { $arrayElemAt: [{ $ifNull: ["$variants.discount", []] }, 0] }
-        //               ]
-        //             },
-        //             100
-        //           ]
-        //         }
-        //       ]
-        //     },
-        //     else: { $arrayElemAt: [{ $ifNull: ["$variants.price", []] }, 0] }
-        //   }
-        // },
         variants: {
           $map: {
             input: {
@@ -327,21 +307,18 @@ const get_details = async (id: string, tax: string | null) => {
         },
       },
     },
+    {
+      $addFields: {
+        banners: {
+          $reduce: {
+            input: "$variants.img",
+            initialValue: [],
+            in: { $concatArrays: ["$$value", "$$this"] },
+          },
+        },
+      },
+    },
   ]);
-  //  colors: {
-  //           $map: {
-  //             input: "$variants",
-  //             as: "variant",
-  //             in: "$$variant.color"
-  //           }
-  //         },
-  //         size: {
-  //           $map: {
-  //             input: "$variants",
-  //             as: "variant",
-  //             in: "$$variant.size"
-  //           }
-  //         }
   const related_product = await get_all(
     {
       category: product?.[0]?.category?._id,
@@ -373,15 +350,22 @@ const update_product = async (id: string, body: IProduct) => {
   return {
     success: true,
     message: "product updated successfully",
+    data: result
   };
 };
 
 const delete_product = async (id: string) => {
- await product_model.findByIdAndUpdate(id,{
-    $set:{
-     is_deleted:true
+
+  const product = await product_model.findOne({ _id: id })
+  if (!product) {
+    throw new Error("product not found!")
+  }
+
+  await product_model.findByIdAndUpdate(id, {
+    $set: {
+      is_deleted: !product?.is_deleted
     }
- })
+  })
 
   return {
     success: true,

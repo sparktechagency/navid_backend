@@ -21,7 +21,7 @@ const get_all = async (queryKeys: QueryKeys, searchKeys: SearchKeys) => {
 }
 
 const update = async (id: string, data: { [key: string]: string }) => {
-  await variants_model.findByIdAndUpdate(id, {
+  const res = await variants_model.findByIdAndUpdate(id, {
     $set: {
       ...data
     }
@@ -30,21 +30,32 @@ const update = async (id: string, data: { [key: string]: string }) => {
   return {
     success: true,
     message: 'variants updated successfully',
+    data: res
   }
 }
 
 const delete_variants = async (id: string) => {
-  await variants_model.findByIdAndUpdate(id, {
-    $set: {
-      is_deleted: true
-    }
-  })
-  return {
-    success: true,
-    message: 'variants deleted successfully',
+  const variant = await variants_model.findById(id);
+  if (!variant) {
+    return {
+      success: false,
+      message: "Variant not found",
+    };
   }
 
-}
+  const updated = await variants_model.findByIdAndUpdate(
+    id,
+    { $set: { is_deleted: !variant.is_deleted } },
+    { new: true }
+  );
+
+  return {
+    success: true,
+    message: `Variant ${updated && updated.is_deleted ? "deleted" : "restored"} successfully`,
+    data: updated,
+  };
+};
+
 
 export const variants_service = Object.freeze({
   create,

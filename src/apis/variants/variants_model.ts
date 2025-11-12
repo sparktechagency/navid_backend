@@ -37,6 +37,10 @@ const variants_schema = new Schema<IVariant>({
         max: [99, "Discount cannot be greater than 100"],
         default: 0,
     },
+    is_deleted: {
+        type: Boolean,
+        default: false
+    }
 }, { timestamps: true });
 
 variants_schema.index({ product: 1, size: 1 }, { unique: true })
