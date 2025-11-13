@@ -26443,3 +26443,8 @@ SyntaxError: Unexpected token ';'
     at Object.nodeDevHook [as .ts] (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\ts-node-dev\lib\hook.js:63:13)
     at Module.load (node:internal/modules/cjs/loader:1465:32)
     at Function._load (node:internal/modules/cjs/loader:1282:12)
+2025-11-13 09:18:07 [ERROR]: Error: listen EADDRINUSE: address already in use 0.0.0.0:5003
+    at Server.setupListenHandle [as _listen2] (node:net:1940:16)
+    at listenInCluster (node:net:1997:12)
+    at node:net:2206:7
+    at processTicksAndRejections (node:internal/process/task_queues:90:21)

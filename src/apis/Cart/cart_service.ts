@@ -31,7 +31,6 @@ const get_all = async (
 };
 
 const update = async (id: string, data: ICart) => {
-
   const updated_cart = await cart_model.findByIdAndUpdate(id, {
     quantity: data.quantity,
   }, {

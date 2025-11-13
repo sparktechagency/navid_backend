@@ -337,6 +337,7 @@ const get_details = async (id: string, tax: string | null) => {
 };
 
 const update_product = async (id: string, body: IProduct) => {
+  
   const result = await product_model.findOneAndUpdate(
     { _id: id },
     {

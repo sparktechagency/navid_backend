@@ -88,8 +88,9 @@ export const update = async (req: Request, res: Response) => {
   try {
     const { name, description, category, sub_category, whole_sale } = req.body;
     const { id } = req.params;
-
+    
     const video = !Array.isArray(req.files) && req.files?.video && req.files.video.length > 0 && req.files.video[0]?.path || null;
+    console.log(video)
     if (video) req.body.video = video
 
 
