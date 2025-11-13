@@ -31,10 +31,13 @@ const variants_schema = new Schema<IVariant>({
         ref: "product",
         required: [true, "Product is required"],
     },
+    price_after_discount: {
+        type: Number,
+        default: 0,
+    },
     discount: {
         type: Number,
         min: [0, "Discount cannot be less than 0"],
-        max: [99, "Discount cannot be greater than 100"],
         default: 0,
     },
     is_deleted: {

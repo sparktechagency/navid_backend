@@ -19,7 +19,6 @@ const get_all = async (
   searchKeys: SearchKeys,
   populatePath?: string | string[],
   selectFields?: string | string[],
-
 ) => {
   return await Aggregator(
     cart_model,
@@ -52,6 +51,13 @@ const get_all = async (
         total_price: {
           $multiply: ["$variant.price", "$quantity"],
         },
+      }
+    },
+    {
+      $addFields: {
+       price_after_discount: {
+         $ifNull: ["$variant.price_after_discount", "$variant.price"]
+       } 
       }
     },
     {

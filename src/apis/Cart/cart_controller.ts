@@ -25,8 +25,7 @@ const get_all = async (req: Request, res: Response) => {
     queryKeys,
     searchKeys,
     populatePath,
-    selectFields,
-    order as string,
+    selectFields
   );
 
   sendResponse(res, HttpStatus.SUCCESS, result);
