@@ -1,4 +1,5 @@
-import Queries, { QueryKeys, SearchKeys } from "../../utils/Queries";
+import Aggregator from '../../utils/Aggregator';
+import { QueryKeys, SearchKeys } from "../../utils/Queries";
 import auth_model from "../Auth/auth_model";
 import { variants_model } from "../variants/variants_model";
 import { cart_model } from "./cart_model";
@@ -18,14 +19,59 @@ const get_all = async (
   searchKeys: SearchKeys,
   populatePath?: string | string[],
   selectFields?: string | string[],
-  order?: string,
+
 ) => {
-  return await Queries(
+  return await Aggregator(
     cart_model,
     queryKeys,
-    searchKeys,
-    populatePath,
-    selectFields,
+    searchKeys, [
+    {
+      $lookup: {
+        from: "variants",
+        localField: "variant",
+        foreignField: "_id",
+        as: "variant",
+      },
+    },
+    {
+      $lookup: {
+        from: "products",
+        localField: "product_id",
+        foreignField: "_id",
+        as: "product",
+      },
+    },
+    {
+      $unwind: "$variant",
+    },
+    {
+      $unwind: "$product",
+    },
+    {
+      $addFields: {
+        total_price: {
+          $multiply: ["$variant.price", "$quantity"],
+        },
+      }
+    },
+    {
+      $project: {
+        variant: {
+          _id: 1,
+          name: 1,
+          price: 1,
+          img: 1,
+        },
+        product: {
+          _id: 1,
+          name: 1,
+          video: 1,
+        },
+        quantity: 1,
+        total_price: 1,
+      }
+    }
+  ]
   )
 
 };
