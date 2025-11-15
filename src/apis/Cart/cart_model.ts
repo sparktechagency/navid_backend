@@ -28,17 +28,4 @@ const cart_schema = new Schema<ICart>({
 
 cart_schema.index({ user: 1, "product_id": 1 ,"variant": 1}, { unique: true });
 
-// cart_schema.pre("save", function (next) {
-//   this.total_quantity = this.items.reduce(
-//     (acc, item) => acc + item.quantity,
-//     0,
-//   );
-//   this.total_price = this.items.reduce(
-//     (acc, item) => acc + item.quantity * item.price, //item.quantity *
-//     0,
-//   );
-
-//   next();
-// });
-
 export const cart_model = model<ICart>("cart", cart_schema);

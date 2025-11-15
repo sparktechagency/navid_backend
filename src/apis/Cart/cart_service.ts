@@ -6,6 +6,18 @@ import { cart_model } from "./cart_model";
 import { ICart, } from "./cart_type";
 
 const create_or_update = async (data: any) => {
+  const exist_cart = await cart_model.findOne({ user: data?.user, variant: data?.variant });
+  if (exist_cart) {
+    await cart_model.findByIdAndUpdate(exist_cart._id, {
+      quantity: data?.quantity,
+    }, { new: true });
+    return {
+      success: true,
+      message: "cart updated successfully",
+      data: exist_cart,
+    };
+  }
+  
   const created_cart = await cart_model.create(data)
   return {
     success: true,
@@ -55,9 +67,9 @@ const get_all = async (
     },
     {
       $addFields: {
-       price_after_discount: {
-         $ifNull: ["$variant.price_after_discount", "$variant.price"]
-       } 
+        price_after_discount: {
+          $ifNull: ["$variant.price_after_discount", "$variant.price"]
+        }
       }
     },
     {
@@ -75,7 +87,7 @@ const get_all = async (
         },
         quantity: 1,
         total_price: 1,
-      }
+      },
     }
   ]
   )
@@ -83,6 +95,8 @@ const get_all = async (
 };
 
 const update = async (id: string, data: ICart) => {
+  const exist_cart = await cart_model.findById(id);
+  if (!exist_cart) throw new Error("Cart not found");
   const updated_cart = await cart_model.findByIdAndUpdate(id, {
     quantity: data.quantity,
   }, {
