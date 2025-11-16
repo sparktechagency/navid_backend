@@ -106,26 +106,14 @@ const order_schema = new Schema<IOrder>(
           required: [true, "Quantity is required"],
           min: 1,
         },
-        price_at_order: {
-          type: Number,
-          required: [true, "Price at order is required"],
-        },
-        discount_at_order: {
-          type: Number,
-          default: 0,
-        },
       },
     ],
-    total_amount: {
-      type: Number,
-      required: [true, "Total amount is required"],
-    },
-
     payment_status: {
       type: String,
       enum: ["pending", "paid", "failed", "refunded"],
       default: "pending",
     },
+
     delivery_status: {
       type: String,
       enum: ["pending", "shipped", "delivered"],
