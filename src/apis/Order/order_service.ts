@@ -43,10 +43,11 @@ const create_order = async (data: any, user_id: string) => {
           { session }
         );
       });
+
       const Product_ids = items.map((item: IOrderItem) => item.product);
 
       const cartUpdate = cart_model.deleteMany(
-        { user: user_id, items: { $in: Product_ids } },
+        { user: user_id, product_id: { $in: Product_ids } },
         { session }
       );
 
