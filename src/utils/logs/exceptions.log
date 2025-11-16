@@ -26772,3 +26772,18 @@ src/apis/Cart/cart_service.ts(106,17): error TS1109: Expression expected.
     at Object.nodeDevHook [as .ts] (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\ts-node-dev\lib\hook.js:63:13)
     at Module.load (node:internal/modules/cjs/loader:1465:32)
     at Function._load (node:internal/modules/cjs/loader:1282:12)
+2025-11-15 15:20:10 [ERROR]: C:\Users\Tanjim\projects\backend\v2\navid_backend\src\apis\Cart\cart_service.ts:22
+    var ;
+        ^
+
+SyntaxError: Unexpected token ';'
+    at wrapSafe (node:internal/modules/cjs/loader:1662:18)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1704:20)
+    at Module._compile (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\source-map-support\source-map-support.js:568:25)
+    at Module.m._compile (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-04331147738172492.js:69:33)
+    at node:internal/modules/cjs/loader:1895:10
+    at require.extensions..jsx.require.extensions..js (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-04331147738172492.js:114:20)
+    at require.extensions.<computed> (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-04331147738172492.js:71:20)
+    at Object.nodeDevHook [as .ts] (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\ts-node-dev\lib\hook.js:63:13)
+    at Module.load (node:internal/modules/cjs/loader:1465:32)
+    at Function._load (node:internal/modules/cjs/loader:1282:12)

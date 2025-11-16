@@ -7,6 +7,7 @@ import { ICart, } from "./cart_type";
 
 const create_or_update = async (data: any) => {
   const exist_cart = await cart_model.findOne({ user: data?.user, variant: data?.variant });
+  const variant = await variants_model.findById(data?.variant);
   if (exist_cart) {
     await cart_model.findByIdAndUpdate(exist_cart._id, {
       quantity: data?.quantity,
@@ -17,7 +18,6 @@ const create_or_update = async (data: any) => {
       data: exist_cart,
     };
   }
-  
   const created_cart = await cart_model.create(data)
   return {
     success: true,
