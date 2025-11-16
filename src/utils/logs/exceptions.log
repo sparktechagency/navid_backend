@@ -26787,3 +26787,42 @@ SyntaxError: Unexpected token ';'
     at Object.nodeDevHook [as .ts] (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\ts-node-dev\lib\hook.js:63:13)
     at Module.load (node:internal/modules/cjs/loader:1465:32)
     at Function._load (node:internal/modules/cjs/loader:1282:12)
+2025-11-16 12:04:57 [ERROR]: Error: ⨯ Unable to compile TypeScript:
+src/apis/variants/variants_service.ts(21,1): error TS1003: Identifier expected.
+
+    at Object.<anonymous> (C:\Users\Tanjim\projects\backend\v2\navid_backend\src\apis\variants\variants_service.ts:1:7)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1730:14)
+    at Module._compile (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\source-map-support\source-map-support.js:568:25)
+    at Module.m._compile (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-8918531311980824.js:69:33)
+    at node:internal/modules/cjs/loader:1895:10
+    at require.extensions..jsx.require.extensions..js (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-8918531311980824.js:114:20)
+    at require.extensions.<computed> (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-8918531311980824.js:71:20)
+    at Object.nodeDevHook [as .ts] (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\ts-node-dev\lib\hook.js:63:13)
+    at Module.load (node:internal/modules/cjs/loader:1465:32)
+    at Function._load (node:internal/modules/cjs/loader:1282:12)
+2025-11-16 12:39:26 [ERROR]: C:\Users\Tanjim\projects\backend\v2\navid_backend\src\apis\Order\order_service.ts:234
+            const [order, updated_cart, notification, productUpdate, variantUpdate] = yield Promise.all([
+                   ^
+
+SyntaxError: Identifier 'order' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1662:18)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1704:20)
+    at Module._compile (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\source-map-support\source-map-support.js:568:25)
+    at Module.m._compile (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-8918531311980824.js:69:33)
+    at node:internal/modules/cjs/loader:1895:10
+    at require.extensions..jsx.require.extensions..js (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-8918531311980824.js:114:20)
+    at require.extensions.<computed> (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-8918531311980824.js:71:20)
+    at Object.nodeDevHook [as .ts] (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\ts-node-dev\lib\hook.js:63:13)
+    at Module.load (node:internal/modules/cjs/loader:1465:32)
+    at Function._load (node:internal/modules/cjs/loader:1282:12)
+2025-11-16 12:39:46 [ERROR]: ReferenceError: create_order is not defined
+    at Object.<anonymous> (C:\Users\Tanjim\projects\backend\v2\navid_backend\src\apis\Order\order_service.ts:320:3)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1730:14)
+    at Module._compile (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\source-map-support\source-map-support.js:568:25)
+    at Module.m._compile (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-8918531311980824.js:69:33)
+    at node:internal/modules/cjs/loader:1895:10
+    at require.extensions..jsx.require.extensions..js (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-8918531311980824.js:114:20)
+    at require.extensions.<computed> (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-8918531311980824.js:71:20)
+    at Object.nodeDevHook [as .ts] (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\ts-node-dev\lib\hook.js:63:13)
+    at Module.load (node:internal/modules/cjs/loader:1465:32)
+    at Function._load (node:internal/modules/cjs/loader:1282:12)

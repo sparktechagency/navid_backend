@@ -15,7 +15,7 @@ const variants_schema = new Schema<IVariant>({
     },
     size: {
         type: String,
-        default: ISize.SMALL,
+        required: [true, "Size is required"],
         enum: Object.values(ISize),
     },
     quantity: {
