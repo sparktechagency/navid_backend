@@ -6,7 +6,7 @@ import { variants_model } from '../variants/variants_model';
 import { order_model } from "./order_model";
 import { IOrder, IOrderItem } from "./order_type";
 
-const create_order = async (data: any, user_id: string) => {
+const create_order = async (data: any) => {
   const session = await mongoose.startSession();
   try {
     const result = await session.withTransaction(async () => {
@@ -14,11 +14,12 @@ const create_order = async (data: any, user_id: string) => {
         items,
         delivery_address,
         pick_up_address,
+        user
       } = data;
 
-
+      console.log(data)
       const order_data = {
-        user: user_id,
+        user: user,
         items,
         delivery_address,
         pick_up_address,
@@ -28,7 +29,7 @@ const create_order = async (data: any, user_id: string) => {
       const notificationPromise = notification_model.insertMany(
         [
           {
-            user: user_id,
+            user: user,
             title: "Order Confirmed",
             message: `Your order has been confirmed. Please make payment.`,
           },
@@ -46,7 +47,7 @@ const create_order = async (data: any, user_id: string) => {
       const Product_ids = items.map((item: IOrderItem) => item.product);
 
       const cartUpdate = cart_model.deleteMany(
-        { user: user_id, items: { $in: Product_ids } },
+        { user: user, items: { $in: Product_ids } },
         { session }
       );
 
@@ -97,6 +98,10 @@ const get_order_details = async (id: string) => {
     })
     .populate({
       path: "items.product",
+      select: "name price img",
+    })
+    .populate({
+      path: "items.variants",
       select: "name price img",
     })
     .populate({
