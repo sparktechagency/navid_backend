@@ -79,6 +79,7 @@ const get_all = async (
           name: 1,
           price: 1,
           img: 1,
+          size: 1,
         },
         product: {
           _id: 1,

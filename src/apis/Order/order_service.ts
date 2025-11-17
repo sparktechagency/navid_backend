@@ -14,11 +14,11 @@ const create_order = async (data: any, user_id: string) => {
         items,
         delivery_address,
         pick_up_address,
+        user
       } = data;
 
-
       const order_data = {
-        user: user_id,
+        user: user,
         items,
         delivery_address,
         pick_up_address,
@@ -28,7 +28,7 @@ const create_order = async (data: any, user_id: string) => {
       const notificationPromise = notification_model.insertMany(
         [
           {
-            user: user_id,
+            user: user,
             title: "Order Confirmed",
             message: `Your order has been confirmed. Please make payment.`,
           },
@@ -98,6 +98,10 @@ const get_order_details = async (id: string) => {
     })
     .populate({
       path: "items.product",
+      select: "name price img",
+    })
+    .populate({
+      path: "items.variants",
       select: "name price img",
     })
     .populate({
