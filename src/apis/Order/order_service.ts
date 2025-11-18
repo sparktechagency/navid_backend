@@ -14,7 +14,8 @@ const create_order = async (data: any, user_id: string) => {
         items,
         delivery_address,
         pick_up_address,
-        user
+        user,
+        totalAmount
       } = data;
 
       const order_data = {
@@ -22,6 +23,7 @@ const create_order = async (data: any, user_id: string) => {
         items,
         delivery_address,
         pick_up_address,
+        total_amount: totalAmount,
       };
       const orderPromise = order_model.insertMany([order_data], { session });
 
@@ -98,11 +100,11 @@ const get_order_details = async (id: string) => {
     })
     .populate({
       path: "items.product",
-      select: "name price img",
+      select: "name video whole_sale",
     })
     .populate({
-      path: "items.variants",
-      select: "name price img",
+      path: "items.variant",
+      select: "name price img price_after_discount discount quantity color size",
     })
     .populate({
       path: "delivery_address",

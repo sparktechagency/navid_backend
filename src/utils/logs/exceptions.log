@@ -26787,3 +26787,32 @@ SyntaxError: Unexpected token ';'
     at Object.nodeDevHook [as .ts] (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\ts-node-dev\lib\hook.js:63:13)
     at Module.load (node:internal/modules/cjs/loader:1465:32)
     at Function._load (node:internal/modules/cjs/loader:1282:12)
+2025-11-18 11:05:08 [ERROR]: Error: ⨯ Unable to compile TypeScript:
+src/apis/Order/order_controller.ts(24,5): error TS1005: ',' expected.
+
+    at Object.<anonymous> (C:\Users\Tanjim\projects\backend\v2\navid_backend\src\apis\Order\order_controller.ts:1:7)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1730:14)
+    at Module._compile (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\source-map-support\source-map-support.js:568:25)
+    at Module.m._compile (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-4972163073419851.js:69:33)
+    at node:internal/modules/cjs/loader:1895:10
+    at require.extensions..jsx.require.extensions..js (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-4972163073419851.js:114:20)
+    at require.extensions.<computed> (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-4972163073419851.js:71:20)
+    at Object.nodeDevHook [as .ts] (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\ts-node-dev\lib\hook.js:63:13)
+    at Module.load (node:internal/modules/cjs/loader:1465:32)
+    at Function._load (node:internal/modules/cjs/loader:1282:12)
+2025-11-18 11:12:59 [ERROR]: Error: ⨯ Unable to compile TypeScript:
+src/apis/Order/order_service.ts(20,1): error TS1128: Declaration or statement expected.
+src/apis/Order/order_service.ts(70,6): error TS1472: 'catch' or 'finally' expected.
+src/apis/Order/order_service.ts(72,5): error TS1005: ',' expected.
+src/apis/Order/order_service.ts(77,1): error TS1128: Declaration or statement expected.
+
+    at Object.<anonymous> (C:\Users\Tanjim\projects\backend\v2\navid_backend\src\apis\Order\order_service.ts:1:7)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1730:14)
+    at Module._compile (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\source-map-support\source-map-support.js:568:25)
+    at Module.m._compile (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-4972163073419851.js:69:33)
+    at node:internal/modules/cjs/loader:1895:10
+    at require.extensions..jsx.require.extensions..js (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-4972163073419851.js:114:20)
+    at require.extensions.<computed> (C:\Users\Tanjim\AppData\Local\Temp\ts-node-dev-hook-4972163073419851.js:71:20)
+    at Object.nodeDevHook [as .ts] (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\ts-node-dev\lib\hook.js:63:13)
+    at Module.load (node:internal/modules/cjs/loader:1465:32)
+    at Function._load (node:internal/modules/cjs/loader:1282:12)

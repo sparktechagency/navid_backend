@@ -20,12 +20,14 @@ const get_all = async (req: Request, res: Response) => {
   let populatePath = [
     "items.product",
     "user",
+    "items.variant",
     "delivery_address",
     "pick_up_address",
   ];
   let selectFields = [
     "name img price",
     "name img email phone",
+    "img price_after_discount discount quantity color size",
     "name phone address",
     "name phone address",
   ];
@@ -33,16 +35,18 @@ const get_all = async (req: Request, res: Response) => {
   const { role, _id } = req?.user as IAuth;
   if (role !== "ADMIN" && role !== "SUPER_ADMIN") {
     queryKeys.user = _id as string;
-    populatePath = ["items.product", "delivery_address", "pick_up_address"];
+    populatePath = ["items.product", "user", "items.variant", "delivery_address", "pick_up_address"];
     selectFields = [
       "name img price",
+      "name email address",
+      "img price_after_discount price discount quantity color size",
       "name phone address",
       "name phone address",
     ];
   }
 
-  let searchKeys = {} as { name: string };
-  if (search) searchKeys.name = search as string;
+  let searchKeys = {} as { email: string };
+  if (search) searchKeys.email = search as string;
 
   const result = await order_service.get_all(
     queryKeys,
