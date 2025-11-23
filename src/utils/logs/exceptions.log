@@ -26816,3 +26816,11 @@ src/apis/Order/order_service.ts(77,1): error TS1128: Declaration or statement ex
     at Object.nodeDevHook [as .ts] (C:\Users\Tanjim\projects\backend\v2\navid_backend\node_modules\ts-node-dev\lib\hook.js:63:13)
     at Module.load (node:internal/modules/cjs/loader:1465:32)
     at Function._load (node:internal/modules/cjs/loader:1282:12)
+2025-11-23 10:01:10 [ERROR]: MongooseError: Cannot set a document's session to a session that has ended. Make sure you haven't called `endSession()` on the session you are passing to `$session()`.
+    at model.$session (/Users/shaharulsiyam/Desktop/projects/navid_backend/node_modules/mongoose/lib/document.js:932:11)
+    at Array.<anonymous> (/Users/shaharulsiyam/Desktop/projects/navid_backend/node_modules/mongoose/lib/model.js:2929:13)
+    at _start (/Users/shaharulsiyam/Desktop/projects/navid_backend/node_modules/mongoose/lib/helpers/parallelLimit.js:27:37)
+    at parallelLimit (/Users/shaharulsiyam/Desktop/projects/navid_backend/node_modules/mongoose/lib/helpers/parallelLimit.js:23:5)
+    at model.Model.$__insertMany (/Users/shaharulsiyam/Desktop/projects/navid_backend/node_modules/mongoose/lib/model.js:2952:3)
+    at /Users/shaharulsiyam/Desktop/projects/navid_backend/node_modules/kareem/index.js:497:25
+    at processTicksAndRejections (node:internal/process/task_queues:85:11)

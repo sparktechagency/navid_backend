@@ -1,15 +1,9 @@
 import { model, Schema } from "mongoose";
-import { IPayment } from "./payment_type";
 import { currency_list_code } from "../../utils/stripe/stripe_currency";
+import { IPayment } from "./payment_type";
 
 const payment_schema = new Schema<IPayment>(
   {
-    purpose: {
-      type: String,
-      required: [true, "purpose is required"],
-      default: "buy_product",
-      enum: ["buy_credits", "buy_product"],
-    },
     session_id: {
       type: String,
       required: [true, "session id is required"],
@@ -22,10 +16,7 @@ const payment_schema = new Schema<IPayment>(
       },
     },
     order: {
-      type: [Schema.Types.ObjectId],
-      required() {
-        return this.purpose === "buy_product";
-      },
+      type: Schema.Types.ObjectId,
       ref: "order",
     },
     status: {
@@ -36,12 +27,6 @@ const payment_schema = new Schema<IPayment>(
       type: Schema.Types.ObjectId,
       ref: "auth",
       required: [true, "user id is required"],
-    },
-    pay_by: {
-      type: String,
-      required: [true, "pay by is required"],
-      default: "CARD",
-      enum: ["CARD"],
     },
     amount: {
       type: Number,

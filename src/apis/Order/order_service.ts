@@ -14,12 +14,11 @@ const create_order = async (data: any, user_id: string) => {
         items,
         delivery_address,
         pick_up_address,
-        user,
         totalAmount
       } = data;
 
       const order_data = {
-        user: user,
+        user: user_id,
         items,
         delivery_address,
         pick_up_address,
@@ -30,7 +29,7 @@ const create_order = async (data: any, user_id: string) => {
       const notificationPromise = notification_model.insertMany(
         [
           {
-            user: user,
+            user: user_id,
             title: "Order Confirmed",
             message: `Your order has been confirmed. Please make payment.`,
           },

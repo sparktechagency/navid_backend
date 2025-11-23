@@ -6,12 +6,37 @@ import { sendResponse } from "../../utils/sendResponse";
 import auth_model from "../Auth/auth_model";
 import { auth_service } from "../Auth/auth_service";
 import { IAuth } from "../Auth/auth_types";
+import { order_service } from '../Order/order_service';
 import { payment_service } from "./payment_service";
 
 export const stripe = new Stripe(config.SRTRIPE_KEY);
 
+function build_price_data_from_order(order: any): IPaymentData[] {
+  const items = order?.items ?? [];
+
+  return items.map((item: any) => {
+    const variant = item?.variant || {};
+    const product = item?.product || {};
+
+    const unitAmount =
+      typeof variant.price_after_discount === "number" &&
+        variant.price_after_discount > 0
+        ? variant.price_after_discount
+        : typeof variant.price === "number"
+          ? variant.price
+          : 0;
+
+    return {
+      _id: product?._id?.toString?.() ?? "",
+      name: product?.name ?? "Order Item",
+      unit_amount: unitAmount,
+      quantity: item?.quantity ?? 1,
+    } as IPaymentData;
+  });
+}
+
 async function create(req: Request, res: Response) {
-  const { price_data, purpose, currency = "USD", _id } = req.body;
+  const { order_id, currency = "USD" } = req.body;
 
   const is_valid = await payment_service.validate_stripe_country_currency(
     currency,
@@ -20,44 +45,56 @@ async function create(req: Request, res: Response) {
 
   if (!is_valid) throw new Error("invalid currency");
 
+  const orderResponse = await order_service.get_order_details(order_id);
+  const order = orderResponse?.data;
+  if (!order) throw new Error("order not found");
+
+
+  const price_data = build_price_data_from_order(order);
+
   const session = await stripe.checkout.sessions.create({
     payment_method_types: ["card"],
 
     success_url: `${req.protocol + "s://" + req.get("host")}/payment/success`,
     cancel_url: `${req.protocol + "s://" + req.get("host")}/payment/cancel`,
 
-    line_items: price_data?.map((item: IPaymentData) => ({
-      price_data: {
-        currency: currency ?? "USD",
-        product_data: {
-          name: item?.name ?? "purchase credits",
-        },
-        unit_amount: Math.round(Number(item?.unit_amount) * 100),
-      },
-      quantity: item?.quantity ?? 1,
-    })) ?? [
-        {
+    line_items:
+      price_data?.length > 0
+        ? price_data.map((item: IPaymentData) => ({
           price_data: {
-            currency: "usd",
+            currency: currency ?? "USD",
             product_data: {
-              name: "Maid Booking",
+              name: item?.name ?? "purchase credits",
             },
-            unit_amount: Number(1) * 100,
+            unit_amount: Math.round(Number(item?.unit_amount) * 100),
           },
-          quantity: 1,
-        },
-      ],
+          quantity: Number(item?.quantity ?? 1),
+        }))
+        : [
+          {
+            price_data: {
+              currency: "usd",
+              product_data: {
+                name: "Maid Booking",
+              },
+              unit_amount: Number(1) * 100,
+            },
+            quantity: 1,
+          },
+        ],
     mode: "payment",
   });
 
-  // order: Array.from(new Set(price_data?.map((item: IPaymentData) => item?._id)))
+  const amount =
+    typeof order?.total_amount === "number"
+      ? order.total_amount
+      : await payment_service.calculate_amount(price_data);
 
   const data = {
     session_id: session?.id,
     user: req.user?._id as string,
-    order: [_id],
-    purpose: (purpose as string) ?? "buy_credits",
-    amount: await payment_service.calculate_amount(price_data),
+    order: [order_id],
+    amount,
     currency: currency ?? "USD",
   };
   const result = await payment_service.create(data);
@@ -199,6 +236,7 @@ async function transfer_balance(req: Request, res: Response) {
 }
 
 async function webhook(req: Request, res: Response) {
+  // console.log(config?.WEBHOOK)
   let event;
   const sig = req.headers["stripe-signature"];
   try {
@@ -220,7 +258,7 @@ async function webhook(req: Request, res: Response) {
       const paymentIntent = await stripe.paymentIntents.retrieve(
         payment_intent as string,
       );
-
+      // console.log(paymentIntent)
       if (!paymentIntent || paymentIntent.amount_received === 0) {
         return console.log("Payment Not Succeeded");
       }
