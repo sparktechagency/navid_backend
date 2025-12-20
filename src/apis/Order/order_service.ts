@@ -52,7 +52,7 @@ const create_order = async (data: any, user_id: string) => {
         { session }
       );
 
-      await Promise.all([
+      const [order] = await Promise.all([
         orderPromise,
         notificationPromise,
         variantUpdate,
@@ -62,6 +62,7 @@ const create_order = async (data: any, user_id: string) => {
       return {
         success: true,
         message: "Order created successfully",
+        order: order
       };
     });
     return result;
