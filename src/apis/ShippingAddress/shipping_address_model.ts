@@ -12,7 +12,6 @@ const shipping_address_schema = new Schema<IShippingAddress>(
       type: String,
       required: [true, "Street is required"],
       trim: true,
-      unique: true,
     },
     phone: {
       type: String,
