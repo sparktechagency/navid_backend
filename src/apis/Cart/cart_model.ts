@@ -26,6 +26,6 @@ const cart_schema = new Schema<ICart>({
   },
 });
 
-// cart_schema.index({ user: 1, "product_id": 1 ,"variant": 1}, { unique: true });
+cart_schema.index({"product_id": 1 ,"variant": 1}, { unique: true });
 
 export const cart_model = model<ICart>("cart", cart_schema);
