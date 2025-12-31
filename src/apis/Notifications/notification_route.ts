@@ -17,4 +17,12 @@ notification_router
     "/notification/read/:id",
     verifyToken(config.USER),
     asyncWrapper(notification_controller.read),
+  )
+
+  .delete(
+    "/notification/delete/:id",
+    verifyToken(config.USER),
+    asyncWrapper(notification_controller.remove),
   );
+
+
