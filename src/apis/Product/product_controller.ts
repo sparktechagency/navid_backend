@@ -7,11 +7,9 @@ import { sendResponse } from "../../utils/sendResponse";
 import { product_service } from "./product_service";
 import IProduct from "./product_type";
 
-const create = async function (req: Request, res: Response) {
-  const video = !Array.isArray(req.files) && req.files?.video && req.files.video.length > 0 && req.files.video[0]?.path || null;
-  if (video) req.body.video = video
+const create = async (req: Request, res: Response) => {
+  req.body.user = req.user?._id;
 
-  req.body.user = req?.user?._id;
   const result = await product_service.create(req.body);
   sendResponse(res, HttpStatus.SUCCESS, result);
 };
