@@ -39,7 +39,7 @@ product_router
   .patch(
     "/product/update/:id",
     verifyToken(config.ADMIN),
-    uploadFile(),
+    uploadVideo(),
     asyncWrapper(product_controller.update),
   )
 
