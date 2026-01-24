@@ -73,7 +73,7 @@ const uploadVideo = () => {
           "-preset veryfast",
           "-g 48",
           "-sc_threshold 0",
-          "-hls_time 6",
+          "-hls_time 15",
           "-hls_list_size 0",
           "-hls_segment_filename",
           path.join(hlsDir, "segment_%03d.ts"),
@@ -82,7 +82,6 @@ const uploadVideo = () => {
         .on("end", () => {
           fs.unlinkSync(tempVideoPath);
 
-          // ✅ IMPORTANT FIX
           req.body = {
             ...fields,
             video: playlistPath,
