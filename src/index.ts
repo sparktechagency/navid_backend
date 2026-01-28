@@ -1,19 +1,15 @@
-import cluster from "cluster";
+import express, { NextFunction, Request, Response } from "express";
 import os from "os";
-import { app, server } from "./socket";
-import { logger } from "./utils/logger";
+import path from "path";
+import { payment_controller } from "./apis/Payment/payment_controller";
+import { connectToDB } from "./db";
 import config from "./DefaultConfig/config";
-import globalErrorHandler, { CustomError } from "./utils/globalErrorHandler";
-import { NextFunction, Request, Response } from "express";
+import asyncWrapper from "./middleware/asyncWrapper";
 import middleware from "./middleware/middleware";
 import { routeMiddleware } from "./middleware/routeMiddleware";
-import path from "path";
-import { connectToDB } from "./db";
-import express from "express";
-import { payment_controller } from "./apis/Payment/payment_controller";
-import asyncWrapper from "./middleware/asyncWrapper";
-import { country_list, country_list_code } from "./utils/stripe/strupe_country";
-import { currency_list_code } from "./utils/stripe/stripe_currency";
+import { app, server } from "./socket";
+import globalErrorHandler, { CustomError } from "./utils/globalErrorHandler";
+import { logger } from "./utils/logger";
 
 const numCPUs = os.cpus().length || 1;
 
