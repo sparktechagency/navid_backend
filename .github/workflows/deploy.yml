@@ -29,9 +29,16 @@ jobs:
       - name: Build Project
         run: npm run build
 
+      - name: Verify build output
+        run: |
+          if [ ! -d dist ]; then
+            echo "Error: dist/ folder not found. Make sure npm run build creates dist/"
+            exit 1
+          fi
+
       - name: Compress backend for deployment
         run: |
-          tar czf backend.tar.gz src/ dist/ package.json package-lock.json
+          tar czf backend.tar.gz src/ package.json package-lock.json dist/
 
   deploy:
     runs-on: ubuntu-latest
@@ -44,10 +51,6 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: "20.15"
-
-      - name: Compress backend again (optional safety)
-        run: |
-          tar czf backend.tar.gz src/ dist/ package.json package-lock.json
 
       - name: Configure SSH
         env:
@@ -72,13 +75,13 @@ jobs:
           ENV_VARS_JSON: ${{ secrets.ENV_VARS_JSON }}
         run: |
           ssh $EC2_USER@$EC2_HOST << 'EOF'
-            set -e  # Stop on errors
+            set -e  # Stop on any error
 
             # Create application directory if it doesn't exist
             mkdir -p ~/applications/backend
             cd ~/applications/backend
 
-            # Extract the backend archive
+            # Extract backend archive
             tar xzf backend.tar.gz
             rm backend.tar.gz
 
