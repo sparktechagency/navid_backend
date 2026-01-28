@@ -1,7 +1,6 @@
 import { Request, Response } from "express";
 import mongoose from "mongoose";
 import { HttpStatus } from "../../DefaultConfig/config";
-import { UnlinkFiles } from "../../middleware/fileUploader";
 import { QueryKeys } from "../../utils/Aggregator";
 import { sendResponse } from "../../utils/sendResponse";
 import { product_service } from "./product_service";
@@ -54,7 +53,7 @@ const get_all = async function (req: Request, res: Response) {
 };
 
 const get_product_details = async function (req: Request, res: Response) {
-  const result = await product_service.get_details(req?.params?.id, req?.user?.tax_id as string);
+  const result = await product_service.get_details(req?.params?.id?.toString() as string, req?.user?.tax_id as string) as any;
   sendResponse(res, HttpStatus.SUCCESS, result);
 };
 
@@ -158,7 +157,7 @@ export const update = async (req: Request, res: Response) => {
       });
     }
 
-    
+
     const {
       name,
       description,
@@ -167,7 +166,7 @@ export const update = async (req: Request, res: Response) => {
       whole_sale,
     } = req.body;
 
-  
+
     if ([name, description, category, sub_category].some((item) => !item)) {
       return res.status(400).json({
         success: false,
@@ -175,7 +174,7 @@ export const update = async (req: Request, res: Response) => {
       });
     }
 
-  
+
     let whole_sale_value: boolean;
     if (typeof whole_sale === "string") {
       whole_sale_value = whole_sale.toLowerCase() === "true";
@@ -183,7 +182,7 @@ export const update = async (req: Request, res: Response) => {
       whole_sale_value = !!whole_sale;
     }
 
-  
+
     const updateData: Partial<IProduct> = {
       name,
       description,
@@ -192,12 +191,12 @@ export const update = async (req: Request, res: Response) => {
       whole_sale: whole_sale_value,
     };
 
-  
+
     if (req.body.video) {
       updateData.video = req.body.video;
     }
 
-    const result = await product_service.update_product(id, updateData as IProduct);
+    const result = await product_service.update_product(id?.toString() as string, updateData as IProduct);
 
     if (!result?.data) {
       return res.status(404).json({
@@ -221,19 +220,19 @@ export const update = async (req: Request, res: Response) => {
 };
 
 const delete_product = async function (req: Request, res: Response) {
-  const result = await product_service.delete_product(req?.params?.id);
+  const result = await product_service.delete_product(req?.params?.id?.toString() as string);
 
   sendResponse(res, HttpStatus.SUCCESS, result);
 };
 
 const approve_product = async function (req: Request, res: Response) {
-  const result = await product_service.approve_product(req?.params?.id);
+  const result = await product_service.approve_product(req?.params?.id?.toString() as string);
 
   sendResponse(res, HttpStatus.SUCCESS, result);
 };
 
 const feature_product = async function (req: Request, res: Response) {
-  const result = await product_service.feature_product(req?.params?.id);
+  const result = await product_service.feature_product(req?.params?.id?.toString() as string);
 
   sendResponse(res, HttpStatus.SUCCESS, result);
 };

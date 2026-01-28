@@ -1,9 +1,9 @@
 import { Request, Response } from "express";
-import { SearchKeys } from "../../utils/Queries";
 import { HttpStatus } from "../../DefaultConfig/config";
+import { SearchKeys } from "../../utils/Queries";
 import { sendResponse } from "../../utils/sendResponse";
-import { notification_service } from "./notification_service";
 import { IAuth } from "../Auth/auth_types";
+import { notification_service } from "./notification_service";
 
 async function get_all(req: Request, res: Response) {
   const { search, ...otherValues } = req?.query;
@@ -16,7 +16,7 @@ async function get_all(req: Request, res: Response) {
   };
 
   if (req?.user?.role != "ADMIN" && req?.user?.role != "SUPER_ADMIN") {
-    queryKeys.user = req?.user?._id as string;
+    queryKeys.user = req?.user?._id?.toString() as string;
   }
 
   const populatePath: string | string[] = "user";
@@ -35,7 +35,7 @@ async function get_all(req: Request, res: Response) {
 
 async function read(req: Request, res: Response) {
   const result = await notification_service.read_notification(
-    req?.params?.id,
+    req?.params?.id?.toString() as string,
     req?.user as IAuth,
   );
 
@@ -44,7 +44,7 @@ async function read(req: Request, res: Response) {
 
 async function remove(req: Request, res: Response) {
   const result = await notification_service.delete_notification(
-    req?.params?.id,
+    req?.params?.id?.toString() as string,
     req?.user as IAuth,
   );
 

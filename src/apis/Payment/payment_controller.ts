@@ -92,7 +92,7 @@ async function create(req: Request, res: Response) {
 
   const data = {
     session_id: session?.id,
-    user: req.user?._id as string,
+    user: req.user?._id?.toString() as string,
     order: [order_id],
     amount,
     currency: currency ?? "USD",
@@ -111,7 +111,7 @@ async function cancel(req: Request, res: Response) {
 
 async function success_account(req: Request, res: Response) {
   const { id } = req.params;
-  const account = await stripe.accounts.update(id, {});
+  const account = await stripe.accounts.update(id?.toString() as string, {});
 
   if (
     account?.requirements?.disabled_reason &&
@@ -162,7 +162,7 @@ async function success_account(req: Request, res: Response) {
 
 async function refresh_account_connect(req: Request, res: Response) {
   const { id } = req.params;
-  const url = await payment_service.update_account_onboarding(id, req);
+  const url = await payment_service.update_account_onboarding(id?.toString() as string, req);
   res.redirect(url);
 }
 
@@ -215,7 +215,7 @@ async function create_account(req: Request, res: Response) {
 }
 
 async function check_payment_status(req: Request, res: Response) {
-  const result = await payment_service.check_payment_status(req?.params?.id);
+  const result = await payment_service.check_payment_status(req?.params?.id?.toString() as string);
 
   sendResponse(res, HttpStatus.SUCCESS, result);
 }

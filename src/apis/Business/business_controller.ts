@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
-import { business_service } from "./business_service";
-import { sendResponse } from "../../utils/sendResponse";
 import { HttpStatus } from "../../DefaultConfig/config";
 import { SearchKeys } from "../../utils/Queries";
+import { sendResponse } from "../../utils/sendResponse";
+import { business_service } from "./business_service";
 
 const create = async (req: Request, res: Response) => {
   const business_documents =
@@ -69,15 +69,15 @@ const update = async (req: Request, res: Response) => {
 
   req.body.user = req?.user?._id;
 
-  const result = await business_service.update(req?.params?.id, req?.body);
+  const result = await business_service.update(req?.params?.id?.toString() as string, req?.body);
 
   sendResponse(res, HttpStatus.SUCCESS, result);
 };
 
 const delete_business = async (req: Request, res: Response) => {
   const result = await business_service.delete_business(
-    req?.params?.id,
-    req?.user?._id as string,
+    req?.params?.id?.toString() as string,
+    req?.user?._id?.toString() as string,
   );
 
   sendResponse(res, HttpStatus.SUCCESS, result);
@@ -85,8 +85,8 @@ const delete_business = async (req: Request, res: Response) => {
 
 const approve_shop = async (req: Request, res: Response) => {
   const result = await business_service.approve_shop(
-    req?.params?.id,
-    req?.user?._id as string,
+    req?.params?.id?.toString() as string,
+    req?.user?._id?.toString() as string,
   );
 
   sendResponse(res, HttpStatus.SUCCESS, result);
@@ -94,8 +94,8 @@ const approve_shop = async (req: Request, res: Response) => {
 
 const block_shop = async (req: Request, res: Response) => {
   const result = await business_service.block_shop(
-    req?.params?.id,
-    req?.user?._id as string,
+    req?.params?.id?.toString() as string,
+    req?.user?._id?.toString() as string,
   );
 
   sendResponse(res, HttpStatus.SUCCESS, result);

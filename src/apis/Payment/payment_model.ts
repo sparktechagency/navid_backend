@@ -11,7 +11,7 @@ const payment_schema = new Schema<IPayment>(
     transaction_id: {
       type: String,
       default: null,
-      required() {
+      required: function (this: any) {
         return this.status === true;
       },
     },

@@ -51,12 +51,12 @@ async function update(req: Request, res: Response) {
     null;
 
   if (img) req.body.img = img;
-  const result = await service_service.update(req?.params?.id, req?.body);
+  const result = await service_service.update(req?.params?.id?.toString(), req?.body);
   sendResponse(res, HttpStatus.SUCCESS, result);
 }
 
 async function delete_service(req: Request, res: Response) {
-  const result = await service_service.delete_service(req?.params?.id); // req?.body, req?.user as IAuth
+  const result = await service_service.delete_service(req?.params?.id?.toString()); // req?.body, req?.user as IAuth
   sendResponse(res, HttpStatus.SUCCESS, result);
 }
 

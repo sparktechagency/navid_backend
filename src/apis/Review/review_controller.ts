@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
 import { HttpStatus } from "../../DefaultConfig/config";
+import { SearchKeys } from "../../utils/Queries";
 import { sendResponse } from "../../utils/sendResponse";
 import { review_service } from "./review_service";
-import { SearchKeys } from "../../utils/Queries";
 
 async function create(req: Request, res: Response) {
   req.body.user = req?.user?._id;
@@ -21,13 +21,13 @@ async function create(req: Request, res: Response) {
 }
 
 async function approve(req: Request, res: Response) {
-  const result = await review_service.approve(req?.params?.id);
+  const result = await review_service.approve(req?.params?.id?.toString());
 
   sendResponse(res, HttpStatus.SUCCESS, result);
 }
 
 async function delete_review(req: Request, res: Response) {
-  const result = await review_service.delete_review(req?.params?.id);
+  const result = await review_service.delete_review(req?.params?.id?.toString());
 
   sendResponse(res, HttpStatus.SUCCESS, result);
 }

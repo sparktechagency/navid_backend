@@ -36,7 +36,7 @@ async function sing_out(req: Request, res: Response) {
 }
 
 async function block_auth(req: Request, res: Response) {
-  const result = await auth_service.block_auth(req?.params?.id);
+  const result = await auth_service.block_auth(req?.params?.id?.toString() as string);
   sendResponse(res, HttpStatus.SUCCESS, result);
 }
 
@@ -111,7 +111,7 @@ async function change_password(req: Request, res: Response) {
 }
 
 async function verify_identity(req: Request, res: Response) {
-  const result = await auth_service.verify_identity(req?.params?.id);
+  const result = await auth_service.verify_identity(req?.params?.id?.toString() as string);
 
   sendResponse(res, HttpStatus.SUCCESS, result);
 }

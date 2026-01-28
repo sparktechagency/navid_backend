@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
-import { banner_service } from "./banner_service";
-import { sendResponse } from "../../utils/sendResponse";
 import { HttpStatus } from "../../DefaultConfig/config";
+import { sendResponse } from "../../utils/sendResponse";
+import { banner_service } from "./banner_service";
 
 const create = async (req: Request, res: Response) => {
   const img =
@@ -29,7 +29,7 @@ const update = async (req: Request, res: Response) => {
 
   if (img) req.body.img = img;
 
-  const result = await banner_service.update(id, req?.body);
+  const result = await banner_service.update(id?.toString() as string, req?.body);
 
   sendResponse(res, HttpStatus.SUCCESS, result);
 };
@@ -37,7 +37,7 @@ const update = async (req: Request, res: Response) => {
 const delete_banner = async (req: Request, res: Response) => {
   const { id } = req.params;
 
-  const result = await banner_service.delete_banner(id);
+  const result = await banner_service.delete_banner(id?.toString() as string);
 
   sendResponse(res, HttpStatus.SUCCESS, result);
 };

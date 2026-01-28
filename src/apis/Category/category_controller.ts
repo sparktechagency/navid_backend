@@ -1,9 +1,9 @@
-import { SearchKeys } from "./../../utils/Queries";
 import { Request, Response } from "express";
-import { category_service } from "./category_service";
-import { sendResponse } from "../../utils/sendResponse";
 import { HttpStatus } from "../../DefaultConfig/config";
+import { sendResponse } from "../../utils/sendResponse";
 import { IAuth } from "../Auth/auth_types";
+import { SearchKeys } from "./../../utils/Queries";
+import { category_service } from "./category_service";
 
 async function create(req: Request, res: Response) {
   const img =
@@ -53,13 +53,13 @@ async function update(req: Request, res: Response) {
 
   if (img) req.body.img = img;
 
-  const result = await category_service.update(req?.params?.id, req?.body);
+  const result = await category_service.update(req?.params?.id?.toString() as string, req?.body);
   sendResponse(res, HttpStatus.SUCCESS, result);
 }
 
 async function delete_category(req: Request, res: Response) {
   const result = await category_service.delete_category(
-    req?.params?.id,
+    req?.params?.id?.toString() as string,
     req?.body,
     req?.user as IAuth,
   );

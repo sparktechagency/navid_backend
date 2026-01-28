@@ -13,7 +13,7 @@ const create = async (data: IBusiness) => {
 };
 
 const update = async (id: string, data: IBusiness) => {
-  const result = await business_model.findOne(
+  const result = await business_model.findOneAndUpdate(
     { _id: id, user: data.user },
     {
       $set: {

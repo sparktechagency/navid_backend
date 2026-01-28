@@ -1,13 +1,13 @@
 import { Request, Response } from "express";
-import { order_service } from "./order_service";
-import { sendResponse } from "../../utils/sendResponse";
 import { HttpStatus } from "../../DefaultConfig/config";
+import { sendResponse } from "../../utils/sendResponse";
 import { IAuth } from "../Auth/auth_types";
+import { order_service } from "./order_service";
 
 const create_order = async (req: Request, res: Response) => {
   const result = await order_service.create_order(
     req.body,
-    req?.user?._id as string,
+    req?.user?._id?.toString() as string,
   );
 
   sendResponse(res, HttpStatus.SUCCESS, result);
@@ -34,7 +34,7 @@ const get_all = async (req: Request, res: Response) => {
 
   const { role, _id } = req?.user as IAuth;
   if (role !== "ADMIN" && role !== "SUPER_ADMIN") {
-    queryKeys.user = _id as string;
+    queryKeys.user = _id?.toString() as string;
     populatePath = ["items.product", "user", "items.variant", "delivery_address", "pick_up_address"];
     selectFields = [
       "name img price",
@@ -59,26 +59,26 @@ const get_all = async (req: Request, res: Response) => {
 };
 
 const get_order_details = async (req: Request, res: Response) => {
-  const result = await order_service.get_order_details(req?.params?.id);
+  const result = await order_service.get_order_details(req?.params?.id?.toString() as string);
 
   sendResponse(res, HttpStatus.SUCCESS, result);
 };
 
 const update_order = async (req: Request, res: Response) => {
-  const result = await order_service.update_order(req?.params?.id, req?.body);
+  const result = await order_service.update_order(req?.params?.id?.toString() as string, req?.body);
 
   sendResponse(res, HttpStatus.SUCCESS, result);
 };
 
 const delete_order = async (req: Request, res: Response) => {
-  const result = await order_service.delete_order(req?.params?.id);
+  const result = await order_service.delete_order(req?.params?.id?.toString() as string);
 
   sendResponse(res, HttpStatus.SUCCESS, result);
 };
 
 const update_delivery_status = async (req: Request, res: Response) => {
   const result = await order_service.update_delivery_status(
-    req?.params?.id,
+    req?.params?.id?.toString() as string,
     req?.body?.delivery_status,
   );
 

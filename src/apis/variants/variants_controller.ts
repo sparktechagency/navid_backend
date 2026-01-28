@@ -55,7 +55,7 @@ const update = async (req: Request, res: Response) => {
   }
 
 
-  const result = await variants_service.update(req?.params?.id, req?.body)
+  const result = await variants_service.update(req?.params?.id?.toString(), req?.body)
   sendResponse(
     res,
     HttpStatus.SUCCESS,
@@ -64,7 +64,7 @@ const update = async (req: Request, res: Response) => {
 }
 
 const delete_variants = async (req: Request, res: Response) => {
-  const result = await variants_service.delete_variants(req?.params?.id)
+  const result = await variants_service.delete_variants(req?.params?.id?.toString())
   sendResponse(
     res,
     HttpStatus.SUCCESS,

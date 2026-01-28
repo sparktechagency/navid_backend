@@ -16,7 +16,7 @@ const get_all = async (req: Request, res: Response) => {
   let queryKeys = { ...other_fields };
 
   if (search) searchKeys.name = search as string;
-  queryKeys.user = req.user?._id as string;
+  queryKeys.user = req.user?._id?.toString() as string;
 
   const populatePath = "items.product_id";
   const selectFields = "name price discount";
