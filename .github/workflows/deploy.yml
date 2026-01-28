@@ -58,11 +58,20 @@ jobs:
           ssh $EC2_USER@$EC2_HOST "mkdir -p ~/applications/backend"
 
           # Copy the backend project to EC2 using `rsync`
+          # rsync -avz \
+          #   --exclude='.git' \
+          #   --exclude='node_modules' \
+          #   --exclude='.github' \
+          #   . $EC2_USER@$EC2_HOST:~/applications/backend/  # Deploy only the backend files
           rsync -avz \
-            --exclude='.git' \
-            --exclude='node_modules' \
-            --exclude='.github' \
-            . $EC2_USER@$EC2_HOST:~/applications/backend/  # Deploy only the backend files
+              --progress \
+              --partial \
+              --timeout=60 \
+              --exclude='.git' \
+              --exclude='node_modules' \
+              --exclude='.github' \
+              -e "ssh -o ServerAliveInterval=30" \
+              . $EC2_USER@$EC2_HOST:~/applications/backend/
 
           # Install production dependencies on EC2 for the backend
           ssh $EC2_USER@$EC2_HOST "cd ~/applications/backend && npm install --frozen-lockfile --production"
