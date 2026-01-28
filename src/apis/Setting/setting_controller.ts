@@ -10,7 +10,7 @@ async function create(req: Request, res: Response) {
 }
 
 async function get(req: Request, res: Response) {
-  const result = await setting_service.get(req?.params?.name);
+  const result = await setting_service.get(req?.params?.name as string);
 
   sendResponse(res, HttpStatus.SUCCESS, result);
 }
