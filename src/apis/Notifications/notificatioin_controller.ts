@@ -42,7 +42,17 @@ async function read(req: Request, res: Response) {
   sendResponse(res, HttpStatus.SUCCESS, result);
 }
 
+async function remove(req: Request, res: Response) {
+  const result = await notification_service.delete_notification(
+    req?.params?.id,
+    req?.user as IAuth,
+  );
+
+  sendResponse(res, HttpStatus.SUCCESS, result);
+}
+
 export const notification_controller = Object.freeze({
   get_all,
   read,
+  remove
 });

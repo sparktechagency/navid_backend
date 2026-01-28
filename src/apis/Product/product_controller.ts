@@ -7,11 +7,9 @@ import { sendResponse } from "../../utils/sendResponse";
 import { product_service } from "./product_service";
 import IProduct from "./product_type";
 
-const create = async function (req: Request, res: Response) {
-  const video = !Array.isArray(req.files) && req.files?.video && req.files.video.length > 0 && req.files.video[0]?.path || null;
-  if (video) req.body.video = video
+const create = async (req: Request, res: Response) => {
+  req.body.user = req.user?._id;
 
-  req.body.user = req?.user?._id;
   const result = await product_service.create(req.body);
   sendResponse(res, HttpStatus.SUCCESS, result);
 };
@@ -84,15 +82,74 @@ const get_product_details = async function (req: Request, res: Response) {
 //   sendResponse(res, HttpStatus.SUCCESS, result);
 // };
 
+// export const update = async (req: Request, res: Response) => {
+//   try {
+//     const { name, description, category, sub_category, whole_sale } = req.body;
+//     const { id } = req.params;
+
+//     const video = !Array.isArray(req.files) && req.files?.video && req.files.video.length > 0 && req.files.video[0]?.path || null;
+//     console.log(video)
+//     if (video) req.body.video = video
+
+
+//     if (!id) {
+//       return res.status(400).json({
+//         success: false,
+//         message: "Product ID is required",
+//       });
+//     }
+
+//     if ([name, description, category, sub_category].some((item) => !item)) {
+//       return res.status(400).json({
+//         success: false,
+//         message: "Please provide all required fields",
+//       });
+//     }
+//     let whole_sale_value: boolean;
+//     whole_sale_value = typeof whole_sale === "string" ? whole_sale === "true" ? true : false : whole_sale;
+
+//     if (typeof whole_sale_value !== "boolean") {
+//       return res.status(400).json({
+//         success: false,
+//         message: "Invalid value for whole_sale (must be boolean)",
+//       });
+//     }
+
+//     const updateData = {
+//       name,
+//       description,
+//       category,
+//       sub_category,
+//       whole_sale: whole_sale_value,
+//       video,
+//     };
+
+//     const result = await product_service.update_product(id, updateData as IProduct);
+
+//     if (!result?.data) {
+//       return res.status(404).json({
+//         success: false,
+//         message: "Product not found",
+//       });
+//     }
+
+//     return res.status(200).json({
+//       success: true,
+//       message: "Product updated successfully",
+//       data: result.data,
+//     });
+//   } catch (error: any) {
+//     console.error("Error updating product:", error);
+//     return res.status(500).json({
+//       success: false,
+//       message: error?.message || "Internal server error",
+//     });
+//   }
+// };
+
 export const update = async (req: Request, res: Response) => {
   try {
-    const { name, description, category, sub_category, whole_sale } = req.body;
     const { id } = req.params;
-    
-    const video = !Array.isArray(req.files) && req.files?.video && req.files.video.length > 0 && req.files.video[0]?.path || null;
-    console.log(video)
-    if (video) req.body.video = video
-
 
     if (!id) {
       return res.status(400).json({
@@ -101,30 +158,44 @@ export const update = async (req: Request, res: Response) => {
       });
     }
 
+    
+    const {
+      name,
+      description,
+      category,
+      sub_category,
+      whole_sale,
+    } = req.body;
+
+  
     if ([name, description, category, sub_category].some((item) => !item)) {
       return res.status(400).json({
         success: false,
         message: "Please provide all required fields",
       });
     }
-    let whole_sale_value: boolean;
-    whole_sale_value = typeof whole_sale === "string" ? whole_sale === "true" ? true : false : whole_sale;
 
-    if (typeof whole_sale_value !== "boolean") {
-      return res.status(400).json({
-        success: false,
-        message: "Invalid value for whole_sale (must be boolean)",
-      });
+  
+    let whole_sale_value: boolean;
+    if (typeof whole_sale === "string") {
+      whole_sale_value = whole_sale.toLowerCase() === "true";
+    } else {
+      whole_sale_value = !!whole_sale;
     }
 
-    const updateData = {
+  
+    const updateData: Partial<IProduct> = {
       name,
       description,
       category,
       sub_category,
       whole_sale: whole_sale_value,
-      video,
     };
+
+  
+    if (req.body.video) {
+      updateData.video = req.body.video;
+    }
 
     const result = await product_service.update_product(id, updateData as IProduct);
 
