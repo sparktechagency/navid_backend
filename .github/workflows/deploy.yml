@@ -1,12 +1,9 @@
-name: Deploy Node.js with TypeScript on EC2
+name: Deploy Backend to EC2
 
 on:
   push:
     branches:
-      - "main"
-  pull_request:
-    branches:
-      - "main"
+      - main
 
 jobs:
   build:
@@ -18,39 +15,39 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: "20.15"
+          node-version: "20"
 
-      - name: Install Dependencies
-        run: npm install --frozen-lockfile
+      - name: Install dependencies
+        run: npm install
 
-      - name: Install TypeScript Compiler
-        run: npm install -g typescript
-
-      - name: Build Project
+      - name: Build project
         run: npm run build
 
-      - name: Verify build output
+      - name: Ensure dist exists
         run: |
           if [ ! -d dist ]; then
-            echo "Error: dist/ folder not found. Make sure npm run build creates dist/"
+            echo "dist folder missing. Build failed."
             exit 1
           fi
 
-      - name: Compress backend for deployment
-        run: |
-          tar czf backend.tar.gz src/ package.json package-lock.json dist/
+      - name: Create backend archive
+        run: tar czf backend.tar.gz src/ dist/ package.json package-lock.json
+
+      - name: Upload backend artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: backend-build
+          path: backend.tar.gz
 
   deploy:
     runs-on: ubuntu-latest
     needs: build
 
     steps:
-      - uses: actions/checkout@v3
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
+      - name: Download backend artifact
+        uses: actions/download-artifact@v4
         with:
-          node-version: "20.15"
+          name: backend-build
 
       - name: Configure SSH
         env:
@@ -61,44 +58,29 @@ jobs:
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan -H ${{ secrets.SERVER_HOST }} >> ~/.ssh/known_hosts
 
-      - name: Upload backend to EC2
+      - name: Upload to EC2
         env:
-          EC2_HOST: ${{ secrets.SERVER_HOST }}
           EC2_USER: ${{ secrets.SERVER_USER }}
+          EC2_HOST: ${{ secrets.SERVER_HOST }}
         run: |
           scp backend.tar.gz $EC2_USER@$EC2_HOST:~/applications/backend/
 
-      - name: Deploy backend on EC2
+      - name: Deploy on EC2
         env:
-          EC2_HOST: ${{ secrets.SERVER_HOST }}
           EC2_USER: ${{ secrets.SERVER_USER }}
-          ENV_VARS_JSON: ${{ secrets.ENV_VARS_JSON }}
+          EC2_HOST: ${{ secrets.SERVER_HOST }}
         run: |
           ssh $EC2_USER@$EC2_HOST << 'EOF'
-            set -e  # Stop on any error
-
-            # Create application directory if it doesn't exist
-            mkdir -p ~/applications/backend
+            set -e
             cd ~/applications/backend
 
-            # Extract backend archive
             tar xzf backend.tar.gz
             rm backend.tar.gz
 
-            # Install production dependencies
-            npm install --frozen-lockfile --production
+            npm install --omit=dev
 
-            # Write environment variables
-            echo "$ENV_VARS_JSON" > .env
-
-            # Stop existing PM2 process if exists
             pm2 delete backend || true
+            pm2 start dist/index.js --name backend
 
-            # Stop existing tmux session if exists
-            tmux has-session -t backend 2>/dev/null && tmux kill-session -t backend || true
-
-            # Start backend in a detached tmux session
-            tmux new-session -d -s backend 'node dist/index.js'
-
-            echo "Deployment completed successfully"
+            pm2 save
           EOF
