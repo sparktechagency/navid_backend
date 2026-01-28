@@ -14,16 +14,24 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: "20.15"
+
       - name: Install Dependencies
         run: npm install --frozen-lockfile
+
       - name: Install TypeScript Compiler
         run: npm install -g typescript
+
       - name: Build Project
         run: npm run build
+
+      - name: Compress backend for deployment
+        run: |
+          tar czf backend.tar.gz src/ dist/ package.json package-lock.json
 
   deploy:
     runs-on: ubuntu-latest
@@ -31,14 +39,16 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: "20.15"
-      - name: Install Dependencies
-        run: npm install --frozen-lockfile
-      - name: Build Project
-        run: npm run build
+
+      - name: Compress backend again (optional safety)
+        run: |
+          tar czf backend.tar.gz src/ dist/ package.json package-lock.json
+
       - name: Configure SSH
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
@@ -48,42 +58,44 @@ jobs:
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan -H ${{ secrets.SERVER_HOST }} >> ~/.ssh/known_hosts
 
-      - name: Deploy Server
+      - name: Upload backend to EC2
+        env:
+          EC2_HOST: ${{ secrets.SERVER_HOST }}
+          EC2_USER: ${{ secrets.SERVER_USER }}
+        run: |
+          scp backend.tar.gz $EC2_USER@$EC2_HOST:~/applications/backend/
+
+      - name: Deploy backend on EC2
         env:
           EC2_HOST: ${{ secrets.SERVER_HOST }}
           EC2_USER: ${{ secrets.SERVER_USER }}
           ENV_VARS_JSON: ${{ secrets.ENV_VARS_JSON }}
         run: |
-          # Create application directories on EC2 if they don't exist
-          ssh $EC2_USER@$EC2_HOST "mkdir -p ~/applications/backend"
+          ssh $EC2_USER@$EC2_HOST << 'EOF'
+            set -e  # Stop on errors
 
-          # Copy the backend project to EC2 using `rsync`
-          # rsync -avz \
-          #   --exclude='.git' \
-          #   --exclude='node_modules' \
-          #   --exclude='.github' \
-          #   . $EC2_USER@$EC2_HOST:~/applications/backend/  # Deploy only the backend files
-          rsync -avz \
-              --progress \
-              --partial \
-              --timeout=60 \
-              --exclude='.git' \
-              --exclude='node_modules' \
-              --exclude='.github' \
-              -e "ssh -o ServerAliveInterval=30" \
-              . $EC2_USER@$EC2_HOST:~/applications/backend/
+            # Create application directory if it doesn't exist
+            mkdir -p ~/applications/backend
+            cd ~/applications/backend
 
-          # Install production dependencies on EC2 for the backend
-          ssh $EC2_USER@$EC2_HOST "cd ~/applications/backend && npm install --frozen-lockfile --production"
+            # Extract the backend archive
+            tar xzf backend.tar.gz
+            rm backend.tar.gz
 
-          # Set the environment variables (using the ENV_VARS_JSON secret)
-          ssh $EC2_USER@$EC2_HOST "echo '$ENV_VARS_JSON' > ~/applications/backend/.env"
+            # Install production dependencies
+            npm install --frozen-lockfile --production
 
-          # Stop the existing PM2 process if it exists
-          ssh $EC2_USER@$EC2_HOST "pm2 delete backend || true"  # Ensures no errors if the process doesn't exist
+            # Write environment variables
+            echo "$ENV_VARS_JSON" > .env
 
-          # Stop the existing tmux process if it exists
-          ssh $EC2_USER@$EC2_HOST "tmux has-session -t backend 2>/dev/null && tmux kill-session -t backend || true"
+            # Stop existing PM2 process if exists
+            pm2 delete backend || true
 
-          # Start the backend application with tmux
-          ssh $EC2_USER@$EC2_HOST "cd ~/applications/backend && tmux new-session -d -s backend 'node dist/index.js'"
+            # Stop existing tmux session if exists
+            tmux has-session -t backend 2>/dev/null && tmux kill-session -t backend || true
+
+            # Start backend in a detached tmux session
+            tmux new-session -d -s backend 'node dist/index.js'
+
+            echo "Deployment completed successfully"
+          EOF
