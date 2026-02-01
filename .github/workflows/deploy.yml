@@ -145,9 +145,9 @@ jobs:
           ssh-keyscan -H ${{ secrets.SERVER_HOST  }} >> ~/.ssh/known_hosts  # Add the EC2 host to known hosts
 
       # Install PM2 on EC2 (with sudo if necessary)
-      - name: Install PM2 on EC2
-        run: |
-          ssh ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} "sudo npm install -g pm2"  # Add sudo to PM2 installation
+      # - name: Install PM2 on EC2
+      #   run: |
+      #     ssh ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} "sudo npm install -g pm2"  # Add sudo to PM2 installation
 
       # Deploy the backend application to EC2 (this is where we create the 'backend' folder)------------
       - name: Deploy Backend to EC2
