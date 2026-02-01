@@ -210,7 +210,7 @@ jobs:
         run: tar -czf dist.tar.gz dist package.json package-lock.json src/views src/utils
 
       - name: Upload artifact for deploy
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: backend-dist
           path: dist.tar.gz
@@ -228,7 +228,7 @@ jobs:
           node-version: "20.10.0"
 
       - name: Download build artifact
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: backend-dist
           path: ./deploy
@@ -243,7 +243,7 @@ jobs:
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan -H ${{ secrets.SERVER_HOST }} >> ~/.ssh/known_hosts
 
-      # Deploy the backend application to EC2
+      # Deploy the backend to EC2
       - name: Deploy Backend to EC2
         env:
           SERVER_HOST: ${{ secrets.SERVER_HOST }}
@@ -253,16 +253,16 @@ jobs:
           # Create application directory
           ssh $SERVER_USER@$SERVER_HOST "mkdir -p ~/applications/backend"
 
-          # Upload the dist archive
+          # Upload the archive
           scp ./deploy/dist.tar.gz $SERVER_USER@$SERVER_HOST:~/applications/backend/
 
-          # Extract the archive on EC2
+          # Extract archive on EC2
           ssh $SERVER_USER@$SERVER_HOST "cd ~/applications/backend && tar -xzf dist.tar.gz && rm dist.tar.gz"
 
-          # Install production dependencies
+          # Install production dependencies only
           ssh $SERVER_USER@$SERVER_HOST "cd ~/applications/backend && npm install --omit=dev"
 
-          # Set environment variables
+          # Set environment variables using jq
           ssh $SERVER_USER@$SERVER_HOST "echo '$ENV_VARS_JSON' | jq -r 'to_entries | .[] | \"\(.key)=\(.value)\"' > ~/applications/backend/.env"
 
           # Restart the app safely with PM2
