@@ -142,7 +142,7 @@ jobs:
           mkdir -p ~/.ssh
           echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa  # Set the correct permissions for the private key
-          ssh-keyscan -H ${{ secrets.SERVER_USER }} >> ~/.ssh/known_hosts  # Add the EC2 host to known hosts
+          ssh-keyscan -H ${{ secrets.SERVER_HOST  }} >> ~/.ssh/known_hosts  # Add the EC2 host to known hosts
 
       # Install PM2 on EC2 (with sudo if necessary)
       - name: Install PM2 on EC2
