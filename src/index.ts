@@ -12,7 +12,7 @@ import globalErrorHandler, { CustomError } from "./utils/globalErrorHandler";
 import { logger } from "./utils/logger";
 
 const numCPUs = os.cpus().length || 1;
-
+//
 // if (cluster.isPrimary) {
 //     console.log(`primary process ${process.pid} running`)
 //     for (let i = 0; i < numCPUs; i++) {
@@ -23,6 +23,8 @@ const numCPUs = os.cpus().length || 1;
 //         cluster.fork();
 //     });
 // } else {
+
+// post payment
 app.post(
   "/payment/complete",
   express.raw({ type: "application/json" }),
