@@ -13,7 +13,7 @@ const config = Object.freeze({
   ACCESS_TOKEN_SECRET: process.env.ACCESS_TOKEN_SECRET,
   DATABASE_URL: process.env.DATABASE_URL,
   NODE_ENV: process.env.NODE_ENV,
-  SRTRIPE_KEY: process.env.SRTRIPE_KEY || "",
+  STRIPE_KEY: process.env.STRIPE_KEY || "",
   WEBHOOK: process.env.WEBHOOK || "",
   DB_NAME: process.env.DB_NAME,
   TOKEN_NAME: process.env.TOKEN_NAME || "",

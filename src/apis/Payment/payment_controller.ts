@@ -6,10 +6,10 @@ import { sendResponse } from "../../utils/sendResponse";
 import auth_model from "../Auth/auth_model";
 import { auth_service } from "../Auth/auth_service";
 import { IAuth } from "../Auth/auth_types";
-import { order_service } from '../Order/order_service';
+import { order_service } from "../Order/order_service";
 import { payment_service } from "./payment_service";
 
-export const stripe = new Stripe(config.SRTRIPE_KEY);
+export const stripe = new Stripe(config.STRIPE_KEY);
 
 function build_price_data_from_order(order: any): IPaymentData[] {
   const items = order?.items ?? [];
@@ -20,7 +20,7 @@ function build_price_data_from_order(order: any): IPaymentData[] {
 
     const unitAmount =
       typeof variant.price_after_discount === "number" &&
-        variant.price_after_discount > 0
+      variant.price_after_discount > 0
         ? variant.price_after_discount
         : typeof variant.price === "number"
           ? variant.price
@@ -49,7 +49,6 @@ async function create(req: Request, res: Response) {
   const order = orderResponse?.data;
   if (!order) throw new Error("order not found");
 
-
   const price_data = build_price_data_from_order(order);
 
   const session = await stripe.checkout.sessions.create({
@@ -61,27 +60,27 @@ async function create(req: Request, res: Response) {
     line_items:
       price_data?.length > 0
         ? price_data.map((item: IPaymentData) => ({
-          price_data: {
-            currency: currency ?? "USD",
-            product_data: {
-              name: item?.name ?? "purchase credits",
-            },
-            unit_amount: Math.round(Number(item?.unit_amount) * 100),
-          },
-          quantity: Number(item?.quantity ?? 1),
-        }))
-        : [
-          {
             price_data: {
-              currency: "usd",
+              currency: currency ?? "USD",
               product_data: {
-                name: "Maid Booking",
+                name: item?.name ?? "purchase credits",
               },
-              unit_amount: Number(1) * 100,
+              unit_amount: Math.round(Number(item?.unit_amount) * 100),
             },
-            quantity: 1,
-          },
-        ],
+            quantity: Number(item?.quantity ?? 1),
+          }))
+        : [
+            {
+              price_data: {
+                currency: "usd",
+                product_data: {
+                  name: "Maid Booking",
+                },
+                unit_amount: Number(1) * 100,
+              },
+              quantity: 1,
+            },
+          ],
     mode: "payment",
   });
 
@@ -162,7 +161,10 @@ async function success_account(req: Request, res: Response) {
 
 async function refresh_account_connect(req: Request, res: Response) {
   const { id } = req.params;
-  const url = await payment_service.update_account_onboarding(id?.toString() as string, req);
+  const url = await payment_service.update_account_onboarding(
+    id?.toString() as string,
+    req,
+  );
   res.redirect(url);
 }
 
@@ -215,7 +217,9 @@ async function create_account(req: Request, res: Response) {
 }
 
 async function check_payment_status(req: Request, res: Response) {
-  const result = await payment_service.check_payment_status(req?.params?.id?.toString() as string);
+  const result = await payment_service.check_payment_status(
+    req?.params?.id?.toString() as string,
+  );
 
   sendResponse(res, HttpStatus.SUCCESS, result);
 }
