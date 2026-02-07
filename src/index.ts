@@ -1,3 +1,4 @@
+import dotenv from "dotenv";
 import express, { NextFunction, Request, Response } from "express";
 import os from "os";
 import path from "path";
@@ -10,6 +11,8 @@ import { routeMiddleware } from "./middleware/routeMiddleware";
 import { app, server } from "./socket";
 import globalErrorHandler, { CustomError } from "./utils/globalErrorHandler";
 import { logger } from "./utils/logger";
+dotenv.config();
+
 const uploadDir =
   process.env.UPLOAD_DIR || path.resolve(process.cwd(), "uploads");
 
