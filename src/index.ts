@@ -1,5 +1,6 @@
 import dotenv from "dotenv";
 import express, { NextFunction, Request, Response } from "express";
+import fs from "fs";
 import os from "os";
 import path from "path";
 import { payment_controller } from "./apis/Payment/payment_controller";
@@ -16,6 +17,10 @@ dotenv.config();
 const uploadDir =
   process.env.UPLOAD_DIR || path.resolve(process.cwd(), "uploads");
 
+if (!fs.existsSync(uploadDir)) {
+  fs.mkdirSync(uploadDir, { recursive: true });
+  console.log(`Created uploads folder at ${uploadDir}`);
+}
 app.use("/uploads", express.static(uploadDir));
 const numCPUs = os.cpus().length || 1;
 //
