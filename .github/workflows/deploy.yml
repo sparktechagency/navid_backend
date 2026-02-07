@@ -1,89 +1,89 @@
-name: Deploy Backend to EC2
+# name: Deploy Backend to EC2
 
-on:
-  push:
-    branches:
-      - main
+# on:
+#   push:
+#     branches:
+#       - main
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
 
-    steps:
-      - uses: actions/checkout@v3
+#     steps:
+#       - uses: actions/checkout@v3
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: "20"
+#       - name: Set up Node.js
+#         uses: actions/setup-node@v3
+#         with:
+#           node-version: "20"
 
-      - name: Install dependencies
-        run: npm install
+#       - name: Install dependencies
+#         run: npm install
 
-      - name: Build project
-        run: npm run build
+#       - name: Build project
+#         run: npm run build
 
-      - name: Ensure dist exists
-        run: |
-          if [ ! -d dist ]; then
-            echo "dist folder missing. Build failed."
-            exit 1
-          fi
+#       - name: Ensure dist exists
+#         run: |
+#           if [ ! -d dist ]; then
+#             echo "dist folder missing. Build failed."
+#             exit 1
+#           fi
 
-      - name: Create backend archive
-        run: tar czf backend.tar.gz src/ dist/ package.json package-lock.json
+#       - name: Create backend archive
+#         run: tar czf backend.tar.gz src/ dist/ package.json package-lock.json
 
-      - name: Upload backend artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: backend-build
-          path: backend.tar.gz
+#       - name: Upload backend artifact
+#         uses: actions/upload-artifact@v4
+#         with:
+#           name: backend-build
+#           path: backend.tar.gz
 
-  deploy:
-    runs-on: ubuntu-latest
-    needs: build
+#   deploy:
+#     runs-on: ubuntu-latest
+#     needs: build
 
-    steps:
-      - name: Download backend artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: backend-build
+#     steps:
+#       - name: Download backend artifact
+#         uses: actions/download-artifact@v4
+#         with:
+#           name: backend-build
 
-      - name: Configure SSH
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
-        run: |
-          mkdir -p ~/.ssh
-          echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan -H ${{ secrets.SERVER_HOST }} >> ~/.ssh/known_hosts
+#       - name: Configure SSH
+#         env:
+#           SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
+#         run: |
+#           mkdir -p ~/.ssh
+#           echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+#           chmod 600 ~/.ssh/id_rsa
+#           ssh-keyscan -H ${{ secrets.SERVER_HOST }} >> ~/.ssh/known_hosts
 
-      - name: Upload to EC2
-        env:
-          EC2_USER: ${{ secrets.SERVER_USER }}
-          EC2_HOST: ${{ secrets.SERVER_HOST }}
-        run: |
-          scp backend.tar.gz $EC2_USER@$EC2_HOST:~/applications/backend/
+#       - name: Upload to EC2
+#         env:
+#           EC2_USER: ${{ secrets.SERVER_USER }}
+#           EC2_HOST: ${{ secrets.SERVER_HOST }}
+#         run: |
+#           scp backend.tar.gz $EC2_USER@$EC2_HOST:~/applications/backend/
 
-      - name: Deploy on EC2
-        env:
-          EC2_USER: ${{ secrets.SERVER_USER }}
-          EC2_HOST: ${{ secrets.SERVER_HOST }}
-        run: |
-          ssh $EC2_USER@$EC2_HOST << 'EOF'
-            set -e
-            cd ~/applications/backend
+#       - name: Deploy on EC2
+#         env:
+#           EC2_USER: ${{ secrets.SERVER_USER }}
+#           EC2_HOST: ${{ secrets.SERVER_HOST }}
+#         run: |
+#           ssh $EC2_USER@$EC2_HOST << 'EOF'
+#             set -e
+#             cd ~/applications/backend
 
-            tar xzf backend.tar.gz
-            rm backend.tar.gz
+#             tar xzf backend.tar.gz
+#             rm backend.tar.gz
 
-            npm install --omit=dev
+#             npm install --omit=dev
 
-            pm2 delete backend || true
-            pm2 start dist/index.js --name backend
+#             pm2 delete backend || true
+#             pm2 start dist/index.js --name backend
 
-            pm2 save
-          EOF
+#             pm2 save
+#           EOF
 
 # name: Deploy Node.js with TypeScript on EC2
 
@@ -177,3 +177,105 @@ jobs:
 
 #           # Start the backend application with PM2
 #           ssh $SERVER_USER@$SERVER_HOST "cd ~/applications/backend && pm2 start dist/index.js --name backend"
+
+name: Deploy Node.js + TypeScript Backend to EC2
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout code
+      - uses: actions/checkout@v3
+
+      # Setup Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "20"
+
+      # Install dependencies
+      - name: Install dependencies
+        run: npm install --frozen-lockfile
+
+      # Build TypeScript
+      - name: Build project
+        run: npm run build
+
+      # Package built backend
+      - name: Create backend artifact
+        run: |
+          tar czf backend.tar.gz dist/ package.json package-lock.json src/ # include src if needed
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: backend-build
+          path: backend.tar.gz
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+      # Download the built artifact from build job
+      - name: Download backend artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: backend-build
+
+      # Configure SSH for EC2
+      - name: Configure SSH
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
+        run: |
+          mkdir -p ~/.ssh
+          echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H ${{ secrets.SERVER_HOST }} >> ~/.ssh/known_hosts
+
+      # Create backend folder and upload code
+      - name: Deploy backend to EC2
+        env:
+          SERVER_USER: ${{ secrets.SERVER_USER }}
+          SERVER_HOST: ${{ secrets.SERVER_HOST }}
+          ENV_VARS_JSON: ${{ secrets.ENV_VARS_JSON }}
+        run: |
+          # Ensure application folder exists
+          ssh $SERVER_USER@$SERVER_HOST "mkdir -p ~/applications/backend"
+
+          # Upload artifact to EC2
+          scp backend.tar.gz $SERVER_USER@$SERVER_HOST:~/applications/backend/
+
+          # SSH into EC2 to deploy
+          ssh $SERVER_USER@$SERVER_HOST << 'EOF'
+            set -e
+            cd ~/applications/backend
+
+            # Extract backend
+            tar xzf backend.tar.gz
+            rm backend.tar.gz
+
+            # Install production dependencies
+            npm install --omit=dev
+
+            # Set environment variables (.env)
+            echo "$ENV_VARS_JSON" | jq -r 'to_entries | .[] | "\(.key)=\(.value)"' > .env
+
+            # Ensure uploads directory exists and has permissions
+            mkdir -p /mnt/uploads
+            chown -R ubuntu:ubuntu /mnt/uploads
+            chmod -R 755 /mnt/uploads
+
+            # Restart backend with PM2
+            pm2 delete backend || true
+            pm2 start dist/index.js --name backend
+            pm2 save
+          EOF
