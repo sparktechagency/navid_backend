@@ -237,6 +237,11 @@ jobs:
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan -H ${{ secrets.SERVER_HOST }} >> ~/.ssh/known_hosts
 
+      # Install PM2 on EC2 (if not installed)
+      - name: Install PM2 on EC2
+        run: |
+          ssh ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} "sudo npm install -g pm2"
+
       # Deploy the backend application to EC2
       - name: Deploy Backend to EC2
         env:
@@ -260,8 +265,8 @@ jobs:
           # Set environment variables on EC2
           ssh $SERVER_USER@$SERVER_HOST "echo '$ENV_VARS_JSON' | jq -r 'to_entries | .[] | \"\(.key)=\(.value)\"' > ~/applications/backend/.env"
 
-          # Stop the existing PM2 process if it exists (using login shell)
-          ssh $SERVER_USER@$SERVER_HOST "bash -l -c 'pm2 delete backend || true'"
+          # Stop the existing PM2 process if it exists
+          ssh $SERVER_USER@$SERVER_HOST "pm2 delete backend || true"
 
-          # Start the backend application with PM2 (using login shell)
-          ssh $SERVER_USER@$SERVER_HOST "bash -l -c 'cd ~/applications/backend && pm2 start dist/index.js --name backend'"
+          # Start the backend application with PM2
+          ssh $SERVER_USER@$SERVER_HOST "cd ~/applications/backend && pm2 start dist/index.js --name backend"
