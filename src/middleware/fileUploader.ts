@@ -286,18 +286,9 @@ import fs from "fs";
 import multer, { StorageEngine } from "multer";
 import path from "path";
 
-/**
- * ============================
- * ✅ CHANGE 1: Upload root path
- * - Local  → ./uploads
- * - Prod   → /mnt/uploads (via env)
- */
 const UPLOAD_ROOT =
   process.env.UPLOAD_DIR || path.resolve(process.cwd(), "uploads");
 
-/**
- * Allowed mimetypes
- */
 const mimetype = [
   "image/jpeg",
   "image/jpg",
@@ -307,25 +298,15 @@ const mimetype = [
   "application/pdf",
 ];
 
-/**
- * ============================
- * ✅ CHANGE 2: Safe directory creator
- * Creates folder if it doesn't exist
- */
 const ensureDirectoryExists = (directory: string) => {
   if (!fs.existsSync(directory)) {
     fs.mkdirSync(directory, { recursive: true });
-
-    // Linux permission fix (EC2)
     if (process.platform !== "win32") {
       fs.chmodSync(directory, 0o755);
     }
   }
 };
 
-/**
- * Delete files helper
- */
 export const UnlinkFiles = (files: string[]) => {
   files.forEach((filePath) => {
     fs.unlink(filePath, (err) => {
@@ -336,32 +317,15 @@ export const UnlinkFiles = (files: string[]) => {
   });
 };
 
-/**
- * ============================
- * ✅ MAIN UPLOAD MIDDLEWARE
- * ============================
- */
 const uploadFile = () => {
-  // ✅ CHANGE 3: Ensure root folder exists ONCE
   ensureDirectoryExists(UPLOAD_ROOT);
 
   const storage: StorageEngine = multer.diskStorage({
     destination: (req, file, cb) => {
-      try {
-        if (!mimetype.includes(file.mimetype)) {
-          return cb(new Error("Invalid file type"), "");
-        }
-
-        // uploads/img , uploads/video, etc
-        const uploadPath = path.join(UPLOAD_ROOT, file.fieldname);
-        ensureDirectoryExists(uploadPath);
-
-        cb(null, uploadPath);
-      } catch (error) {
-        cb(error as Error, "");
-      }
+      const uploadPath = path.join(UPLOAD_ROOT, file.fieldname);
+      ensureDirectoryExists(uploadPath);
+      cb(null, uploadPath);
     },
-
     filename: (req, file, cb) => {
       const name = `${Date.now()}-${file.originalname}`;
       cb(null, name);
@@ -389,7 +353,7 @@ const uploadFile = () => {
   };
 
   const upload = multer({
-    limits: { fileSize: 5000 * 1024 * 1024 }, // 5GB
+    limits: { fileSize: 5000 * 1024 * 1024 },
     storage,
     fileFilter,
   }).fields([
@@ -403,33 +367,22 @@ const uploadFile = () => {
   return (req: Request, res: Response, next: NextFunction) => {
     upload(req, res, (err) => {
       if (err) {
-        return res.status(400).json({
-          success: false,
-          message: err.message,
-        });
+        return res.status(400).json({ success: false, message: err.message });
       }
 
       const files = req.files as
         | { [key: string]: Express.Multer.File[] }
         | undefined;
 
-      /**
-       * ============================
-       * ✅ CHANGE 4: Generate public URLs
-       * Instead of storing disk paths, generate /uploads/... URLs
-       */
-      const uploadedFiles: { [key: string]: string[] } = {};
-
-      Object.keys(files || {}).forEach((key) => {
-        uploadedFiles[key] = files![key].map(
-          (file) => `/uploads/${file.fieldname}/${file.filename}`,
-        );
+      // ✅ CHANGE: Override file.path to public URL
+      Object.keys(files || {}).forEach((field) => {
+        files![field] = files![field].map((file) => {
+          const publicPath = `/uploads/${file.fieldname}/${file.filename}`;
+          return { ...file, path: publicPath }; // override path
+        });
       });
 
-      // Attach public URLs to res.locals so controllers can save to DB
-      res.locals.uploadedFiles = uploadedFiles;
-
-      // ✅ CHANGE 5: Optional video size check
+      // Optional video size check
       if (files?.video) {
         const video = files.video[0];
         const sizeMB = video.size / (1024 * 1024);
