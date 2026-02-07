@@ -10,7 +10,10 @@ import { routeMiddleware } from "./middleware/routeMiddleware";
 import { app, server } from "./socket";
 import globalErrorHandler, { CustomError } from "./utils/globalErrorHandler";
 import { logger } from "./utils/logger";
+const uploadDir =
+  process.env.UPLOAD_DIR || path.resolve(process.cwd(), "uploads");
 
+app.use("/uploads", express.static(uploadDir));
 const numCPUs = os.cpus().length || 1;
 //
 // if (cluster.isPrimary) {
