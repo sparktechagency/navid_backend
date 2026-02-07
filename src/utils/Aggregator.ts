@@ -16,6 +16,7 @@ export interface SearchKeys {
   [key: string]: string;
 }
 
+// changes
 interface Pagination {
   currentPage: number;
   itemsPerPage: number;
