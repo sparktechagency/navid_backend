@@ -1,7 +1,7 @@
+import cors from "cors";
 import dotenv from "dotenv";
 import express, { NextFunction, Request, Response } from "express";
 import fs from "fs";
-import os from "os";
 import path from "path";
 import { payment_controller } from "./apis/Payment/payment_controller";
 import { connectToDB } from "./db";
@@ -13,6 +13,24 @@ import { app, server } from "./socket";
 import globalErrorHandler, { CustomError } from "./utils/globalErrorHandler";
 import { logger } from "./utils/logger";
 dotenv.config();
+app.use(
+  cors({
+    origin: [
+      "https://admin.divandione.com",
+      "https://divandione.com",
+      "https://dashboard.sampli.io",
+      "https://dashboard.sampli.io",
+      "https://sampli-dashbaord.vercel.app",
+      "http://localhost:3000",
+      "http://45.55.251.203:3001",
+      "http://45.55.251.203",
+      "http://localhost:3000",
+      "http://localhost:8000",
+    ],
+    // origin: '*',
+    credentials: true,
+  }),
+);
 
 const uploadDir =
   process.env.UPLOAD_DIR || path.resolve(process.cwd(), "uploads");
@@ -22,19 +40,6 @@ if (!fs.existsSync(uploadDir)) {
   console.log(`Created uploads folder at ${uploadDir}`);
 }
 app.use("/uploads", express.static(uploadDir));
-const numCPUs = os.cpus().length || 1;
-//
-// if (cluster.isPrimary) {
-//     console.log(`primary process ${process.pid} running`)
-//     for (let i = 0; i < numCPUs; i++) {
-//         cluster.fork();
-//     }
-//     cluster.on('exit', (worker, code, signal) => {
-//         console.log(`Worker ${worker.process.pid} exited. Restarting...`);
-//         cluster.fork();
-//     });
-// } else {
-
 // post payment
 app.post(
   "/payment/complete",
