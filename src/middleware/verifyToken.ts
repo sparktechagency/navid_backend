@@ -1,12 +1,12 @@
+import { NextFunction, Request, Response } from "express";
 import jwt, { JwtPayload } from "jsonwebtoken";
-import { Request, Response, NextFunction } from "express";
 import config, { HttpStatus } from "../DefaultConfig/config";
 import auth_model from "../apis/Auth/auth_model";
 
 interface DecodedToken extends JwtPayload {
   id?: string;
 }
-
+// nice to meet you
 // Modify verifyToken to accept an array of allowed roles
 const verifyToken = (
   allowedRoles: string[] = [],
@@ -36,7 +36,7 @@ const verifyToken = (
       } else {
         token = tokenWithBearer;
       }
-      
+
       jwt.verify(
         token,
         config.ACCESS_TOKEN_SECRET || "",
