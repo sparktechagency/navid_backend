@@ -30,7 +30,8 @@ const product_schema = new Schema<IProduct>(
     },
     video: {
       type: String,
-      required: false,
+      // required: false,
+      default: "",
     },
     is_deleted: {
       type: Boolean,
@@ -39,6 +40,5 @@ const product_schema = new Schema<IProduct>(
   },
   { timestamps: true },
 );
-
 
 export const product_model = model<IProduct>("product", product_schema);

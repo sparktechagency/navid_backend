@@ -1,30 +1,37 @@
-import Aggregator from '../../utils/Aggregator';
+import Aggregator from "../../utils/Aggregator";
 import { QueryKeys, SearchKeys } from "../../utils/Queries";
 import auth_model from "../Auth/auth_model";
 import { variants_model } from "../variants/variants_model";
 import { cart_model } from "./cart_model";
-import { ICart, } from "./cart_type";
+import { ICart } from "./cart_type";
 
 const create_or_update = async (data: any) => {
-  const exist_cart = await cart_model.findOne({ user: data?.user, variant: data?.variant });
+  const exist_cart = await cart_model.findOne({
+    user: data?.user,
+    variant: data?.variant,
+  });
   const variant = await variants_model.findById(data?.variant);
   if (exist_cart) {
-    await cart_model.findByIdAndUpdate(exist_cart._id, {
-      quantity: data?.quantity,
-    }, { new: true });
+    await cart_model.findByIdAndUpdate(
+      exist_cart._id,
+      {
+        quantity: data?.quantity,
+      },
+      { new: true },
+    );
     return {
       success: true,
       message: "cart updated successfully",
       data: exist_cart,
     };
   }
-  const created_cart = await cart_model.create(data)
+  const created_cart = await cart_model.create(data);
   return {
     success: true,
     message: "cart created successfully",
     data: created_cart,
   };
-}
+};
 
 const get_all = async (
   queryKeys: QueryKeys,
@@ -32,10 +39,7 @@ const get_all = async (
   populatePath?: string | string[],
   selectFields?: string | string[],
 ) => {
-  return await Aggregator(
-    cart_model,
-    queryKeys,
-    searchKeys, [
+  return await Aggregator(cart_model, queryKeys, searchKeys, [
     {
       $lookup: {
         from: "variants",
@@ -63,14 +67,14 @@ const get_all = async (
         total_price: {
           $multiply: ["$variant.price", "$quantity"],
         },
-      }
+      },
     },
     {
       $addFields: {
         price_after_discount: {
-          $ifNull: ["$variant.price_after_discount", "$variant.price"]
-        }
-      }
+          $ifNull: ["$variant.price_after_discount", "$variant.price"],
+        },
+      },
     },
     {
       $project: {
@@ -81,7 +85,7 @@ const get_all = async (
           img: 1,
           size: 1,
           quantity: 1,
-          color: 1
+          color: 1,
         },
         product: {
           _id: 1,
@@ -91,20 +95,22 @@ const get_all = async (
         quantity: 1,
         total_price: 1,
       },
-    }
-  ]
-  )
-
+    },
+  ]);
 };
 
 const update = async (id: string, data: ICart) => {
   const exist_cart = await cart_model.findById(id);
   if (!exist_cart) throw new Error("Cart not found");
-  const updated_cart = await cart_model.findByIdAndUpdate(id, {
-    quantity: data.quantity,
-  }, {
-    new: true,
-  });
+  const updated_cart = await cart_model.findByIdAndUpdate(
+    id,
+    {
+      quantity: data.quantity,
+    },
+    {
+      new: true,
+    },
+  );
 
   if (!updated_cart) throw new Error("Cart not found");
 
@@ -134,9 +140,13 @@ const delete_cart_item = async (variant_id: string, user_id: string) => {
   const exist_variant = variants_model.findOne({ _id: variant_id });
   if (!exist_variant) throw new Error("Variant not found");
 
-  const deletedCart = await cart_model.findOneAndDelete({ _id: variant_id, user: user_id });
+  const deletedCart = await cart_model.findOneAndDelete({
+    _id: variant_id,
+    user: user_id,
+  });
 
-  if (!deletedCart) throw new Error("Something went wrong while deleting the item");
+  if (!deletedCart)
+    throw new Error("Something went wrong while deleting the item");
 
   return {
     success: true,
