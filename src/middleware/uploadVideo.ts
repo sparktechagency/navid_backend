@@ -108,13 +108,14 @@
 import Busboy from "busboy";
 import crypto from "crypto";
 import { NextFunction, Request, Response } from "express";
-import ffmpegPath from "ffmpeg-static";
+// import ffmpegPath from "ffmpeg-static";
 import ffmpeg from "fluent-ffmpeg";
 import fs from "fs";
 import path from "path";
+ffmpeg.setFfmpegPath("/usr/bin/ffmpeg");
 
 // Set ffmpeg binary path
-ffmpeg.setFfmpegPath(ffmpegPath as string);
+// ffmpeg.setFfmpegPath(ffmpegPath as string);
 
 // ======================
 // CONFIGURATION
