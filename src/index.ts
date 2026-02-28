@@ -26,6 +26,7 @@ app.use(
       "http://45.55.251.203",
       "http://localhost:3000",
       "http://localhost:8000",
+      "http://23.21.215.96:3000",
     ],
     // origin: '*',
     credentials: true,
