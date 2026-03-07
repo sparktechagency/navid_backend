@@ -62,11 +62,6 @@ jobs:
       #   run: |
       #     ssh ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} "sudo npm install -g pm2"
 
-      - name: Install PM2 on EC2
-        run: |
-          ssh ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} \
-          "export NVM_DIR=\$HOME/.nvm && [ -s \$NVM_DIR/nvm.sh ] && \. \$NVM_DIR/nvm.sh && npm install -g pm2"
-
       # Deploy the backend application to EC2
       - name: Deploy Backend to EC2
         env:
