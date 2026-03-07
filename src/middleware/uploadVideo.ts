@@ -168,24 +168,8 @@ const uploadVideo = () => {
           const segmentPath = path.join(videoHlsDir, "segment_%03d.ts");
 
           const command = ffmpeg(tempVideoPath)
-            // .outputOptions([
-            //   "-preset veryfast",
-            //   "-g 48",
-            //   "-sc_threshold 0",
-            //   "-hls_time 10",
-            //   "-hls_list_size 0",
-            //   "-hls_segment_filename",
-            //   segmentPath,
-            // ])
             .outputOptions([
-              "-c:v libx264",
-              "-profile:v baseline",
-              "-level 3.1",
-              "-pix_fmt yuv420p",
-              "-crf 23",
               "-preset veryfast",
-              "-c:a aac",
-              "-b:a 128k",
               "-g 48",
               "-sc_threshold 0",
               "-hls_time 10",
@@ -193,6 +177,22 @@ const uploadVideo = () => {
               "-hls_segment_filename",
               segmentPath,
             ])
+            // .outputOptions([
+            //   "-c:v libx264",
+            //   "-profile:v baseline",
+            //   "-level 3.1",
+            //   "-pix_fmt yuv420p",
+            //   "-crf 23",
+            //   "-preset veryfast",
+            //   "-c:a aac",
+            //   "-b:a 128k",
+            //   "-g 48",
+            //   "-sc_threshold 0",
+            //   "-hls_time 10",
+            //   "-hls_list_size 0",
+            //   "-hls_segment_filename",
+            //   segmentPath,
+            // ])
             .output(playlistPath)
             .on("end", () => {
               try {
