@@ -1,121 +1,11 @@
-// import { Request, Response, NextFunction } from "express";
-// import Busboy from "busboy";
-// import fs from "fs";
-// import path from "path";
-// import ffmpeg from "fluent-ffmpeg";
-// import ffmpegPath from "ffmpeg-static";
-
-// ffmpeg.setFfmpegPath(ffmpegPath as string);
-
-// const VIDEO_MIME_TYPES = ["video/mp4", "video/webm", "video/quicktime"];
-// const MAX_VIDEO_SIZE_MB = 5000;
-
-// const ensureDir = (dir: string) => {
-//   if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
-// };
-
-// const uploadVideo = () => {
-//   return (req: Request, res: Response, next: NextFunction) => {
-//     const busboy = Busboy({
-//       headers: req.headers,
-//       limits: {
-//         files: 1,
-//         fileSize: MAX_VIDEO_SIZE_MB * 1024 * 1024,
-//       },
-//     });
-
-//     const fields: Record<string, any> = {};
-//     let tempVideoPath = "";
-
-//     busboy.on("field", (name, value) => {
-//       fields[name] = value;
-//     });
-
-//     busboy.on("file", (fieldname, file, info) => {
-//       const { filename, mimeType } = info;
-
-//       if (fieldname !== "video") {
-//         file.resume();
-//         return;
-//       }
-
-//       if (!VIDEO_MIME_TYPES.includes(mimeType)) {
-//         file.resume();
-//         return res.status(400).json({
-//           success: false,
-//           message: "Invalid video format",
-//         });
-//       }
-
-//       const tempDir = path.join("uploads", "temp");
-//       ensureDir(tempDir);
-
-//       tempVideoPath = path.join(tempDir, `${Date.now()}-${filename}`);
-//       file.pipe(fs.createWriteStream(tempVideoPath));
-//     });
-
-//     busboy.on("finish", () => {
-//       if (!tempVideoPath) {
-//         return res.status(400).json({
-//           success: false,
-//           message: "Video not uploaded",
-//         });
-//       }
-
-//       const videoId = Date.now().toString();
-//       const hlsDir = path.join("uploads", "hls", videoId);
-//       ensureDir(hlsDir);
-
-//       const playlistPath = path.join(hlsDir, "index.m3u8");
-
-//       ffmpeg(tempVideoPath)
-//         .outputOptions([
-//           "-preset veryfast",
-//           "-g 48",
-//           "-sc_threshold 0",
-//           "-hls_time 15",
-//           "-hls_list_size 0",
-//           "-hls_segment_filename",
-//           path.join(hlsDir, "segment_%03d.ts"),
-//         ])
-//         .output(playlistPath)
-//         .on("end", () => {
-//           fs.unlinkSync(tempVideoPath);
-
-//           req.body = {
-//             ...fields,
-//             video: playlistPath,
-//           };
-
-//           next();
-//         })
-//         .on("error", (err) => {
-//           console.error("FFmpeg error:", err);
-//           return res.status(500).json({
-//             success: false,
-//             message: "HLS conversion failed",
-//           });
-//         })
-//         .run();
-//     });
-
-//     req.pipe(busboy);
-//   };
-// };
-
-// export default uploadVideo;
-
 // import Busboy from "busboy";
 // import crypto from "crypto";
 // import { NextFunction, Request, Response } from "express";
-// // import ffmpegPath from "ffmpeg-static";
 // import ffmpeg from "fluent-ffmpeg";
 // import fs from "fs";
 // import path from "path";
-// ffmpeg.setFfmpegPath("/usr/bin/ffmpeg");
 
-// // Set ffmpeg binary path
-// // ffmpeg.setFfmpegPath(ffmpegPath as string);
+// ffmpeg.setFfmpegPath("/usr/bin/ffmpeg");
 
 // // ======================
 // // CONFIGURATION
@@ -126,6 +16,7 @@
 // const MAX_VIDEO_SIZE_MB = 500;
 // const BASE_UPLOAD_DIR =
 //   process.env.UPLOAD_DIR || path.join(process.cwd(), "uploads");
+
 // const TEMP_DIR = path.join(BASE_UPLOAD_DIR, "temp");
 // const HLS_DIR = path.join(BASE_UPLOAD_DIR, "hls");
 
@@ -180,13 +71,11 @@
 //       busboy.on("file", (fieldname, file, info) => {
 //         const { filename, mimeType } = info;
 
-//         // File error
 //         file.on("error", (err) => {
 //           console.error("File stream error:", err);
 //           uploadFailed = true;
 //         });
 
-//         // File size limit
 //         file.on("limit", () => {
 //           uploadFailed = true;
 
@@ -198,7 +87,7 @@
 //           file.resume();
 //         });
 
-//         // Only accept "video" field
+//         // Only accept video field
 //         if (fieldname !== "video") {
 //           file.resume();
 //           return;
@@ -245,14 +134,28 @@
 //       });
 
 //       // ======================
-//       // FINISH
+//       // FINISH HANDLING (FIXED)
 //       // ======================
 
 //       busboy.on("finish", async () => {
 //         try {
-//           if (uploadFailed || !tempVideoPath) {
+//           if (uploadFailed) {
 //             return;
 //           }
+
+//           // ✅ NO VIDEO UPLOADED → skip HLS
+//           if (!tempVideoPath) {
+//             req.body = {
+//               ...fields,
+//               video: "", // keep default empty string
+//             };
+
+//             return next();
+//           }
+
+//           // ======================
+//           // PROCESS VIDEO WITH HLS
+//           // ======================
 
 //           const videoId = crypto.randomUUID();
 
@@ -277,16 +180,13 @@
 //             .output(playlistPath)
 //             .on("end", () => {
 //               try {
-//                 // delete temp file
 //                 if (fs.existsSync(tempVideoPath)) {
 //                   fs.unlinkSync(tempVideoPath);
 //                 }
 
-//                 // attach to request body
 //                 req.body = {
 //                   ...fields,
 //                   video: `/uploads/hls/${videoId}/index.m3u8`,
-//                   videoId,
 //                 };
 
 //                 next();
@@ -314,7 +214,7 @@
 //               });
 //             });
 
-//           // timeout protection (30 min)
+//           // timeout protection
 //           setTimeout(
 //             () => {
 //               try {
@@ -520,7 +420,17 @@ const uploadVideo = () => {
 
           const command = ffmpeg(tempVideoPath)
             .outputOptions([
+              // Video: transcode to H.264 Baseline for universal Android compatibility
+              "-c:v libx264",
+              "-profile:v baseline", // ← fixes NO_EXCEEDS_CAPABILITIES on Android
+              "-level 3.1", // ← safe cap for mobile resolution/bitrate
+              "-pix_fmt yuv420p", // ← removes 10-bit / 4:4:4 color, the root cause
+              "-crf 23", // ← quality level (lower = better, 18-28 is typical)
               "-preset veryfast",
+              // Audio: transcode to AAC for universal compatibility
+              "-c:a aac",
+              "-b:a 128k",
+              // HLS options
               "-g 48",
               "-sc_threshold 0",
               "-hls_time 10",
