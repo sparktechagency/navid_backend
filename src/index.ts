@@ -2,6 +2,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import express, { NextFunction, Request, Response } from "express";
 import fs from "fs";
+import dns from "node:dns";
 import path from "path";
 import { payment_controller } from "./apis/Payment/payment_controller";
 import { connectToDB } from "./db";
@@ -12,6 +13,7 @@ import { routeMiddleware } from "./middleware/routeMiddleware";
 import { app, server } from "./socket";
 import globalErrorHandler, { CustomError } from "./utils/globalErrorHandler";
 import { logger } from "./utils/logger";
+dns.setDefaultResultOrder("ipv4first");
 dotenv.config();
 app.use(
   cors({
