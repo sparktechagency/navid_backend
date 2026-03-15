@@ -51,6 +51,7 @@ async function create(req: Request, res: Response) {
 
   const price_data = build_price_data_from_order(order);
 
+  console.log("before session====================>");
   const session = await stripe.checkout.sessions.create({
     payment_method_types: ["card"],
 
@@ -84,6 +85,7 @@ async function create(req: Request, res: Response) {
     mode: "payment",
   });
 
+  console.log("After session ==================================>");
   const amount =
     typeof order?.total_amount === "number"
       ? order.total_amount
@@ -97,6 +99,7 @@ async function create(req: Request, res: Response) {
     currency: currency ?? "USD",
   };
   const result = await payment_service.create(data);
+  console.log("After result=================================================>");
   sendResponse(res, HttpStatus.SUCCESS, { ...result, url: session?.url });
 }
 
